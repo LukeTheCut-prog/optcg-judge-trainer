@@ -1,0 +1,294 @@
+/* ── FlashCard ── */
+.flashcard-wrapper {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1.25rem 2rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Progress */
+.fc-progress {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  background: var(--surface);
+  border-radius: 99px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+.fc-progress__bar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+.fc-progress__label {
+  position: absolute;
+  right: 0;
+  top: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+/* Top bar — ID + home button */
+.fc-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 360px;
+  margin-bottom: 0.6rem;
+}
+
+/* ID badge */
+.fc-id {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+.fc-id__code {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+}
+.fc-id__type {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  padding: 0.1rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+}
+
+.fc-home-btn {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 0.2rem 0.7rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.fc-home-btn:hover {
+  border-color: var(--gold-dim);
+  color: var(--gold);
+}
+
+/* Image wrap */
+.fc-image-wrap {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 3/4.2;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 2px solid var(--card-color, var(--border-glow));
+  box-shadow: var(--shadow-card), 0 0 0 1px rgba(255,255,255,0.04);
+  background: var(--deep);
+  margin-bottom: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+/* Card container — full card image + blur overlay stacked */
+.fc-card-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.fc-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Blur overlay — covers effect + trigger text band (~58%–83% from top) */
+.fc-blur-overlay {
+  position: absolute;
+  top: 58%;
+  left: 0;
+  right: 0;
+  height: 25%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fc-blur-mask {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(10, 8, 5, 0.25);
+  transition: backdrop-filter 0.3s ease;
+}
+
+.fc-blur-hint {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(232, 223, 200, 0.7);
+  background: rgba(0,0,0,0.4);
+  padding: 0.3rem 0.8rem;
+  border-radius: 99px;
+  border: 1px solid rgba(201,168,76,0.3);
+  pointer-events: none;
+  animation: pulse-border 2s ease infinite;
+}
+
+.fc-image-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--surface);
+  padding: 2rem;
+}
+.fc-image-fallback__id {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+.fc-image-fallback__name {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* Stats */
+.fc-stats {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 360px;
+  margin-bottom: 1rem;
+}
+.fc-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.6rem 0.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.fc-stat--power {
+  border-color: var(--card-color, var(--border));
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+}
+.fc-stat__label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.fc-stat__value {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Tappable state — cursor hint before reveal */
+.flashcard-wrapper--tappable {
+  cursor: pointer;
+}
+
+/* Reveal area */
+.fc-reveal-area {
+  width: 100%;
+  max-width: 360px;
+  margin-bottom: 1rem;
+}
+
+/* Effect panel */
+.fc-effect {
+  background: var(--surface);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.1rem;
+  box-shadow: var(--shadow-gold);
+}
+.fc-effect__name {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+.fc-effect__meta {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.7rem;
+}
+.fc-badge {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.55rem;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  background: var(--raised);
+}
+.fc-badge--color {
+  border-color: var(--b-color, var(--border));
+  color: var(--b-color, var(--text-secondary));
+}
+.fc-effect__text {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-reveal);
+  font-style: italic;
+}
+
+/* Navigation */
+.fc-nav {
+  width: 100%;
+  max-width: 360px;
+}
+.fc-next-btn {
+  width: 100%;
+  padding: 0.85rem;
+  background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+  color: var(--ink);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 16px rgba(201,168,76,0.25);
+  animation: fadeUp 0.25s ease both;
+}
+.fc-next-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(201,168,76,0.4);
+}
+.fc-next-btn:active { transform: translateY(0); }

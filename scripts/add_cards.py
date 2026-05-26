@@ -1,0 +1,673 @@
+#!/usr/bin/env python3
+"""
+OPTCG Judge Trainer — Card Database Manager
+============================================
+Adds/updates cards in public/data/cards.json using optcgapi.com.
+Images are downloaded locally to public/images/cards/.
+
+Data coverage: OP01-OP13, EB01-EB03, PRB01-PRB02, ST01-ST28
+
+Usage:
+    python scripts/add_cards.py OP01-001
+    python scripts/add_cards.py OP01-001 OP01-002
+    python scripts/add_cards.py --list cards.txt
+    python scripts/add_cards.py --set OP01
+    python scripts/add_cards.py --list-sets
+    python scripts/add_cards.py --show
+    python scripts/add_cards.py --redownload-images
+
+Requirements:
+    pip install requests
+"""
+
+import json
+import sys
+import time
+import argparse
+from pathlib import Path
+
+try:
+    import requests
+    import urllib3
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+except ImportError:
+    print("Missing dependency. Run:\n  pip install requests")
+    sys.exit(1)
+
+# ── Paths ─────────────────────────────────────────────────────────────────────
+ROOT       = Path(__file__).parent.parent
+CARDS_FILE = ROOT / "public" / "data" / "cards.json"
+IMAGES_DIR = ROOT / "public" / "images" / "cards"
+
+# ── Set ID mapping ─────────────────────────────────────────────────────────────
+# API uses "OP-01" format; users can type "OP01" or "OP-01" — both work.
+SET_ID_MAP = {
+    "OP01": "OP-01",  "OP02": "OP-02",  "OP03": "OP-03",  "OP04": "OP-04",
+    "OP05": "OP-05",  "OP06": "OP-06",  "OP07": "OP-07",  "OP08": "OP-08",
+    "OP09": "OP-09",  "OP10": "OP-10",  "OP11": "OP-11",  "OP12": "OP-12",
+    "OP13": "OP-13",  "EB01": "EB-01",  "EB02": "EB-02",  "EB03": "EB-03",
+    "PRB01": "PRB-01", "PRB02": "PRB-02",
+    # Mixed sets — OP14 and OP15 share EB04
+    "OP14": "OP14-EB04", "OP14-EB04": "OP14-EB04",
+    "OP15": "OP15-EB04", "OP15-EB04": "OP15-EB04",
+    "EB04": "OP14-EB04",
+    # Starter Decks — API uses ST-01 format
+    "ST01": "ST-01",  "ST02": "ST-02",  "ST03": "ST-03",  "ST04": "ST-04",
+    "ST05": "ST-05",  "ST06": "ST-06",  "ST07": "ST-07",  "ST08": "ST-08",
+    "ST09": "ST-09",  "ST10": "ST-10",  "ST11": "ST-11",  "ST12": "ST-12",
+    "ST13": "ST-13",  "ST14": "ST-14",  "ST15": "ST-15",  "ST16": "ST-16",
+    "ST17": "ST-17",  "ST18": "ST-18",  "ST19": "ST-19",  "ST20": "ST-20",
+    "ST21": "ST-21",  "ST22": "ST-22",  "ST23": "ST-23",  "ST24": "ST-24",
+    "ST25": "ST-25",  "ST26": "ST-26",  "ST27": "ST-27",  "ST28": "ST-28",
+    # Allow already-hyphenated ST format passthrough
+    "ST-01": "ST-01", "ST-02": "ST-02", "ST-03": "ST-03", "ST-04": "ST-04",
+    "ST-05": "ST-05", "ST-06": "ST-06", "ST-07": "ST-07", "ST-08": "ST-08",
+    "ST-09": "ST-09", "ST-10": "ST-10", "ST-11": "ST-11", "ST-12": "ST-12",
+    "ST-13": "ST-13", "ST-14": "ST-14", "ST-15": "ST-15", "ST-16": "ST-16",
+    "ST-17": "ST-17", "ST-18": "ST-18", "ST-19": "ST-19", "ST-20": "ST-20",
+    "ST-21": "ST-21", "ST-22": "ST-22", "ST-23": "ST-23", "ST-24": "ST-24",
+    "ST-25": "ST-25", "ST-26": "ST-26", "ST-27": "ST-27", "ST-28": "ST-28",
+}
+
+def normalize_set_id(raw):
+    key = raw.strip().upper().replace("-", "")
+    return SET_ID_MAP.get(key, raw.strip().upper())
+
+# ── API ────────────────────────────────────────────────────────────────────────
+API_BASE         = "https://optcgapi.com/api"
+CARD_ENDPOINT    = API_BASE + "/sets/card/{card_id}/"
+SET_ENDPOINT     = API_BASE + "/sets/{set_id}/"
+ST_CARD_ENDPOINT = API_BASE + "/decks/card/{card_id}/"
+ST_SET_ENDPOINT  = API_BASE + "/decks/{set_id}/"
+
+BANDAI_IMAGE_URL = "https://en.onepiece-cardgame.com/images/cardlist/card/{card_id}.png"
+BANDAI_HEADERS   = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
+    "Referer": "https://en.onepiece-cardgame.com/",
+}
+
+DELAY      = 0.5
+API_HEADERS = {"Accept": "application/json", "User-Agent": "optcg-judge-trainer/1.0"}
+
+
+# ── Image download ─────────────────────────────────────────────────────────────
+def download_image(card_id, remote_url=None):
+    IMAGES_DIR.mkdir(parents=True, exist_ok=True)
+    dest = IMAGES_DIR / "{}.png".format(card_id)
+
+    if dest.exists():
+        return "/images/cards/{}.png".format(card_id)
+
+    urls_to_try = []
+    if remote_url and remote_url.startswith("http"):
+        urls_to_try.append((remote_url, API_HEADERS))
+    urls_to_try.append((BANDAI_IMAGE_URL.format(card_id=card_id), BANDAI_HEADERS))
+
+    for url, headers in urls_to_try:
+        try:
+            r = requests.get(url, headers=headers, timeout=15, verify=False, stream=True)
+            content_type = r.headers.get("Content-Type", "")
+            if r.status_code == 200 and ("image" in content_type or url.endswith(".jpg") or url.endswith(".png")):
+                with open(dest, "wb") as f:
+                    for chunk in r.iter_content(8192):
+                        f.write(chunk)
+                return "/images/cards/{}.png".format(card_id)
+        except requests.RequestException:
+            continue
+
+    return None
+
+
+# ── API helpers ────────────────────────────────────────────────────────────────
+def _get(url):
+    try:
+        r = requests.get(url, headers=API_HEADERS, timeout=10, verify=False)
+        if r.status_code == 404:
+            return None
+        r.raise_for_status()
+        return r.json()
+    except requests.RequestException as e:
+        print("    Network error: {}".format(e))
+        return None
+
+
+def fetch_card(card_id):
+    cid = card_id.upper()
+    data = _get(CARD_ENDPOINT.format(card_id=cid))
+    if data is None and cid.startswith("ST"):
+        data = _get(ST_CARD_ENDPOINT.format(card_id=cid))
+    if data is None:
+        return None
+    if isinstance(data, list):
+        if len(data) == 0:
+            return None
+        data = data[0]
+    resolved_id = (data.get("card_set_id") or data.get("card_id") or cid).upper()
+    return _normalize(data, resolved_id)
+
+
+def fetch_set(set_id):
+    sid = normalize_set_id(set_id)
+    is_st = sid.startswith("ST-")
+    url = ST_SET_ENDPOINT.format(set_id=sid) if is_st else SET_ENDPOINT.format(set_id=sid)
+    data = _get(url)
+    if not data:
+        print("  X Set '{}' not found. Run --list-sets to see available sets.".format(set_id))
+        return []
+    cards_raw = data if isinstance(data, list) else data.get("cards", [])
+    result = []
+    for raw in cards_raw:
+        if isinstance(raw, list):
+            raw = raw[0] if raw else {}
+        # ST endpoint uses different field names
+        cid = (
+            raw.get("card_set_id") or
+            raw.get("card_id") or
+            raw.get("id") or
+            ""
+        ).upper()
+        if cid:
+            result.append(_normalize(raw, cid))
+    return result
+
+
+def _normalize(raw, card_id):
+    def to_int(val):
+        if val is None or val == "" or val == "-":
+            return None
+        try:
+            return int(str(val).replace(",", "").replace("+", "").strip())
+        except (ValueError, TypeError):
+            return None
+
+    set_id = card_id.split("-")[0] if "-" in card_id else "UNKNOWN"
+    remote_image = (
+        raw.get("card_image") or
+        raw.get("image_url") or
+        BANDAI_IMAGE_URL.format(card_id=card_id)
+    )
+
+    return {
+        "id":        card_id,
+        "name":      raw.get("card_name") or raw.get("name") or card_id,
+        "color":     raw.get("card_color") or raw.get("color"),
+        "type":      raw.get("card_type") or raw.get("type"),
+        "cost":      to_int(raw.get("card_cost") or raw.get("cost")),
+        "power":     to_int(raw.get("card_power") or raw.get("power")),
+        "counter":   to_int(raw.get("counter_amount") or raw.get("counter")),
+        "attribute": raw.get("sub_types") or raw.get("attribute"),
+        "effect":    raw.get("card_text") or raw.get("effect") or "",
+        "image_url": remote_image,
+        "set":       set_id,
+    }
+
+
+# ── Database helpers ───────────────────────────────────────────────────────────
+def load_db():
+    if not CARDS_FILE.exists():
+        CARDS_FILE.parent.mkdir(parents=True, exist_ok=True)
+        return []
+    return json.loads(CARDS_FILE.read_text(encoding="utf-8"))
+
+
+def save_db(cards):
+    CARDS_FILE.write_text(
+        json.dumps(sorted(cards, key=lambda c: c["id"]), indent=2, ensure_ascii=False),
+        encoding="utf-8"
+    )
+
+
+def upsert_cards(new_cards, db, force):
+    index = {c["id"].upper(): i for i, c in enumerate(db)}
+    added = updated = skipped = 0
+    for card in new_cards:
+        cid = card["id"].upper()
+        if cid in index:
+            if force:
+                db[index[cid]] = card
+                updated += 1
+            else:
+                skipped += 1
+        else:
+            db.append(card)
+            index[cid] = len(db) - 1
+            added += 1
+    return added, updated, skipped
+
+
+def _summary(added, updated, skipped, failed, total):
+    print("\n-- Result: {} added, {} updated, {} skipped, {} failed --".format(
+        added, updated, skipped, failed))
+    print("   Database: {} total cards  ->  {}".format(total, CARDS_FILE))
+
+
+# ── Commands ───────────────────────────────────────────────────────────────────
+def cmd_add(card_ids, force):
+    db = load_db()
+    added = updated = skipped = failed = 0
+
+    for raw_id in card_ids:
+        cid = raw_id.strip().upper()
+        if not cid:
+            continue
+        print("  -> {}...".format(cid), end=" ", flush=True)
+        card = fetch_card(cid)
+        if not card:
+            print("NOT FOUND")
+            failed += 1
+            time.sleep(DELAY)
+            continue
+
+        local_path = download_image(cid, card["image_url"])
+        if local_path:
+            card["image_url"] = local_path
+            img_status = "img OK"
+        else:
+            img_status = "img FAILED"
+
+        a, u, s = upsert_cards([card], db, force)
+        added += a; updated += u; skipped += s
+
+        if s:
+            print("already exists (use --force to overwrite)")
+        else:
+            print("OK  {} [{}]".format(card["name"], img_status))
+
+        time.sleep(DELAY)
+
+    save_db(db)
+    _summary(added, updated, skipped, failed, len(db))
+
+
+def cmd_add_set(set_id, force):
+    print("Fetching all cards for set {}...".format(set_id.upper()))
+    cards = fetch_set(set_id)
+    if not cards:
+        return
+
+    print("Downloading {} card images...".format(len(cards)))
+    img_ok = img_fail = 0
+    for card in cards:
+        local_path = download_image(card["id"], card["image_url"])
+        if local_path:
+            card["image_url"] = local_path
+            img_ok += 1
+        else:
+            img_fail += 1
+        print("  {} {}".format(card["id"], "OK" if local_path else "FAILED"), flush=True)
+        time.sleep(DELAY)
+
+    db = load_db()
+    added, updated, skipped = upsert_cards(cards, db, force)
+    save_db(db)
+    failed = len(cards) - added - updated - skipped
+    print("Images: {} downloaded, {} failed".format(img_ok, img_fail))
+    _summary(added, updated, skipped, failed, len(db))
+
+
+def cmd_show():
+    db = load_db()
+    if not db:
+        print("Database is empty.")
+        return
+    print("\n{:<12} {:<32} {:<8} {:<12} {:<6} Set".format("ID", "Name", "Color", "Type", "Img"))
+    print("-" * 78)
+    for c in db:
+        has_img = "local" if c.get("image_url", "").startswith("/images/") else "remote"
+        print("{:<12} {:<32} {:<8} {:<12} {:<6} {}".format(
+            c["id"], (c["name"] or "?")[:31],
+            (c["color"] or "?"), (c["type"] or "?"),
+            has_img, c.get("set", "?")))
+    print("\nTotal: {} cards  ->  {}".format(len(db), CARDS_FILE))
+
+
+def cmd_list_sets():
+    print("Fetching available sets...")
+    data    = _get(API_BASE + "/allSets/")
+    st_data = _get(API_BASE + "/allDecks/")
+    if data:
+        print("\n{:<10} {}".format("ID", "Set Name"))
+        print("-" * 50)
+        for s in data:
+            sid   = s.get("set_id", "")
+            short = sid.replace("-", "")
+            print("{:<10} {}".format(short, s.get("set_name", "")))
+    if st_data:
+        print("\n{:<10} {}".format("ID", "Starter Deck Name"))
+        print("-" * 50)
+        for s in st_data:
+            sid = s.get("st_id") or s.get("set_id", "")
+            print("{:<10} {}".format(sid, s.get("st_name") or s.get("set_name", "")))
+
+
+def cmd_redownload_images():
+    db = load_db()
+    if not db:
+        print("Database is empty.")
+        return
+    ok = fail = skip = 0
+    for card in db:
+        cid = card["id"]
+        local_dest = IMAGES_DIR / "{}.png".format(cid)
+        if card.get("image_url", "").startswith("/images/") and local_dest.exists():
+            skip += 1
+            continue
+        print("  -> {}...".format(cid), end=" ", flush=True)
+        if local_dest.exists():
+            local_dest.unlink()
+        local_path = download_image(cid, BANDAI_IMAGE_URL.format(card_id=cid))
+        if local_path:
+            card["image_url"] = local_path
+            print("OK")
+            ok += 1
+        else:
+            print("FAILED")
+            fail += 1
+        time.sleep(DELAY)
+    save_db(db)
+    print("\nImages: {} downloaded, {} failed, {} already local".format(ok, fail, skip))
+
+
+# ── Limitless scraper (for promo cards only) ──────────────────────────────────
+LIMITLESS_BASE = "https://onepiece.limitlesstcg.com"
+LIMITLESS_CDN  = "https://limitlesstcg.nyc3.cdn.digitaloceanspaces.com/one-piece/P/{card_id}_EN.webp"
+LIMITLESS_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "text/html",
+}
+
+try:
+    from bs4 import BeautifulSoup
+    HAS_BS4 = True
+except ImportError:
+    HAS_BS4 = False
+
+
+def _get_html(url):
+    try:
+        r = requests.get(url, headers=LIMITLESS_HEADERS, timeout=15, verify=False)
+        if r.status_code != 200:
+            return None
+        if not HAS_BS4:
+            return r.text  # raw text fallback
+        return BeautifulSoup(r.text, "html.parser")
+    except requests.RequestException as e:
+        print("    Network error: {}".format(e))
+        return None
+
+
+def fetch_promo_card(card_id):
+    """Scrape a single promo card from Limitless (P-001, P-002, ...)."""
+    if not HAS_BS4:
+        print("    beautifulsoup4 required for promos. Run: pip install beautifulsoup4")
+        return None
+
+    cid = card_id.upper()
+    soup = _get_html("{}/cards/{}".format(LIMITLESS_BASE, cid))
+    if not soup:
+        return None
+
+    import re
+
+    # Name — in the page title or h1
+    name = cid
+    title = soup.find("title")
+    if title:
+        m = re.match(r"^([^(]+)\s*\(", title.get_text())
+        if m:
+            name = m.group(1).strip()
+
+    # Card text — the main content block
+    # Limitless renders card data in a structured div
+    text_el = soup.find("p", class_=re.compile("card.?text|effect|ability", re.I))
+    effect = ""
+    if not text_el:
+        # Fallback: find any paragraph with bracket notation typical of OPTCG effects
+        for p in soup.find_all("p"):
+            t = p.get_text(strip=True)
+            if "[" in t and len(t) > 10:
+                effect = t
+                break
+    else:
+        effect = text_el.get_text(strip=True)
+
+    # Stats — look for cost/power/color patterns in text
+    full_text = soup.get_text(" ", strip=True)
+
+    def extract_stat(pattern):
+        m = re.search(pattern, full_text, re.IGNORECASE)
+        return m.group(1).strip() if m else None
+
+    color   = extract_stat(r'(?:Color|Colour)[:\s•]+([A-Za-z/]+)')
+    card_type = extract_stat(r'(?:^|\s)(Leader|Character|Event|Stage)(?:\s|$|•)')
+    cost    = extract_stat(r'(?:Cost)[:\s•]+(\d+)')
+    power   = extract_stat(r'(?:Power)[:\s•]+(\d+)')
+    counter = extract_stat(r'(?:Counter)[:\s•]+\+?(\d+)')
+    subtype = extract_stat(r'(?:Type|Subtype)[:\s•]+([A-Za-z /]+?)(?:\n|•|Block)')
+
+    # Image from CDN
+    img_url = LIMITLESS_CDN.format(card_id=cid)
+
+    def to_int(val):
+        if val is None: return None
+        try: return int(str(val).replace(",", "").replace("+", "").strip())
+        except: return None
+
+    return {
+        "id":        cid,
+        "name":      name,
+        "color":     color,
+        "type":      card_type,
+        "cost":      to_int(cost),
+        "power":     to_int(power),
+        "counter":   to_int(counter),
+        "attribute": subtype,
+        "effect":    effect,
+        "image_url": img_url,
+        "set":       "P",
+    }
+
+
+def fetch_promo_pack(pack_slug):
+    """
+    Scrape all cards from a promo pack page.
+    pack_slug examples: 'tournament-pack-14', 'promotion-pack-01'
+    """
+    if not HAS_BS4:
+        print("beautifulsoup4 required. Run: pip install beautifulsoup4")
+        return []
+
+    import re
+    soup = _get_html("{}/cards/{}".format(LIMITLESS_BASE, pack_slug))
+    if not soup:
+        print("  Pack '{}' not found.".format(pack_slug))
+        return []
+
+    # Extract P-xxx IDs from image URLs or card links
+    card_ids = []
+    seen = set()
+    for a in soup.find_all("a", href=re.compile(r"/cards/P-\d+")):
+        m = re.search(r"/cards/(P-\d+)", a["href"])
+        if m and m.group(1) not in seen:
+            seen.add(m.group(1))
+            card_ids.append(m.group(1))
+    for img in soup.find_all("img"):
+        src = img.get("src", "")
+        m = re.search(r"/(P-\d+)_", src)
+        if m and m.group(1) not in seen:
+            seen.add(m.group(1))
+            card_ids.append(m.group(1))
+
+    return list(dict.fromkeys(card_ids))  # deduplicated
+
+
+def fetch_all_promo_packs():
+    """Scrape the full list of promo pack slugs from /cards/promos."""
+    if not HAS_BS4:
+        print("beautifulsoup4 required. Run: pip install beautifulsoup4")
+        return []
+
+    import re
+    soup = _get_html("{}/cards/promos".format(LIMITLESS_BASE))
+    if not soup:
+        return []
+
+    slugs = []
+    seen = set()
+    for a in soup.find_all("a", href=re.compile(r"^/cards/[a-z0-9\-]+")):
+        href = a["href"]
+        # Skip generic pages
+        if href in ("/cards", "/cards/promos", "/cards/advanced"):
+            continue
+        if re.match(r"^/cards/[a-z0-9][a-z0-9\-]+$", href):
+            slug = href.replace("/cards/", "")
+            if slug not in seen:
+                seen.add(slug)
+                slugs.append(slug)
+    return slugs
+
+
+def cmd_add_promos(force):
+    """Download all promo cards from all packs on Limitless."""
+    if not HAS_BS4:
+        print("beautifulsoup4 required. Run: pip install beautifulsoup4")
+        return
+
+    print("Fetching promo pack list from Limitless...")
+    packs = fetch_all_promo_packs()
+    print("Found {} promo packs".format(len(packs)))
+
+    all_promo_ids = []
+    seen = set()
+    for slug in packs:
+        ids = fetch_promo_pack(slug)
+        for cid in ids:
+            if cid not in seen:
+                seen.add(cid)
+                all_promo_ids.append(cid)
+        time.sleep(DELAY)
+
+    print("Found {} unique promo card IDs".format(len(all_promo_ids)))
+
+    db = load_db()
+    added = updated = skipped = failed = 0
+
+    for cid in sorted(all_promo_ids):
+        print("  -> {}...".format(cid), end=" ", flush=True)
+        existing = next((c for c in db if c["id"].upper() == cid.upper()), None)
+        if existing and not force:
+            print("already exists (use --force to overwrite)")
+            skipped += 1
+            continue
+
+        card = fetch_promo_card(cid)
+        if not card:
+            print("FAILED (could not scrape card data)")
+            failed += 1
+            time.sleep(DELAY)
+            continue
+
+        # Download image from Limitless CDN
+        img_url = LIMITLESS_CDN.format(card_id=cid)
+        local_path = download_image(cid, img_url)
+        if local_path:
+            card["image_url"] = local_path
+            img_status = "img OK"
+        else:
+            img_status = "img FAILED"
+
+        a, u, s = upsert_cards([card], db, force)
+        added += a; updated += u; skipped += s
+        print("OK  {} [{}]".format(card["name"], img_status))
+        time.sleep(DELAY)
+
+    save_db(db)
+    _summary(added, updated, skipped, failed, len(db))
+
+
+# ── CLI ────────────────────────────────────────────────────────────────────────
+def main():
+    parser = argparse.ArgumentParser(
+        description="OPTCG Judge Trainer -- Card Database Manager",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  python scripts/add_cards.py OP01-001 OP01-002
+  python scripts/add_cards.py P-001 P-002
+  python scripts/add_cards.py --list my_cards.txt
+  python scripts/add_cards.py --set OP01
+  python scripts/add_cards.py --promos
+  python scripts/add_cards.py --force --set OP01
+  python scripts/add_cards.py --list-sets
+  python scripts/add_cards.py --redownload-images
+  python scripts/add_cards.py --show
+        """
+    )
+    parser.add_argument("card_ids",            nargs="*",         help="Card IDs (e.g. OP01-001 or P-001)")
+    parser.add_argument("--list",              metavar="FILE",    help="File with card IDs, one per line")
+    parser.add_argument("--set",               metavar="SET_ID",  help="Import all cards from a set (e.g. OP01)")
+    parser.add_argument("--promos",            action="store_true", help="Download ALL promo cards from Limitless TCG (requires beautifulsoup4)")
+    parser.add_argument("--force",      "-f",  action="store_true", help="Overwrite existing cards")
+    parser.add_argument("--show",              action="store_true", help="List all cards in the database")
+    parser.add_argument("--list-sets",         action="store_true", help="Show all available sets")
+    parser.add_argument("--redownload-images", action="store_true", help="Re-download images for all cards")
+    args = parser.parse_args()
+
+    if args.show:
+        cmd_show()
+    elif args.list_sets:
+        cmd_list_sets()
+    elif args.redownload_images:
+        cmd_redownload_images()
+    elif args.promos:
+        cmd_add_promos(args.force)
+    elif args.set:
+        cmd_add_set(args.set, args.force)
+    else:
+        ids = list(args.card_ids)
+        if args.list:
+            p = Path(args.list)
+            if not p.exists():
+                print("File not found: {}".format(p))
+                sys.exit(1)
+            ids += [line.strip() for line in p.read_text().splitlines() if line.strip()]
+        if not ids:
+            parser.print_help()
+            sys.exit(0)
+
+        # Route P-xxx to Limitless, everything else to optcgapi
+        promo_ids   = [i for i in ids if i.upper().startswith("P-")]
+        regular_ids = [i for i in ids if not i.upper().startswith("P-")]
+
+        if regular_ids:
+            print("Fetching {} card(s) from optcgapi.com...\n".format(len(regular_ids)))
+            cmd_add(regular_ids, args.force)
+
+        if promo_ids:
+            if not HAS_BS4:
+                print("beautifulsoup4 required for promo cards. Run: pip install beautifulsoup4")
+            else:
+                print("Fetching {} promo card(s) from Limitless...\n".format(len(promo_ids)))
+                db = load_db()
+                added = updated = skipped = failed = 0
+                for cid in promo_ids:
+                    cid = cid.upper()
+                    print("  -> {}...".format(cid), end=" ", flush=True)
+                    card = fetch_promo_card(cid)
+                    if not card:
+                        print("FAILED")
+                        failed += 1
+                        continue
+                    local_path = download_image(cid, LIMITLESS_CDN.format(card_id=cid))
+                    if local_path:
+                        card["image_url"] = local_path
+                    a, u, s = upsert_cards([card], db, args.force)
+                    added += a; updated += u; skipped += s
+                    print("OK  {}".format(card["name"]))
+                    time.sleep(DELAY)
+                save_db(db)
+                _summary(added, updated, skipped, failed, len(db))
+
+
+if __name__ == "__main__":
+    main()
