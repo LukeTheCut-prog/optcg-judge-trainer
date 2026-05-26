@@ -315,6 +315,33 @@ class App(tk.Tk):
 
         threading.Thread(target=_seq, daemon=True).start()
 
+    def _start_git_cmd(self, args, done_event):
+        """Run a git command directly (no python prefix)."""
+        self.output.config(state="normal")
+        self.output.insert(tk.END, "\n$ {}\n".format(" ".join(args)), "cmd")
+        self.output.config(state="disabled")
+        try:
+            proc = subprocess.Popen(
+                args,
+                stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                text=True, cwd=str(ROOT),
+            )
+            def _read():
+                for line in proc.stdout:
+                    self.output.config(state="normal")
+                    self.output.insert(tk.END, line)
+                    self.output.see(tk.END)
+                    self.output.update()
+                    self.output.config(state="disabled")
+                proc.wait()
+                done_event.set()
+            threading.Thread(target=_read, daemon=True).start()
+        except Exception as e:
+            self.output.config(state="normal")
+            self.output.insert(tk.END, "Error: {}\n".format(e), "err")
+            self.output.config(state="disabled")
+            done_event.set()
+
     def _start_cmd(self, args, done_event):
         self.output.config(state="normal")
         self.output.insert(tk.END, "\n$ python {}\n".format(" ".join(args)), "cmd")
@@ -394,7 +421,7 @@ class App(tk.Tk):
                 ["git", "push"],
             ]:
                 done = threading.Event()
-                self.output.after(0, lambda c=cmd: self._start_cmd(c, done))
+                self.output.after(0, lambda c=cmd: self._start_git_cmd(c, done))
                 done.wait()
             self.output.after(0, lambda: self.output.config(state="normal"))
             self.output.after(0, lambda: self.output.insert(tk.END, "\n✓ Push completato!\n", "done"))

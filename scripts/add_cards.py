@@ -470,8 +470,7 @@ def fetch_promo_card(card_id):
 
 def fetch_promo_pack(pack_slug):
     """
-    Scrape all cards from a promo pack page.
-    pack_slug examples: 'tournament-pack-14', 'promotion-pack-01'
+    Scrape all P-xxx card IDs from a promo pack page.
     """
     if not HAS_BS4:
         print("beautifulsoup4 required. Run: pip install beautifulsoup4")
@@ -483,22 +482,25 @@ def fetch_promo_pack(pack_slug):
         print("  Pack '{}' not found.".format(pack_slug))
         return []
 
-    # Extract P-xxx IDs from image URLs or card links
     card_ids = []
     seen = set()
-    for a in soup.find_all("a", href=re.compile(r"/cards/P-\d+")):
+
+    # Method 1: links like /cards/P-001
+    for a in soup.find_all("a", href=re.compile(r"^/cards/P-\d+")):
         m = re.search(r"/cards/(P-\d+)", a["href"])
         if m and m.group(1) not in seen:
             seen.add(m.group(1))
             card_ids.append(m.group(1))
+
+    # Method 2: image URLs like .../P/P-001_EN.webp
     for img in soup.find_all("img"):
         src = img.get("src", "")
-        m = re.search(r"/(P-\d+)_", src)
+        m = re.search(r"/P/(P-\d+)_", src)
         if m and m.group(1) not in seen:
             seen.add(m.group(1))
             card_ids.append(m.group(1))
 
-    return list(dict.fromkeys(card_ids))  # deduplicated
+    return card_ids
 
 
 def fetch_all_promo_packs():
@@ -512,18 +514,23 @@ def fetch_all_promo_packs():
     if not soup:
         return []
 
+    # Valid pack slugs contain hyphens and look like "promotion-pack-01",
+    # "tournament-pack-14", "event-pack-01", etc.
+    # Exclude known non-pack pages
+    EXCLUDED = {
+        "promos", "advanced", "cards", "op01", "op02", "op03", "op04",
+        "op05", "op06", "op07", "op08", "op09", "op10", "op11", "op12",
+        "op13", "op14", "op15",
+    }
+
     slugs = []
     seen = set()
-    for a in soup.find_all("a", href=re.compile(r"^/cards/[a-z0-9\-]+")):
-        href = a["href"]
-        # Skip generic pages
-        if href in ("/cards", "/cards/promos", "/cards/advanced"):
-            continue
-        if re.match(r"^/cards/[a-z0-9][a-z0-9\-]+$", href):
-            slug = href.replace("/cards/", "")
-            if slug not in seen:
-                seen.add(slug)
-                slugs.append(slug)
+    for a in soup.find_all("a", href=re.compile(r"^/cards/[a-z0-9][a-z0-9\-]+-\d+")):
+        slug = a["href"].replace("/cards/", "")
+        if slug not in seen and slug not in EXCLUDED:
+            seen.add(slug)
+            slugs.append(slug)
+
     return slugs
 
 
