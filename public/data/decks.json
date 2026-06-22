@@ -1,10 +1,10 @@
 [
   {
-    "id": "black-yellowluffy-op16",
+    "id": "black-yellowluffy-op15",
     "name": "Black/YellowLuffy",
     "leader": "ST13-003",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 6.64,
     "cards": [
       "ST13-013",
@@ -24,15 +24,15 @@
       "ST13-018",
       "OP10-115"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 6.6% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 6.6% share",
     "source": "https://onepiece.limitlesstcg.com/decks/38"
   },
   {
-    "id": "blue-blacksakazuki-op16",
+    "id": "blue-blacksakazuki-op15",
     "name": "Blue/BlackSakazuki",
     "leader": "OP05-041",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 6.56,
     "cards": [
       "OP02-106",
@@ -57,15 +57,15 @@
       "OP09-097",
       "ST06-017"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 6.6% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 6.6% share",
     "source": "https://onepiece.limitlesstcg.com/decks/30"
   },
   {
-    "id": "bluedoflamingo-op16",
+    "id": "bluedoflamingo-op15",
     "name": "BlueDoflamingo",
     "leader": "OP01-060",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 6.28,
     "cards": [
       "OP07-046",
@@ -86,15 +86,15 @@
       "OP07-057",
       "OP04-056"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 6.3% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 6.3% share",
     "source": "https://onepiece.limitlesstcg.com/decks/3"
   },
   {
-    "id": "redwhitebeard-op16",
+    "id": "redwhitebeard-op15",
     "name": "RedWhitebeard",
     "leader": "OP02-001",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 5.79,
     "cards": [
       "ST01-006",
@@ -114,15 +114,15 @@
       "OP01-029",
       "ST21-017"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 5.8% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 5.8% share",
     "source": "https://onepiece.limitlesstcg.com/decks/7"
   },
   {
-    "id": "blacklucci-op16",
+    "id": "blacklucci-op15",
     "name": "BlackLucci",
     "leader": "OP07-079",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 5.46,
     "cards": [
       "OP05-088",
@@ -153,15 +153,15 @@
       "OP09-097",
       "OP07-095"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 5.5% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 5.5% share",
     "source": "https://onepiece.limitlesstcg.com/decks/42"
   },
   {
-    "id": "greenbonney-op16",
+    "id": "greenbonney-op15",
     "name": "GreenBonney",
     "leader": "OP07-019",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 4.31,
     "cards": [
       "ST02-007",
@@ -181,15 +181,15 @@
       "OP13-040",
       "OP08-036"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 4.3% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 4.3% share",
     "source": "https://onepiece.limitlesstcg.com/decks/40"
   },
   {
-    "id": "blackmoria-op16",
+    "id": "blackmoria-op15",
     "name": "BlackMoria",
     "leader": "OP06-080",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 4.24,
     "cards": [
       "OP06-091",
@@ -215,15 +215,15 @@
       "EB01-051",
       "OP10-096"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 4.2% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 4.2% share",
     "source": "https://onepiece.limitlesstcg.com/decks/34"
   },
   {
-    "id": "redzoro-op16",
+    "id": "redzoro-op15",
     "name": "RedZoro",
     "leader": "OP01-001",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 4.23,
     "cards": [
       "OP01-016",
@@ -244,15 +244,15 @@
       "EB01-009",
       "ST01-016"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 4.2% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 4.2% share",
     "source": "https://onepiece.limitlesstcg.com/decks/1"
   },
   {
-    "id": "yellowkatakuri-op16",
+    "id": "yellowkatakuri-op15",
     "name": "YellowKatakuri",
     "leader": "OP03-099",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 3.55,
     "cards": [
       "OP03-112",
@@ -274,15 +274,15 @@
       "OP03-114",
       "OP06-115"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 3.5% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 3.5% share",
     "source": "https://onepiece.limitlesstcg.com/decks/17"
   },
   {
-    "id": "yellowenel-op16",
+    "id": "yellowenel-op15",
     "name": "YellowEnel",
     "leader": "OP05-098",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 3.25,
     "cards": [
       "OP14-102",
@@ -307,15 +307,15 @@
       "OP09-117",
       "EB01-059"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 3.2% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 3.2% share",
     "source": "https://onepiece.limitlesstcg.com/decks/31"
   },
   {
-    "id": "blackimu-op16",
+    "id": "blackimu-op15",
     "name": "BlackImu",
     "leader": "OP13-079",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 3.15,
     "cards": [
       "OP13-086",
@@ -336,15 +336,15 @@
       "OP05-097",
       "OP13-099"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 3.1% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 3.1% share",
     "source": "https://onepiece.limitlesstcg.com/decks/80"
   },
   {
-    "id": "red-greenlaw-op16",
+    "id": "red-greenlaw-op15",
     "name": "Red/GreenLaw",
     "leader": "OP01-002",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 3.1,
     "cards": [
       "ST02-007",
@@ -369,15 +369,15 @@
       "OP14-018",
       "OP01-027"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 3.1% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 3.1% share",
     "source": "https://onepiece.limitlesstcg.com/decks/2"
   },
   {
-    "id": "red-blueace-op16",
+    "id": "red-blueace-op15",
     "name": "Red/BlueAce",
     "leader": "OP13-002",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 2.94,
     "cards": [
       "ST22-002",
@@ -408,15 +408,15 @@
       "OP11-018",
       "ST22-015"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 2.9% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 2.9% share",
     "source": "https://onepiece.limitlesstcg.com/decks/79"
   },
   {
-    "id": "blue-purpleluffy-op16",
+    "id": "blue-purpleluffy-op15",
     "name": "Blue/PurpleLuffy",
     "leader": "OP11-040",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 2.84,
     "cards": [
       "OP13-043",
@@ -441,15 +441,15 @@
       "OP04-056",
       "OP06-058"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 2.8% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 2.8% share",
     "source": "https://onepiece.limitlesstcg.com/decks/67"
   },
   {
-    "id": "purpleluffy-op16",
+    "id": "purpleluffy-op15",
     "name": "PurpleLuffy",
     "leader": "OP05-060",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 2.84,
     "cards": [
       "OP11-070",
@@ -475,15 +475,15 @@
       "OP08-076",
       "ST04-014"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 2.8% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 2.8% share",
     "source": "https://onepiece.limitlesstcg.com/decks/32"
   },
   {
-    "id": "green-purpleluffy-op16",
+    "id": "green-purpleluffy-op15",
     "name": "Green/PurpleLuffy",
     "leader": "EB02-010",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 2.62,
     "cards": [
       "EB02-017",
@@ -504,15 +504,15 @@
       "OP12-037",
       "OP08-036"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 2.6% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 2.6% share",
     "source": "https://onepiece.limitlesstcg.com/decks/65"
   },
   {
-    "id": "red-purplelaw-op16",
+    "id": "red-purplelaw-op15",
     "name": "Red/PurpleLaw",
     "leader": "ST10-001",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 2.43,
     "cards": [
       "P-013",
@@ -540,15 +540,15 @@
       "OP01-029",
       "OP05-019"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 2.4% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 2.4% share",
     "source": "https://onepiece.limitlesstcg.com/decks/28"
   },
   {
-    "id": "blackblackbeard-op16",
+    "id": "blackblackbeard-op15",
     "name": "BlackBlackbeard",
     "leader": "OP09-081",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 2.27,
     "cards": [
       "OP05-086",
@@ -567,15 +567,15 @@
       "OP09-098",
       "OP09-099"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 2.3% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 2.3% share",
     "source": "https://onepiece.limitlesstcg.com/decks/54"
   },
   {
-    "id": "bluenami-op16",
+    "id": "bluenami-op15",
     "name": "BlueNami",
     "leader": "OP03-040",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 2.05,
     "cards": [
       "OP03-044",
@@ -594,15 +594,15 @@
       "OP03-056",
       "OP02-069"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 2.0% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 2.0% share",
     "source": "https://onepiece.limitlesstcg.com/decks/21"
   },
   {
-    "id": "redshanks-op16",
+    "id": "redshanks-op15",
     "name": "RedShanks",
     "leader": "OP09-001",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 1.97,
     "cards": [
       "OP09-002",
@@ -633,15 +633,15 @@
       "ST21-017",
       "OP09-021"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 2.0% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 2.0% share",
     "source": "https://onepiece.limitlesstcg.com/decks/53"
   },
   {
-    "id": "greenzoro-op16",
+    "id": "greenzoro-op15",
     "name": "GreenZoro",
     "leader": "OP12-020",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 1.83,
     "cards": [
       "OP12-034",
@@ -687,15 +687,15 @@
       "OP12-039",
       "OP08-036"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 1.8% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 1.8% share",
     "source": "https://onepiece.limitlesstcg.com/decks/70"
   },
   {
-    "id": "greenkid-op16",
+    "id": "greenkid-op15",
     "name": "GreenKid",
     "leader": "ST02-001",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 1.8,
     "cards": [
       "ST02-007",
@@ -733,15 +733,15 @@
       "ST02-017",
       "OP02-045"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 1.8% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 1.8% share",
     "source": "https://onepiece.limitlesstcg.com/decks/5"
   },
   {
-    "id": "redrayleigh-op16",
+    "id": "redrayleigh-op15",
     "name": "RedRayleigh",
     "leader": "OP12-001",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 1.35,
     "cards": [
       "OP03-008",
@@ -764,15 +764,15 @@
       "ST01-014",
       "OP06-018"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 1.4% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 1.4% share",
     "source": "https://onepiece.limitlesstcg.com/decks/71"
   },
   {
-    "id": "purpleenel-op16",
+    "id": "purpleenel-op15",
     "name": "PurpleEnel",
     "leader": "OP15-058",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 1.29,
     "cards": [
       "OP15-061",
@@ -798,15 +798,15 @@
       "OP05-077",
       "OP09-077"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 1.3% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 1.3% share",
     "source": "https://onepiece.limitlesstcg.com/decks/98"
   },
   {
-    "id": "blue-purplereiju-op16",
+    "id": "blue-purplereiju-op15",
     "name": "Blue/PurpleReiju",
     "leader": "OP06-042",
-    "set": "OP16",
-    "format": "OP16",
+    "set": "OP15",
+    "format": "OP15",
     "share": 0.93,
     "cards": [
       "OP10-063",
@@ -826,7 +826,7 @@
       "OP02-089",
       "OP06-079"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.9% share",
+    "description": "Meta deck from Limitless TCG (OP15) - 0.9% share",
     "source": "https://onepiece.limitlesstcg.com/decks/35"
   }
 ]
