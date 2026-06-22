@@ -5,7 +5,7 @@
     "leader": "ST13-003",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 6.64,
     "cards": [
       "ST13-013",
       "EB01-056",
@@ -24,7 +24,7 @@
       "ST13-018",
       "OP10-115"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 6.6% share",
     "source": "https://onepiece.limitlesstcg.com/decks/38"
   },
   {
@@ -33,7 +33,7 @@
     "leader": "OP05-041",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 6.56,
     "cards": [
       "OP02-106",
       "OP05-088",
@@ -57,7 +57,7 @@
       "OP09-097",
       "ST06-017"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 6.6% share",
     "source": "https://onepiece.limitlesstcg.com/decks/30"
   },
   {
@@ -66,7 +66,7 @@
     "leader": "OP01-060",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 6.28,
     "cards": [
       "OP07-046",
       "ST17-003",
@@ -86,7 +86,7 @@
       "OP07-057",
       "OP04-056"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 6.3% share",
     "source": "https://onepiece.limitlesstcg.com/decks/3"
   },
   {
@@ -95,7 +95,7 @@
     "leader": "OP02-001",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 5.79,
     "cards": [
       "ST01-006",
       "OP01-016",
@@ -114,7 +114,7 @@
       "OP01-029",
       "ST21-017"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 5.8% share",
     "source": "https://onepiece.limitlesstcg.com/decks/7"
   },
   {
@@ -123,7 +123,7 @@
     "leader": "OP07-079",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 5.46,
     "cards": [
       "OP05-088",
       "OP02-106",
@@ -153,7 +153,7 @@
       "OP09-097",
       "OP07-095"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 5.5% share",
     "source": "https://onepiece.limitlesstcg.com/decks/42"
   },
   {
@@ -162,7 +162,7 @@
     "leader": "OP07-019",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 4.31,
     "cards": [
       "ST02-007",
       "OP15-035",
@@ -181,7 +181,7 @@
       "OP13-040",
       "OP08-036"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 4.3% share",
     "source": "https://onepiece.limitlesstcg.com/decks/40"
   },
   {
@@ -190,7 +190,7 @@
     "leader": "OP06-080",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 4.24,
     "cards": [
       "OP06-091",
       "OP02-106",
@@ -215,7 +215,7 @@
       "EB01-051",
       "OP10-096"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 4.2% share",
     "source": "https://onepiece.limitlesstcg.com/decks/34"
   },
   {
@@ -224,7 +224,7 @@
     "leader": "OP01-001",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 4.23,
     "cards": [
       "OP01-016",
       "OP02-015",
@@ -244,7 +244,7 @@
       "EB01-009",
       "ST01-016"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 4.2% share",
     "source": "https://onepiece.limitlesstcg.com/decks/1"
   },
   {
@@ -253,7 +253,7 @@
     "leader": "OP03-099",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 3.55,
     "cards": [
       "OP03-112",
       "OP06-101",
@@ -274,7 +274,7 @@
       "OP03-114",
       "OP06-115"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 3.5% share",
     "source": "https://onepiece.limitlesstcg.com/decks/17"
   },
   {
@@ -283,7 +283,7 @@
     "leader": "OP05-098",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 3.25,
     "cards": [
       "OP14-102",
       "EB01-056",
@@ -307,7 +307,7 @@
       "OP09-117",
       "EB01-059"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 3.2% share",
     "source": "https://onepiece.limitlesstcg.com/decks/31"
   },
   {
@@ -316,7 +316,7 @@
     "leader": "OP13-079",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 3.15,
     "cards": [
       "OP13-086",
       "OP05-082",
@@ -336,7 +336,7 @@
       "OP05-097",
       "OP13-099"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 3.1% share",
     "source": "https://onepiece.limitlesstcg.com/decks/80"
   },
   {
@@ -345,7 +345,7 @@
     "leader": "OP01-002",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 3.1,
     "cards": [
       "ST02-007",
       "OP12-034",
@@ -369,7 +369,7 @@
       "OP14-018",
       "OP01-027"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 3.1% share",
     "source": "https://onepiece.limitlesstcg.com/decks/2"
   },
   {
@@ -378,7 +378,7 @@
     "leader": "OP13-002",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 2.94,
     "cards": [
       "ST22-002",
       "OP13-016",
@@ -408,7 +408,7 @@
       "OP11-018",
       "ST22-015"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 2.9% share",
     "source": "https://onepiece.limitlesstcg.com/decks/79"
   },
   {
@@ -417,7 +417,7 @@
     "leader": "OP11-040",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 2.84,
     "cards": [
       "OP13-043",
       "EB03-023",
@@ -441,7 +441,7 @@
       "OP04-056",
       "OP06-058"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 2.8% share",
     "source": "https://onepiece.limitlesstcg.com/decks/67"
   },
   {
@@ -450,7 +450,7 @@
     "leader": "OP05-060",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 2.84,
     "cards": [
       "OP11-070",
       "OP09-069",
@@ -475,7 +475,7 @@
       "OP08-076",
       "ST04-014"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 2.8% share",
     "source": "https://onepiece.limitlesstcg.com/decks/32"
   },
   {
@@ -484,7 +484,7 @@
     "leader": "EB02-010",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 2.62,
     "cards": [
       "EB02-017",
       "PRB02-012",
@@ -504,7 +504,7 @@
       "OP12-037",
       "OP08-036"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 2.6% share",
     "source": "https://onepiece.limitlesstcg.com/decks/65"
   },
   {
@@ -513,7 +513,7 @@
     "leader": "ST10-001",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 2.43,
     "cards": [
       "P-013",
       "OP06-016",
@@ -540,7 +540,7 @@
       "OP01-029",
       "OP05-019"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 2.4% share",
     "source": "https://onepiece.limitlesstcg.com/decks/28"
   },
   {
@@ -549,7 +549,7 @@
     "leader": "OP09-081",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 2.27,
     "cards": [
       "OP05-086",
       "OP09-095",
@@ -567,7 +567,7 @@
       "OP09-098",
       "OP09-099"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 2.3% share",
     "source": "https://onepiece.limitlesstcg.com/decks/54"
   },
   {
@@ -576,7 +576,7 @@
     "leader": "OP03-040",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 2.05,
     "cards": [
       "OP03-044",
       "OP04-041",
@@ -594,7 +594,7 @@
       "OP03-056",
       "OP02-069"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 2.0% share",
     "source": "https://onepiece.limitlesstcg.com/decks/21"
   },
   {
@@ -603,7 +603,7 @@
     "leader": "OP09-001",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 1.97,
     "cards": [
       "OP09-002",
       "OP01-006",
@@ -633,7 +633,7 @@
       "ST21-017",
       "OP09-021"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 2.0% share",
     "source": "https://onepiece.limitlesstcg.com/decks/53"
   },
   {
@@ -642,7 +642,7 @@
     "leader": "OP12-020",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 1.83,
     "cards": [
       "OP12-034",
       "OP12-028",
@@ -687,7 +687,7 @@
       "OP12-039",
       "OP08-036"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 1.8% share",
     "source": "https://onepiece.limitlesstcg.com/decks/70"
   },
   {
@@ -696,7 +696,7 @@
     "leader": "ST02-001",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 1.8,
     "cards": [
       "ST02-007",
       "ST02-004",
@@ -733,7 +733,7 @@
       "ST02-017",
       "OP02-045"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 1.8% share",
     "source": "https://onepiece.limitlesstcg.com/decks/5"
   },
   {
@@ -742,7 +742,7 @@
     "leader": "OP12-001",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 1.35,
     "cards": [
       "OP03-008",
       "OP12-006",
@@ -764,7 +764,7 @@
       "ST01-014",
       "OP06-018"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 1.4% share",
     "source": "https://onepiece.limitlesstcg.com/decks/71"
   },
   {
@@ -773,7 +773,7 @@
     "leader": "OP15-058",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 1.29,
     "cards": [
       "OP15-061",
       "OP12-071",
@@ -798,7 +798,7 @@
       "OP05-077",
       "OP09-077"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 1.3% share",
     "source": "https://onepiece.limitlesstcg.com/decks/98"
   },
   {
@@ -807,7 +807,7 @@
     "leader": "OP06-042",
     "set": "OP16",
     "format": "OP16",
-    "share": 0.0,
+    "share": 0.93,
     "cards": [
       "OP10-063",
       "OP06-063",
@@ -826,7 +826,7 @@
       "OP02-089",
       "OP06-079"
     ],
-    "description": "Meta deck from Limitless TCG (OP16) - 0.0% share",
+    "description": "Meta deck from Limitless TCG (OP16) - 0.9% share",
     "source": "https://onepiece.limitlesstcg.com/decks/35"
   }
 ]

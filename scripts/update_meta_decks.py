@@ -106,13 +106,17 @@ def get_meta_decks(format_id, min_share=0.0):
         if not name:
             continue
 
-        # Try to get share percentage from surrounding text
+        # Share % lives in its own <td> in the same row (the name and the
+        # share are separate cells), so scan the row's cells for the one that
+        # actually contains a percentage rather than the cell wrapping the link.
         share = 0.0
-        parent = a.find_parent("td") or a.find_parent("tr") or a.parent
-        if parent:
-            pct = re.search(r"([\d.]+)%", parent.get_text())
-            if pct:
-                share = float(pct.group(1))
+        row = a.find_parent("tr")
+        if row:
+            for td in row.find_all("td"):
+                pct = re.search(r"([\d.]+)\s*%", td.get_text(strip=True))
+                if pct:
+                    share = float(pct.group(1))
+                    break
 
         if share >= min_share:
             decks.append({
