@@ -200,14 +200,23 @@ class App(tk.Tk):
                    self.cmd_promos, width=34).pack(anchor="w", pady=2)
 
         # ── 5. Meta deck ──────────────────────────────────────────────────────
-        section_label(p, "5 · Meta deck (Limitless)")
-        tk.Label(p, text="Formato (es: OP15, OP16):",
-                 bg=BG, fg=TEXT_DIM, font=FONT).pack(anchor="w", pady=(0, 4))
+        section_label(p, "5 · Meta deck")
+        tk.Label(p, text="Formato (es: OP16). Se il formato non esiste,\nnon viene toccato nulla.",
+                 bg=BG, fg=TEXT_DIM, font=FONT, justify="left").pack(anchor="w", pady=(0, 4))
         row3 = tk.Frame(p, bg=BG)
         row3.pack(anchor="w", fill="x", pady=2)
         self.deck_fmt_entry = styled_entry(row3, width=10)
-        self.deck_fmt_entry.insert(0, "OP15")
+        self.deck_fmt_entry.insert(0, "OP16")
         self.deck_fmt_entry.pack(side="left", padx=(0, 8))
+
+        tk.Label(p, text="Sorgente:", bg=BG, fg=TEXT_DIM, font=FONT).pack(anchor="w", pady=(4, 2))
+        self.deck_source_var = tk.StringVar(value="egman")
+        row_src = tk.Frame(p, bg=BG)
+        row_src.pack(anchor="w", fill="x", pady=2)
+        for src, lbl in [("egman", "egman (tornei reali)"), ("limitless", "limitless (meta attuale)")]:
+            tk.Radiobutton(row_src, text=lbl, value=src, variable=self.deck_source_var,
+                           bg=BG, fg=TEXT_DIM, selectcolor=RAISED, activebackground=BG,
+                           font=FONT).pack(anchor="w")
 
         tk.Label(p, text="Share minima %:",
                  bg=BG, fg=TEXT_DIM, font=FONT).pack(anchor="w", pady=(4, 2))
@@ -376,17 +385,21 @@ class App(tk.Tk):
         run_script(["scripts/add_cards.py", "--promos"], self.output, self._after_run)
 
     def cmd_update_decks(self):
-        fmt   = self.deck_fmt_entry.get().strip() or "OP15"
-        share = self.deck_share_entry.get().strip() or "0.0"
-        args  = ["scripts/update_meta_decks.py", "--format", fmt, "--min-share", share]
+        fmt    = self.deck_fmt_entry.get().strip() or "OP16"
+        share  = self.deck_share_entry.get().strip() or "0.0"
+        source = self.deck_source_var.get()
+        args   = ["scripts/update_meta_decks.py", "--format", fmt,
+                  "--min-share", share, "--source", source]
         if self.deck_replace_var.get():
             args.append("--replace")
         run_script(args, self.output, self._after_run)
 
     def cmd_update_all_decks(self):
-        share = self.deck_share_entry.get().strip() or "0.0"
+        share  = self.deck_share_entry.get().strip() or "0.0"
+        source = self.deck_source_var.get()
         run_script(
-            ["scripts/update_meta_decks.py", "--update-all", "--min-share", share],
+            ["scripts/update_meta_decks.py", "--update-all",
+             "--min-share", share, "--source", source],
             self.output, self._after_run
         )
 

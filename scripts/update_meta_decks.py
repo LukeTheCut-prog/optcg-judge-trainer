@@ -34,6 +34,7 @@ except ImportError:
 # ── Paths ─────────────────────────────────────────────────────────────────────
 ROOT       = Path(__file__).parent.parent
 DECKS_FILE = ROOT / "public" / "data" / "decks.json"
+CARDS_FILE = ROOT / "public" / "data" / "cards.json"
 
 # ── Config ────────────────────────────────────────────────────────────────────
 BASE_URL = "https://onepiece.limitlesstcg.com"
@@ -44,6 +45,25 @@ HEADERS = {
     "Accept": "text/html,application/xhtml+xml",
     "Accept-Language": "en-US,en;q=0.9",
 }
+
+# ── egman events (deckbuilder.egmanevents.com) — real tournament data ────────────
+# Backed by a public Supabase project; the publishable key is embedded in the
+# site's JS bundle. Unlike Limitless, egman filters tournaments by exact format,
+# so it can serve genuine OP16 data (and returns nothing for a format that isn't
+# out yet — which is exactly what we want for the "don't touch it" guard).
+EGMAN_API = "https://resgvirjzcpamfumrygh.supabase.co/rest/v1"
+EGMAN_KEY = "sb_publishable_bdDgor6ifmOvryEuZKWniw_RBzb3vuh"
+EGMAN_HEADERS = {"apikey": EGMAN_KEY, "Accept": "application/json"}
+EGMAN_SITE = "https://deckbuilder.egmanevents.com/optcg/tournaments"
+
+
+def _card_names():
+    """Map card id -> (name, color) from cards.json, for nice deck labels."""
+    try:
+        db = json.loads(CARDS_FILE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    return {c["id"].upper(): (c.get("name") or c["id"], c.get("color") or "") for c in db}
 
 
 # ── HTTP helper ───────────────────────────────────────────────────────────────
@@ -208,21 +228,163 @@ def slugify(text):
     return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
 
 
-# ── Main command ──────────────────────────────────────────────────────────────
-def cmd_update(format_id, min_share, replace_format):
-    # Store the canonical short form (OP16) for the stored deck records to match
-    # the existing convention, but the scraper builds the hyphenated URL itself.
-    format_id = format_id.strip().upper().replace("-", "")
-    print("Fetching meta deck list for format {}...".format(format_id))
+# ── Deck builders (return full deck records, source-agnostic) ────────────────────
+def build_limitless_decks(format_id, min_share):
+    """Build deck records from Limitless. NOTE: Limitless ignores the format
+    parameter and always returns the *current* meta, so this cannot give
+    historical/specific formats — use the egman source for that."""
     meta = get_meta_decks(format_id, min_share)
     if not meta:
-        print("No decks found. Check the format ID with --list-formats.")
+        return []
+    decks = []
+    for m in meta:
+        lid, name = m["limitless_id"], m["name"]
+        print("  [{}] {}...".format(lid, name), flush=True)
+        leader_id, card_ids = get_deck_cards(lid)
+        if not card_ids:
+            print("    No cards found, skipping.")
+            time.sleep(DELAY)
+            continue
+        decks.append({
+            "id":          slugify("{}-{}".format(name, format_id)),
+            "name":        name,
+            "leader":      leader_id,
+            "set":         format_id,
+            "format":      format_id,
+            "share":       m["share"],
+            "cards":       card_ids,
+            "description": "Meta deck from Limitless TCG ({}) - {:.1f}% share".format(
+                format_id, m["share"]),
+            "source":      "https://onepiece.limitlesstcg.com/decks/{}".format(lid),
+        })
+        time.sleep(DELAY)
+    return decks
+
+
+def _egman_get(path):
+    try:
+        r = requests.get(EGMAN_API + path, headers=EGMAN_HEADERS, timeout=20, verify=False)
+        r.raise_for_status()
+        return r.json()
+    except requests.RequestException as e:
+        print("  Network error (egman): {}".format(e))
+        return None
+
+
+def _parse_egman_deck(url):
+    """'.../?deck=OP15-061:4,OP16-080:1,...&type=optcg' -> ['OP15-061', ...]."""
+    m = re.search(r'[?&]deck=([^&]+)', url)
+    if not m:
+        return []
+    ids = []
+    for part in m.group(1).split(","):
+        cid = part.split(":")[0].strip().upper()
+        if cid:
+            ids.append(cid)
+    return ids
+
+
+def build_egman_decks(format_id, min_share):
+    """Build deck records from real egman tournament data for an exact format.
+
+    Returns [] if the format has no tournaments (e.g. not released yet), so the
+    caller leaves decks.json untouched.
+    """
+    from collections import defaultdict
+
+    tours = _egman_get(
+        "/tournaments?game_id=eq.optcg&format=eq.{}"
+        "&select=id,tournament_name,leader_breakdown".format(format_id))
+    if not tours:
+        return []
+    print("Found {} {} tournament(s) on egman.".format(len(tours), format_id))
+
+    # Aggregate true meta share from the per-tournament leader breakdowns.
+    leader_count = defaultdict(int)
+    total = 0
+    for t in tours:
+        for lb in (t.get("leader_breakdown") or []):
+            leader_count[(lb.get("deck_type") or "").upper()] += lb.get("count", 0)
+            total += lb.get("count", 0)
+
+    # Pull the actual decklists (top-cut) to get each archetype's card pool.
+    tids = [t["id"] for t in tours]
+    results = _egman_get(
+        "/tournament_results?tournament_id=in.({})"
+        "&select=deck_type,deck_list_url".format(",".join(tids))) or []
+
+    pool = defaultdict(list)
+    seen = defaultdict(set)
+    freq = defaultdict(int)
+    for r in results:
+        leader = (r.get("deck_type") or "").upper()
+        urls = r.get("deck_list_url") or []
+        if not leader or not urls:
+            continue
+        ids = _parse_egman_deck(urls[0])
+        if not ids:
+            continue
+        freq[leader] += 1
+        for cid in ids:
+            if cid not in seen[leader]:
+                seen[leader].add(cid)
+                pool[leader].append(cid)
+
+    names = _card_names()
+    decks = []
+    for leader, card_ids in pool.items():
+        # Share: prefer the full-field leader breakdown, else top-cut frequency.
+        if total:
+            share = 100.0 * leader_count.get(leader, 0) / total
+        else:
+            share = 100.0 * freq[leader] / max(1, sum(freq.values()))
+        if share < min_share:
+            continue
+        lname, lcolor = names.get(leader, (leader, ""))
+        # Clean up disambiguation noise in card names: "Nami (041)",
+        # "Rosinante (061) (Alternate Art)", "Mihawk - OP14-020", "Enel (OP15-058)".
+        lname = re.sub(r"\s*\([^)]*\)", "", lname)
+        lname = re.sub(r"\s*-\s*[A-Z0-9-]+$", "", lname).strip() or leader
+        name = "{} {}".format(lcolor, lname).strip() if lcolor else lname
+        body = [c for c in card_ids if c != leader]  # leader stored separately
+        decks.append({
+            "id":          slugify("{}-{}-{}".format(name, leader, format_id)),
+            "name":        name,
+            "leader":      leader,
+            "set":         format_id,
+            "format":      format_id,
+            "share":       round(share, 2),
+            "cards":       body,
+            "description": "Meta deck from egman events ({}) - {:.1f}% share".format(
+                format_id, share),
+            "source":      "{}?format={}".format(EGMAN_SITE, format_id),
+        })
+    decks.sort(key=lambda d: -d["share"])
+    return decks
+
+
+# ── Main command ──────────────────────────────────────────────────────────────
+def cmd_update(format_id, min_share, replace_format, source="egman"):
+    # Store the canonical short form (OP16) for the stored deck records.
+    format_id = format_id.strip().upper().replace("-", "")
+    print("Fetching meta decks for format {} from {}...".format(format_id, source))
+
+    if source == "limitless":
+        decks = build_limitless_decks(format_id, min_share)
+    else:
+        decks = build_egman_decks(format_id, min_share)
+
+    # SAFETY: if the requested format yielded nothing, leave decks.json alone.
+    # (Prevents Limitless' "current meta" fallback or a not-yet-released format
+    # from overwriting good data with unrelated decks.)
+    if not decks:
+        print("No decks found for format '{}' on {}. Nothing changed.".format(
+            format_id, source))
         return
-    print("Found {} decks (share >= {}%)".format(len(meta), min_share))
+
+    print("Built {} decks (share >= {}%).".format(len(decks), min_share))
 
     all_decks = load_decks()
-
-    # Remove existing decks for this format if replacing
     if replace_format:
         before = len(all_decks)
         all_decks = [d for d in all_decks if d.get("format") != format_id]
@@ -230,44 +392,14 @@ def cmd_update(format_id, min_share, replace_format):
 
     added = updated = 0
     existing_ids = {d["id"]: i for i, d in enumerate(all_decks)}
-
-    for meta_deck in meta:
-        lid  = meta_deck["limitless_id"]
-        name = meta_deck["name"]
-        print("\n  [{}] {}...".format(lid, name), flush=True)
-
-        leader_id, card_ids = get_deck_cards(lid)
-        if not card_ids:
-            print("    No cards found, skipping.")
-            time.sleep(DELAY)
-            continue
-
-        print("    Leader: {}  |  {} cards".format(leader_id or "?", len(card_ids)))
-
-        deck_id = slugify("{}-{}".format(name, format_id))
-        deck = {
-            "id":          deck_id,
-            "name":        name,
-            "leader":      leader_id,
-            "set":         format_id,
-            "format":      format_id,
-            "share":       meta_deck["share"],
-            "cards":       card_ids,
-            "description": "Meta deck from Limitless TCG ({}) - {:.1f}% share".format(
-                format_id, meta_deck["share"]
-            ),
-            "source":      "https://onepiece.limitlesstcg.com/decks/{}".format(lid),
-        }
-
-        if deck_id in existing_ids:
-            all_decks[existing_ids[deck_id]] = deck
+    for deck in decks:
+        if deck["id"] in existing_ids:
+            all_decks[existing_ids[deck["id"]]] = deck
             updated += 1
         else:
             all_decks.append(deck)
-            existing_ids[deck_id] = len(all_decks) - 1
+            existing_ids[deck["id"]] = len(all_decks) - 1
             added += 1
-
-        time.sleep(DELAY)
 
     save_decks(all_decks)
     print("\n-- Done: {} added, {} updated --".format(added, updated))
@@ -285,7 +417,7 @@ def cmd_list_formats():
         print("Could not fetch formats. Try manually: OP15, OP14, OP13, OP12...")
 
 
-def cmd_update_all(min_share):
+def cmd_update_all(min_share, source="egman"):
     """Re-fetch and replace all formats currently present in decks.json."""
     all_decks = load_decks()
     formats = list(dict.fromkeys(
@@ -293,13 +425,13 @@ def cmd_update_all(min_share):
     ))
 
     if not formats:
-        print("No formats found in decks.json. Run --format OP15 first.")
+        print("No formats found in decks.json. Run --format OP16 first.")
         return
 
     print("Formats to update: {}".format(", ".join(formats)))
     for fmt in formats:
         print("\n" + "="*50)
-        cmd_update(fmt, min_share, replace_format=True)
+        cmd_update(fmt, min_share, replace_format=True, source=source)
 
     print("\n" + "="*50)
     print("All formats updated.")
@@ -308,7 +440,7 @@ def cmd_update_all(min_share):
 # ── CLI ────────────────────────────────────────────────────────────────────────
 def main():
     parser = argparse.ArgumentParser(
-        description="OPTCG Judge Trainer -- Meta Deck Updater (source: Limitless TCG)",
+        description="OPTCG Judge Trainer -- Meta Deck Updater (sources: egman events / Limitless TCG)",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -324,11 +456,16 @@ Examples:
   Only include decks with at least 5%% meta share:
     python scripts/update_meta_decks.py --format OP15 --min-share 5.0
 
+  Use the Limitless source instead (current meta only, ignores format):
+    python scripts/update_meta_decks.py --format OP16 --source limitless
+
   List available formats:
     python scripts/update_meta_decks.py --list-formats
         """
     )
-    parser.add_argument("--format",       default="OP15",  help="Format to import (default: OP15)")
+    parser.add_argument("--format",       default="OP16",  help="Format to import (default: OP16)")
+    parser.add_argument("--source",       default="egman", choices=["egman", "limitless"],
+                        help="Data source: egman (real tournament data, exact format) or limitless (current meta only)")
     parser.add_argument("--min-share",    type=float, default=0.0, help="Minimum meta share %% to include (default: 0)")
     parser.add_argument("--replace",      action="store_true", help="Replace existing decks for this format")
     parser.add_argument("--update-all",   action="store_true", help="Re-fetch and replace ALL formats in decks.json")
@@ -338,9 +475,9 @@ Examples:
     if args.list_formats:
         cmd_list_formats()
     elif args.update_all:
-        cmd_update_all(args.min_share)
+        cmd_update_all(args.min_share, args.source)
     else:
-        cmd_update(args.format, args.min_share, args.replace)
+        cmd_update(args.format, args.min_share, args.replace, args.source)
 
 
 if __name__ == "__main__":
