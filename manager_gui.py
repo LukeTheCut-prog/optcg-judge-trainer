@@ -210,10 +210,12 @@ class App(tk.Tk):
         self.deck_fmt_entry.pack(side="left", padx=(0, 8))
 
         tk.Label(p, text="Sorgente:", bg=BG, fg=TEXT_DIM, font=FONT).pack(anchor="w", pady=(4, 2))
-        self.deck_source_var = tk.StringVar(value="egman")
+        self.deck_source_var = tk.StringVar(value="both")
         row_src = tk.Frame(p, bg=BG)
         row_src.pack(anchor="w", fill="x", pady=2)
-        for src, lbl in [("egman", "egman (tornei reali)"), ("limitless", "limitless (meta attuale)")]:
+        for src, lbl in [("both", "both (egman + carte Limitless)"),
+                         ("egman", "egman (tornei reali)"),
+                         ("limitless", "limitless (meta attuale)")]:
             tk.Radiobutton(row_src, text=lbl, value=src, variable=self.deck_source_var,
                            bg=BG, fg=TEXT_DIM, selectcolor=RAISED, activebackground=BG,
                            font=FONT).pack(anchor="w")

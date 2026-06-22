@@ -28,10 +28,21 @@
       "OP06-106",
       "OP16-056",
       "OP12-119",
-      "OP15-119"
+      "OP15-119",
+      "OP10-112",
+      "OP15-109",
+      "EB03-024",
+      "OP07-051",
+      "OP15-116",
+      "OP15-052",
+      "OP15-102",
+      "OP07-056",
+      "EB04-061",
+      "EB03-060",
+      "OP10-049"
     ],
-    "description": "Meta deck from egman events (OP16) - 14.0% share",
-    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16"
+    "description": "Meta deck from egman events (OP16) - 14.0% share | +11 cards from Limitless",
+    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16 + onepiece.limitlesstcg.com"
   },
   {
     "id": "black-yellow-marshall-d-teach-op16-080-op16",
@@ -131,10 +142,12 @@
       "OP15-063",
       "EB04-038",
       "OP07-064",
-      "OP09-077"
+      "OP09-077",
+      "OP12-070",
+      "P-045"
     ],
-    "description": "Meta deck from egman events (OP16) - 11.3% share",
-    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16"
+    "description": "Meta deck from egman events (OP16) - 11.3% share | +2 cards from Limitless",
+    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16 + onepiece.limitlesstcg.com"
   },
   {
     "id": "purple-yellow-donquixote-rosinante-op12-061-op16",
@@ -222,10 +235,25 @@
       "OP13-042",
       "OP09-118",
       "ST22-015",
-      "OP16-021"
+      "OP16-021",
+      "EB04-008",
+      "OP02-013",
+      "OP13-057",
+      "OP13-007",
+      "OP08-040",
+      "P-097",
+      "OP11-018",
+      "ST15-004",
+      "ST22-010",
+      "OP10-045",
+      "OP08-043",
+      "OP08-044",
+      "OP12-002",
+      "OP05-019",
+      "OP13-046"
     ],
-    "description": "Meta deck from egman events (OP16) - 4.2% share",
-    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16"
+    "description": "Meta deck from egman events (OP16) - 4.2% share | +15 cards from Limitless",
+    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16 + onepiece.limitlesstcg.com"
   },
   {
     "id": "blue-red-lucy-op15-002-op16",
@@ -250,10 +278,22 @@
       "OP15-020",
       "OP15-055",
       "OP15-021",
-      "OP15-057"
+      "OP15-057",
+      "OP05-015",
+      "OP13-057",
+      "OP06-017",
+      "OP15-056",
+      "OP07-051",
+      "OP05-006",
+      "OP10-049",
+      "ST10-015",
+      "OP12-060",
+      "OP15-006",
+      "OP10-059",
+      "OP13-042"
     ],
-    "description": "Meta deck from egman events (OP16) - 3.8% share",
-    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16"
+    "description": "Meta deck from egman events (OP16) - 3.8% share | +12 cards from Limitless",
+    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16 + onepiece.limitlesstcg.com"
   },
   {
     "id": "red-shanks-op09-001-op16",
@@ -305,10 +345,14 @@
       "OP13-027",
       "OP14-022",
       "OP05-038",
-      "OP08-036"
+      "OP08-036",
+      "OP12-037",
+      "OP13-040",
+      "EB02-021",
+      "OP13-028"
     ],
-    "description": "Meta deck from egman events (OP16) - 2.1% share",
-    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16"
+    "description": "Meta deck from egman events (OP16) - 2.1% share | +4 cards from Limitless",
+    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16 + onepiece.limitlesstcg.com"
   },
   {
     "id": "green-dracule-mihawk-op14-020-op16",
@@ -340,10 +384,11 @@
       "ST02-007",
       "OP14-023",
       "OP14-036",
-      "OP12-031"
+      "OP12-031",
+      "OP07-035"
     ],
-    "description": "Meta deck from egman events (OP16) - 2.1% share",
-    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16"
+    "description": "Meta deck from egman events (OP16) - 2.1% share | +1 cards from Limitless",
+    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16 + onepiece.limitlesstcg.com"
   },
   {
     "id": "blue-yellow-boa-hancock-op14-041-op16",
@@ -464,10 +509,12 @@
       "OP05-076",
       "EB02-041",
       "OP12-037",
-      "OP13-040"
+      "OP13-040",
+      "PRB02-005",
+      "OP13-118"
     ],
-    "description": "Meta deck from egman events (OP16) - 0.3% share",
-    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16"
+    "description": "Meta deck from egman events (OP16) - 0.3% share | +2 cards from Limitless",
+    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16 + onepiece.limitlesstcg.com"
   },
   {
     "id": "green-red-luffy-ace-st30-001-op16",
@@ -529,10 +576,13 @@
       "OP08-099",
       "OP06-115",
       "OP08-115",
-      "OP05-117"
+      "OP05-117",
+      "EB01-059",
+      "EB02-052",
+      "OP10-117"
     ],
-    "description": "Meta deck from egman events (OP16) - 0.0% share",
-    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16"
+    "description": "Meta deck from egman events (OP16) - 0.0% share | +3 cards from Limitless",
+    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16 + onepiece.limitlesstcg.com"
   },
   {
     "id": "blue-rebecca-op15-039-op16",
@@ -637,9 +687,20 @@
       "OP14-104",
       "OP16-119",
       "EB02-052",
-      "EB01-059"
+      "EB01-059",
+      "OP07-119",
+      "OP06-104",
+      "OP12-100",
+      "OP15-117",
+      "OP12-119",
+      "EB03-053",
+      "OP06-115",
+      "OP09-117",
+      "EB04-061",
+      "OP14-100",
+      "OP14-110"
     ],
-    "description": "Meta deck from egman events (OP16) - 0.0% share",
-    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16"
+    "description": "Meta deck from egman events (OP16) - 0.0% share | +11 cards from Limitless",
+    "source": "https://deckbuilder.egmanevents.com/optcg/tournaments?format=OP16 + onepiece.limitlesstcg.com"
   }
 ]

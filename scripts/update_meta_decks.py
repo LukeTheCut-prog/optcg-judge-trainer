@@ -366,6 +366,58 @@ def build_egman_decks(format_id, min_share):
     return decks
 
 
+def merge_limitless_pools(decks):
+    """Enrich egman decks with extra cards seen in the current Limitless meta,
+    but ONLY for archetypes that share the exact same leader card.
+
+    Limitless ignores the format filter (it serves the current/general meta)
+    and the same character often has several leader printings representing
+    different decks, so matching by leader-card id is the only safe key —
+    matching by name would merge unrelated decks.
+    """
+    leaders = {d["leader"] for d in decks}
+    soup = _get("/decks")
+    if not soup:
+        print("  Limitless unavailable — keeping egman-only pools.")
+        return
+
+    # Index the current Limitless decks by their leader-icon card id.
+    pairs = []
+    for tr in soup.find_all("tr"):
+        icon = tr.find(class_="leader-icon")
+        a = tr.find("a", href=re.compile(r"^/decks/\d+$"))
+        if not icon or not a:
+            continue
+        m = re.search(r"/([A-Z0-9]+-\d+)_", icon.get("data-src", ""))
+        if not m:
+            continue
+        lid = m.group(1).upper()
+        if lid in leaders:  # only fetch decks we can actually merge
+            pairs.append((lid, re.search(r"/decks/(\d+)", a["href"]).group(1)))
+
+    extra = {}
+    for lid, did in pairs:
+        _, cards = get_deck_cards(did)
+        extra.setdefault(lid, set()).update(cards)
+        time.sleep(DELAY)
+
+    merged = added_cards = 0
+    for d in decks:
+        pool = extra.get(d["leader"])
+        if not pool:
+            continue
+        have = set(d["cards"])
+        new = [c for c in pool if c not in have and c != d["leader"]]
+        if new:
+            d["cards"].extend(new)
+            d["description"] += " | +{} cards from Limitless".format(len(new))
+            d["source"] += " + onepiece.limitlesstcg.com"
+            merged += 1
+            added_cards += len(new)
+    print("  Merged Limitless cards into {}/{} archetype(s) (+{} cards). "
+          "The rest aren't in Limitless' current meta.".format(merged, len(decks), added_cards))
+
+
 # ── Main command ──────────────────────────────────────────────────────────────
 def cmd_update(format_id, min_share, replace_format, source="egman"):
     # Store the canonical short form (OP16) for the stored deck records.
@@ -375,7 +427,10 @@ def cmd_update(format_id, min_share, replace_format, source="egman"):
     if source == "limitless":
         decks = build_limitless_decks(format_id, min_share)
     else:
+        # egman is authoritative for the archetype list + shares.
         decks = build_egman_decks(format_id, min_share)
+        if decks and source == "both":
+            merge_limitless_pools(decks)
 
     # SAFETY: if the requested format yielded nothing, leave decks.json alone.
     # (Prevents Limitless' "current meta" fallback or a not-yet-released format
@@ -467,8 +522,9 @@ Examples:
         """
     )
     parser.add_argument("--format",       default="OP16",  help="Format to import (default: OP16)")
-    parser.add_argument("--source",       default="egman", choices=["egman", "limitless"],
-                        help="Data source: egman (real tournament data, exact format) or limitless (current meta only)")
+    parser.add_argument("--source",       default="both", choices=["egman", "limitless", "both"],
+                        help="Data source: egman (real tournament data, exact format), limitless "
+                             "(current meta only), or both (egman + union Limitless cards for matching leaders)")
     parser.add_argument("--min-share",    type=float, default=0.0, help="Minimum meta share %% to include (default: 0)")
     parser.add_argument("--replace",      action="store_true", help="Replace existing decks for this format")
     parser.add_argument("--update-all",   action="store_true", help="Re-fetch and replace ALL formats in decks.json")
