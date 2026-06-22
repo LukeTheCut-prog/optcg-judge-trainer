@@ -292,8 +292,11 @@ def build_egman_decks(format_id, min_share):
     """
     from collections import defaultdict
 
+    # Filter by set_group, NOT format: the `format` field is free-text and
+    # inconsistent ("OP16", "ENG OP16", "JPN OP16", "OP-16"...), while
+    # `set_group` is the clean canonical set id.
     tours = _egman_get(
-        "/tournaments?game_id=eq.optcg&format=eq.{}"
+        "/tournaments?game_id=eq.optcg&set_group=eq.{}"
         "&select=id,tournament_name,leader_breakdown".format(format_id))
     if not tours:
         return []
