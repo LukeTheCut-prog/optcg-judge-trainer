@@ -240,6 +240,8 @@ class App(tk.Tk):
 
         # ── 7. Utility ────────────────────────────────────────────────────────
         section_label(p, "7 · Utility")
+        styled_btn(p, "🔍  Confronta set (mancanti)",
+                   self.cmd_check_sets, color=GREEN_OK, width=34).pack(anchor="w", pady=2)
         styled_btn(p, "📋  Mostra database (--show)",
                    self.cmd_show, width=34).pack(anchor="w", pady=2)
         styled_btn(p, "🖼  Re-scarica immagini mancanti",
@@ -277,27 +279,10 @@ class App(tk.Tk):
 
     # ── Commands ───────────────────────────────────────────────────────────────
     def cmd_update_all(self):
-        """Scarica tutti i set, skippando le carte già presenti."""
-        sets = [
-            "OP01","OP02","OP03","OP04","OP05","OP06","OP07","OP08",
-            "OP09","OP10","OP11","OP12","OP13","OP14-EB04","OP15-EB04",
-            "EB01","EB02","EB03","PRB01","PRB02",
-        ]
-        # Aggiungi anche ST se presenti nel DB
-        try:
-            cards = json.loads(CARDS_FILE.read_text()) if CARDS_FILE.exists() else []
-            st_sets = sorted(set(
-                c.get("set","") for c in cards
-                if c.get("set","").startswith("ST")
-            ))
-            sets += st_sets
-        except Exception:
-            pass
-
-        self._run_sequence(
-            [["scripts/add_cards.py", "--set", s] for s in sets],
-            "Aggiornamento completo: {} set".format(len(sets))
-        )
+        """Scarica/aggiorna tutti i set rilasciati (lista presa dall'API,
+        quindi i nuovi set futuri vengono inclusi automaticamente)."""
+        run_script(["scripts/add_cards.py", "--update-all-sets"],
+                   self.output, self._after_run)
 
     def _run_sequence(self, cmd_list, title):
         """Run a list of commands sequentially in a thread."""
@@ -427,6 +412,9 @@ class App(tk.Tk):
             self.output.after(0, lambda: self.output.insert(tk.END, "\n✓ Push completato!\n", "done"))
             self.output.after(0, lambda: self.output.config(state="disabled"))
         threading.Thread(target=_git, daemon=True).start()
+
+    def cmd_check_sets(self):
+        run_script(["scripts/add_cards.py", "--check-sets"], self.output)
 
     def cmd_show(self):
         run_script(["scripts/add_cards.py", "--show"], self.output)

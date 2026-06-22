@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import './HomeScreen.css'
 
 // Standard format: OP05+ (Block 1 = OP01-OP04 rotated out April 2026)
@@ -28,11 +28,24 @@ export default function HomeScreen({ decks, cards, onStart }) {
   const [mode, setMode]               = useState(null)
   const [selectedDeck, setSelectedDeck] = useState(null)
   const [filterColor, setFilterColor] = useState('All')
-  const [filterFormat, setFilterFormat] = useState('All') // 'All' | 'Standard' | 'Extended'
+  const [filterFormat, setFilterFormat] = useState('All') // 'All' | 'Standard' | 'Extended' | 'Meta'
+
+  // "Meta Cards" = the unique pool of every card that appears across all meta
+  // decks (leaders included), so you can drill it by color (e.g. all yellow
+  // cards seen in the meta).
+  const metaCardIds = useMemo(() => {
+    const ids = new Set()
+    decks.forEach(d => {
+      if (d.leader) ids.add(d.leader)
+      ;(d.cards || []).forEach(id => ids.add(id))
+    })
+    return ids
+  }, [decks])
 
   function getPool() {
     let pool = cards
     if (filterFormat === 'Standard') pool = pool.filter(isStandard)
+    if (filterFormat === 'Meta')     pool = pool.filter(c => metaCardIds.has(c.id))
     if (filterColor !== 'All') pool = pool.filter(c => cardMatchesColor(c, filterColor))
     return pool
   }
@@ -87,16 +100,17 @@ export default function HomeScreen({ decks, cards, onStart }) {
           {/* Format filter */}
           <h2 className="home__section-label">Format</h2>
           <div className="home__format-filters">
-            {['All','Standard','Extended'].map(f => (
+            {['All','Standard','Extended','Meta'].map(f => (
               <button
                 key={f}
                 className={`format-pill ${filterFormat === f ? 'format-pill--active' : ''}`}
                 onClick={() => setFilterFormat(f)}
               >
-                {f}
+                {f === 'Meta' ? 'Meta Cards' : f}
                 {f === 'Standard' && <span className="format-pill__sub">OP05+</span>}
                 {f === 'Extended' && <span className="format-pill__sub">All sets</span>}
                 {f === 'All' && <span className="format-pill__sub">No filter</span>}
+                {f === 'Meta' && <span className="format-pill__sub">From meta decks</span>}
               </button>
             ))}
           </div>

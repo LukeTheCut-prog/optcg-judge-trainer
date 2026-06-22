@@ -12,7 +12,9 @@ Usage:
     python scripts/add_cards.py OP01-001 OP01-002
     python scripts/add_cards.py --list cards.txt
     python scripts/add_cards.py --set OP01
+    python scripts/add_cards.py --promos
     python scripts/add_cards.py --list-sets
+    python scripts/add_cards.py --check-sets
     python scripts/add_cards.py --show
     python scripts/add_cards.py --redownload-images
 
@@ -70,8 +72,16 @@ SET_ID_MAP = {
 }
 
 def normalize_set_id(raw):
+    import re
     key = raw.strip().upper().replace("-", "")
-    return SET_ID_MAP.get(key, raw.strip().upper())
+    if key in SET_ID_MAP:
+        return SET_ID_MAP[key]
+    # Auto-hyphenate standard sets not in the map (e.g. OP16 -> OP-16, EB05 -> EB-05).
+    # The optcgapi uses the "OP-16" form for regular boosters/starter decks.
+    m = re.match(r"^(OP|EB|ST|PRB)(\d+)$", key)
+    if m:
+        return "{}-{}".format(m.group(1), m.group(2))
+    return raw.strip().upper()
 
 # ── API ────────────────────────────────────────────────────────────────────────
 API_BASE         = "https://optcgapi.com/api"
@@ -288,6 +298,10 @@ def cmd_add_set(set_id, force):
     print("Downloading {} card images...".format(len(cards)))
     img_ok = img_fail = 0
     for card in cards:
+        # Only throttle when we actually hit the network — cached images that
+        # already exist locally shouldn't cost a 0.5s sleep each (keeps a full
+        # "update all sets" re-run fast).
+        cached = (IMAGES_DIR / "{}.png".format(card["id"])).exists()
         local_path = download_image(card["id"], card["image_url"])
         if local_path:
             card["image_url"] = local_path
@@ -295,7 +309,8 @@ def cmd_add_set(set_id, force):
         else:
             img_fail += 1
         print("  {} {}".format(card["id"], "OK" if local_path else "FAILED"), flush=True)
-        time.sleep(DELAY)
+        if not cached:
+            time.sleep(DELAY)
 
     db = load_db()
     added, updated, skipped = upsert_cards(cards, db, force)
@@ -321,23 +336,116 @@ def cmd_show():
     print("\nTotal: {} cards  ->  {}".format(len(db), CARDS_FILE))
 
 
+def expected_prefixes(api_id):
+    """Map an API set id to the DB 'set' prefix(es) it produces.
+
+    "OP-16" -> ["OP16"];  "OP15-EB04" -> ["OP15", "EB04"];  "ST-30" -> ["ST30"].
+    """
+    import re
+    tokens = api_id.split("-")
+    out, i = [], 0
+    while i < len(tokens):
+        t = tokens[i]
+        if re.fullmatch(r"[A-Za-z]+", t) and i + 1 < len(tokens) and re.fullmatch(r"\d+", tokens[i + 1]):
+            out.append((t + tokens[i + 1]).upper())
+            i += 2
+        else:
+            out.append(t.upper())
+            i += 1
+    return out
+
+
+def released_sets():
+    """Return [(api_id, name, is_deck), ...] of all released sets + decks."""
+    out = []
+    data = _get(API_BASE + "/allSets/")
+    for s in (data or []):
+        out.append((s.get("set_id", ""), s.get("set_name", ""), False))
+    decks = _get(API_BASE + "/allDecks/")
+    for s in (decks or []):
+        sid  = s.get("structure_deck_id") or s.get("st_id") or s.get("set_id", "")
+        name = s.get("structure_deck_name") or s.get("st_name") or s.get("set_name", "")
+        out.append((sid, name, True))
+    return out
+
+
 def cmd_list_sets():
     print("Fetching available sets...")
-    data    = _get(API_BASE + "/allSets/")
-    st_data = _get(API_BASE + "/allDecks/")
-    if data:
-        print("\n{:<10} {}".format("ID", "Set Name"))
+    sets = released_sets()
+    boosters = [s for s in sets if not s[2]]
+    decks    = [s for s in sets if s[2]]
+    if boosters:
+        print("\n{:<12} {}".format("ID", "Set Name"))
         print("-" * 50)
-        for s in data:
-            sid   = s.get("set_id", "")
-            short = sid.replace("-", "")
-            print("{:<10} {}".format(short, s.get("set_name", "")))
-    if st_data:
-        print("\n{:<10} {}".format("ID", "Starter Deck Name"))
+        for sid, name, _ in boosters:
+            print("{:<12} {}".format(sid, name))
+    if decks:
+        print("\n{:<12} {}".format("ID", "Starter Deck Name"))
         print("-" * 50)
-        for s in st_data:
-            sid = s.get("st_id") or s.get("set_id", "")
-            print("{:<10} {}".format(sid, s.get("st_name") or s.get("set_name", "")))
+        for sid, name, _ in decks:
+            print("{:<12} {}".format(sid, name))
+
+
+def cmd_update_all_sets(force):
+    """Download/refresh every released set the API knows about (incl. new ones)."""
+    sets = released_sets()
+    ids = [sid for sid, _, _ in sets if sid]
+    if not ids:
+        print("Could not fetch the released-set list (network error).")
+        return
+    print("Updating {} sets: {}".format(len(ids), ", ".join(ids)))
+    print("=" * 60, flush=True)
+    for sid in ids:
+        print("\n### {} ###".format(sid), flush=True)
+        try:
+            cmd_add_set(sid, force)
+        except Exception as e:
+            print("  ERROR on {}: {}".format(sid, e), flush=True)
+    print("\n=== ALL SETS UPDATED ===", flush=True)
+
+
+def cmd_check_sets():
+    """Compare released sets (optcgapi) against what's in the local database."""
+    print("Fetching released set list from optcgapi...")
+    sets = released_sets()
+    if not sets:
+        print("  Could not fetch set list (network error).")
+        return
+
+    db = load_db()
+    local = {}
+    for c in db:
+        local[c.get("set", "").upper()] = local.get(c.get("set", "").upper(), 0) + 1
+
+    missing, partial, present = [], [], []
+    for sid, name, is_deck in sets:
+        prefixes = expected_prefixes(sid)
+        have = [p for p in prefixes if local.get(p, 0) > 0]
+        if not have:
+            missing.append((sid, name))
+        elif len(have) < len(prefixes):
+            partial.append((sid, name, [p for p in prefixes if p not in have]))
+        else:
+            present.append((sid, name))
+
+    print("\n=== Set coverage ===")
+    print("Released: {}   In database: {}   Missing: {}".format(
+        len(sets), len(present), len(missing)))
+
+    if missing:
+        print("\n-- MISSING (not in database) --")
+        for sid, name in missing:
+            print("  X {:<12} {}".format(sid, name))
+    if partial:
+        print("\n-- PARTIAL (some sub-sets missing) --")
+        for sid, name, miss in partial:
+            print("  ~ {:<12} {}  (missing: {})".format(sid, name, ", ".join(miss)))
+    if not missing and not partial:
+        print("\nAll released sets are present in the database. [OK]")
+
+    # Promo note — promos live under set "P" and aren't in the optcgapi list.
+    p_count = local.get("P", 0)
+    print("\nPromo cards (P-xxx) in database: {}".format(p_count))
 
 
 def cmd_redownload_images():
@@ -397,7 +505,13 @@ def _get_html(url):
 
 
 def fetch_promo_card(card_id):
-    """Scrape a single promo card from Limitless (P-001, P-002, ...)."""
+    """Scrape a single promo card from Limitless (P-001, P-002, ...).
+
+    Limitless renders card data in a structured ``.card-text`` block with
+    ``data-tooltip`` labels (Category / Color / Attribute / Type). We parse
+    those directly instead of regex-matching the whole page, which is far more
+    reliable.
+    """
     if not HAS_BS4:
         print("    beautifulsoup4 required for promos. Run: pip install beautifulsoup4")
         return None
@@ -409,49 +523,69 @@ def fetch_promo_card(card_id):
 
     import re
 
-    # Name — in the page title or h1
-    name = cid
-    title = soup.find("title")
-    if title:
-        m = re.match(r"^([^(]+)\s*\(", title.get_text())
-        if m:
-            name = m.group(1).strip()
-
-    # Card text — the main content block
-    # Limitless renders card data in a structured div
-    text_el = soup.find("p", class_=re.compile("card.?text|effect|ability", re.I))
-    effect = ""
-    if not text_el:
-        # Fallback: find any paragraph with bracket notation typical of OPTCG effects
-        for p in soup.find_all("p"):
-            t = p.get_text(strip=True)
-            if "[" in t and len(t) > 10:
-                effect = t
-                break
-    else:
-        effect = text_el.get_text(strip=True)
-
-    # Stats — look for cost/power/color patterns in text
-    full_text = soup.get_text(" ", strip=True)
-
-    def extract_stat(pattern):
-        m = re.search(pattern, full_text, re.IGNORECASE)
-        return m.group(1).strip() if m else None
-
-    color   = extract_stat(r'(?:Color|Colour)[:\s•]+([A-Za-z/]+)')
-    card_type = extract_stat(r'(?:^|\s)(Leader|Character|Event|Stage)(?:\s|$|•)')
-    cost    = extract_stat(r'(?:Cost)[:\s•]+(\d+)')
-    power   = extract_stat(r'(?:Power)[:\s•]+(\d+)')
-    counter = extract_stat(r'(?:Counter)[:\s•]+\+?(\d+)')
-    subtype = extract_stat(r'(?:Type|Subtype)[:\s•]+([A-Za-z /]+?)(?:\n|•|Block)')
-
-    # Image from CDN
-    img_url = LIMITLESS_CDN.format(card_id=cid)
-
     def to_int(val):
-        if val is None: return None
-        try: return int(str(val).replace(",", "").replace("+", "").strip())
-        except: return None
+        if val is None:
+            return None
+        try:
+            return int(str(val).replace(",", "").replace("+", "").strip())
+        except (ValueError, TypeError):
+            return None
+
+    def tooltip(label):
+        el = soup.find("span", attrs={"data-tooltip": label})
+        return el.get_text(strip=True) if el else None
+
+    block = soup.find(class_="card-text")
+    if not block:
+        return None
+
+    # Name
+    name_el = soup.find(class_="card-text-name")
+    name = name_el.get_text(strip=True) if name_el else cid
+
+    # Category / Color come from labelled tooltips
+    card_type = tooltip("Category")
+    color     = tooltip("Color")
+
+    # Cost lives at the end of the type line: "Character • Red • 5 Cost"
+    cost = None
+    type_line = soup.find(class_="card-text-type")
+    if type_line:
+        m = re.search(r"(\d+)\s*Cost", type_line.get_text(" ", strip=True))
+        if m:
+            cost = m.group(1)
+
+    # Power / Counter live in the stat section: "6000 Power • Special • +2000 Counter"
+    power = counter = None
+    for sec in block.find_all(class_="card-text-section"):
+        txt = sec.get_text(" ", strip=True)
+        pm = re.search(r"(\d+)\s*Power", txt)
+        cm = re.search(r"\+?(\d+)\s*Counter", txt)
+        if pm and power is None:
+            power = pm.group(1)
+        if cm and counter is None:
+            counter = cm.group(1)
+
+    # Family / traits (e.g. "Whitebeard Pirates") — stored as "attribute" to
+    # match the optcgapi-sourced cards (which put sub_types here).
+    family = tooltip("Type")
+
+    # Effect: sections that are neither the title, the stat line, the family,
+    # nor the artist credit.
+    effect_parts = []
+    for sec in block.find_all(class_="card-text-section", recursive=False):
+        classes = sec.get("class", [])
+        if "card-text-artist" in classes:
+            continue
+        if sec.find(class_="card-text-title"):
+            continue
+        if sec.find("span", attrs={"data-tooltip": "Type"}):
+            continue
+        txt = sec.get_text(" ", strip=True)
+        if not txt or re.search(r"\d+\s*Power", txt):
+            continue
+        effect_parts.append(txt)
+    effect = " ".join(effect_parts).strip()
 
     return {
         "id":        cid,
@@ -461,9 +595,9 @@ def fetch_promo_card(card_id):
         "cost":      to_int(cost),
         "power":     to_int(power),
         "counter":   to_int(counter),
-        "attribute": subtype,
+        "attribute": family,
         "effect":    effect,
-        "image_url": img_url,
+        "image_url": LIMITLESS_CDN.format(card_id=cid),
         "set":       "P",
     }
 
@@ -514,82 +648,102 @@ def fetch_all_promo_packs():
     if not soup:
         return []
 
-    # Valid pack slugs contain hyphens and look like "promotion-pack-01",
-    # "tournament-pack-14", "event-pack-01", etc.
-    # Exclude known non-pack pages
-    EXCLUDED = {
-        "promos", "advanced", "cards", "op01", "op02", "op03", "op04",
-        "op05", "op06", "op07", "op08", "op09", "op10", "op11", "op12",
-        "op13", "op14", "op15",
-    }
+    # Collect every lowercase slug link on the promos page. Card-detail links
+    # (P-001) and main set pages (OP-16) are uppercase, so a lowercase-leading
+    # pattern naturally skips them. We then drop the main-set landing pages
+    # (e.g. "op16-the-time-of-battle") and known utility pages. Pages that
+    # aren't real promo packs simply contribute no P-xxx ids downstream.
+    EXCLUDED = {"promos", "advanced", "cards"}
 
     slugs = []
     seen = set()
-    for a in soup.find_all("a", href=re.compile(r"^/cards/[a-z0-9][a-z0-9\-]+-\d+")):
+    for a in soup.find_all("a", href=re.compile(r"^/cards/[a-z][a-z0-9\-]*$")):
         slug = a["href"].replace("/cards/", "")
-        if slug not in seen and slug not in EXCLUDED:
-            seen.add(slug)
-            slugs.append(slug)
+        if slug in seen or slug in EXCLUDED:
+            continue
+        # Skip main-set landing pages like "op16-...", "eb05-...", "st29-...".
+        if re.match(r"^(op|eb|st|prb)\d", slug):
+            continue
+        seen.add(slug)
+        slugs.append(slug)
 
     return slugs
 
 
-def cmd_add_promos(force):
-    """Download all promo cards from all packs on Limitless."""
+PROMO_MAX_GAP = 12  # stop the sequential scan after this many consecutive misses
+
+def cmd_add_promos(force, max_gap=PROMO_MAX_GAP):
+    """Download all promo cards (P-001, P-002, ...) from Limitless.
+
+    Promos aren't on optcgapi, so we use two complementary passes against
+    Limitless and take the union:
+
+      1. Sequential scan from P-001 upward, stopping after `max_gap`
+         consecutive missing ids. Picks up brand-new promos the moment they
+         go live, even before they're listed in a pack.
+      2. Pack discovery, which catches isolated clusters that sit *past* a
+         numbering gap larger than `max_gap` (e.g. P-135 when P-120..134 are
+         empty).
+    """
     if not HAS_BS4:
         print("beautifulsoup4 required. Run: pip install beautifulsoup4")
         return
 
-    print("Fetching promo pack list from Limitless...")
-    packs = fetch_all_promo_packs()
-    print("Found {} promo packs".format(len(packs)))
-
-    all_promo_ids = []
-    seen = set()
-    for slug in packs:
-        ids = fetch_promo_pack(slug)
-        for cid in ids:
-            if cid not in seen:
-                seen.add(cid)
-                all_promo_ids.append(cid)
-        time.sleep(DELAY)
-
-    print("Found {} unique promo card IDs".format(len(all_promo_ids)))
-
     db = load_db()
-    added = updated = skipped = failed = 0
+    index = {c["id"].upper(): c for c in db}
+    processed = set()
+    stats = {"added": 0, "updated": 0, "skipped": 0, "failed": 0}
 
-    for cid in sorted(all_promo_ids):
-        print("  -> {}...".format(cid), end=" ", flush=True)
-        existing = next((c for c in db if c["id"].upper() == cid.upper()), None)
-        if existing and not force:
-            print("already exists (use --force to overwrite)")
-            skipped += 1
-            continue
-
+    def handle(cid):
+        """Fetch+store one promo. Returns True if the card exists, else False."""
+        cid = cid.upper()
+        if cid in processed:
+            return True
+        processed.add(cid)
+        if cid in index and not force:
+            stats["skipped"] += 1
+            return True
         card = fetch_promo_card(cid)
         if not card:
-            print("FAILED (could not scrape card data)")
-            failed += 1
-            time.sleep(DELAY)
-            continue
-
-        # Download image from Limitless CDN
-        img_url = LIMITLESS_CDN.format(card_id=cid)
-        local_path = download_image(cid, img_url)
+            return False
+        local_path = download_image(cid, LIMITLESS_CDN.format(card_id=cid))
+        img_status = "img OK" if local_path else "img FAILED"
         if local_path:
             card["image_url"] = local_path
-            img_status = "img OK"
-        else:
-            img_status = "img FAILED"
-
         a, u, s = upsert_cards([card], db, force)
-        added += a; updated += u; skipped += s
-        print("OK  {} [{}]".format(card["name"], img_status))
+        stats["added"] += a; stats["updated"] += u; stats["skipped"] += s
+        print("  -> {}  {} [{}]".format(cid, card["name"], img_status), flush=True)
         time.sleep(DELAY)
+        return True
+
+    # Pass 1 — sequential scan
+    print("Scanning promo cards from P-001 upward "
+          "(stops after {} consecutive misses)...".format(max_gap))
+    misses = n = 0
+    while misses < max_gap:
+        n += 1
+        if handle("P-{:03d}".format(n)):
+            misses = 0
+        else:
+            misses += 1
+    print("Sequential scan reached P-{:03d}.".format(n))
+
+    # Pass 2 — pack discovery (catches outliers past large gaps)
+    print("Checking promo packs for outliers...")
+    pack_ids = set()
+    for slug in fetch_all_promo_packs():
+        for cid in fetch_promo_pack(slug):
+            pack_ids.add(cid.upper())
+        time.sleep(DELAY)
+    extras = sorted(c for c in pack_ids if c not in processed)
+    if extras:
+        print("Found {} promo(s) outside the scanned range: {}".format(
+            len(extras), ", ".join(extras)))
+        for cid in extras:
+            handle(cid)
 
     save_db(db)
-    _summary(added, updated, skipped, failed, len(db))
+    _summary(stats["added"], stats["updated"], stats["skipped"], stats["failed"], len(db))
 
 
 # ── CLI ────────────────────────────────────────────────────────────────────────
@@ -606,6 +760,7 @@ Examples:
   python scripts/add_cards.py --promos
   python scripts/add_cards.py --force --set OP01
   python scripts/add_cards.py --list-sets
+  python scripts/add_cards.py --check-sets
   python scripts/add_cards.py --redownload-images
   python scripts/add_cards.py --show
         """
@@ -613,10 +768,12 @@ Examples:
     parser.add_argument("card_ids",            nargs="*",         help="Card IDs (e.g. OP01-001 or P-001)")
     parser.add_argument("--list",              metavar="FILE",    help="File with card IDs, one per line")
     parser.add_argument("--set",               metavar="SET_ID",  help="Import all cards from a set (e.g. OP01)")
+    parser.add_argument("--update-all-sets",   action="store_true", help="Download/refresh every released set the API knows about")
     parser.add_argument("--promos",            action="store_true", help="Download ALL promo cards from Limitless TCG (requires beautifulsoup4)")
     parser.add_argument("--force",      "-f",  action="store_true", help="Overwrite existing cards")
     parser.add_argument("--show",              action="store_true", help="List all cards in the database")
     parser.add_argument("--list-sets",         action="store_true", help="Show all available sets")
+    parser.add_argument("--check-sets",        action="store_true", help="Compare released sets vs. what's in the database (shows missing sets)")
     parser.add_argument("--redownload-images", action="store_true", help="Re-download images for all cards")
     args = parser.parse_args()
 
@@ -624,6 +781,10 @@ Examples:
         cmd_show()
     elif args.list_sets:
         cmd_list_sets()
+    elif args.check_sets:
+        cmd_check_sets()
+    elif args.update_all_sets:
+        cmd_update_all_sets(args.force)
     elif args.redownload_images:
         cmd_redownload_images()
     elif args.promos:

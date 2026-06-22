@@ -78,12 +78,21 @@ def get_available_formats():
     return list(dict.fromkeys(formats))  # deduplicate preserving order
 
 
+def _api_format(fmt):
+    """Limitless deck filter expects the hyphenated set id: OP16 -> OP-16."""
+    f = fmt.strip().upper()
+    if "-" in f:
+        return f
+    m = re.match(r"^([A-Z]+)(\d+)$", f)
+    return "{}-{}".format(m.group(1), m.group(2)) if m else f
+
+
 def get_meta_decks(format_id, min_share=0.0):
     """
     Scrape the deck list for a given format.
     Returns list of dicts: {id, name, share, leader_card_id}
     """
-    soup = _get("/decks?format={}".format(format_id))
+    soup = _get("/decks?format={}".format(_api_format(format_id)))
     if not soup:
         return []
 
@@ -124,8 +133,10 @@ def get_deck_cards(limitless_id):
     if not soup:
         return None, []
 
-    # Extract all card IDs — they appear as text like "OP15-061" in links/alt text
-    card_id_pattern = re.compile(r'\b([A-Z]{2,5}\d{2}-\d{3})\b')
+    # Card IDs come in two shapes: regular sets "OP15-061" / "ST10-010" and
+    # promos "P-045". The old pattern only matched the regular shape, silently
+    # dropping every promo card from the deck list.
+    card_id_pattern = re.compile(r'\b((?:OP|ST|EB|PRB)\d{2}-\d{3}|P-\d{3})\b')
 
     leader_id = None
     card_ids  = []
@@ -133,25 +144,28 @@ def get_deck_cards(limitless_id):
     # Leader section — look for "Leader" heading or leader card link
     full_text = soup.get_text()
     # Find leader: it's listed before "Character" section
-    leader_match = re.search(r'Leader\s*[\n\r]+.*?([A-Z]{2,5}\d{2}-\d{3})', full_text, re.DOTALL)
+    leader_match = re.search(
+        r'Leader\s*[\n\r]+.*?((?:OP|ST|EB|PRB)\d{2}-\d{3}|P-\d{3})',
+        full_text, re.DOTALL)
     if leader_match:
         leader_id = leader_match.group(1)
 
-    # All card IDs from image URLs (most reliable — format: /OP15/OP15-061_EN.webp)
-    img_pattern = re.compile(r'/([A-Z]{2,5}\d{2}/[A-Z]{2,5}\d{2}-\d{3})_')
+    # All card IDs from image URLs (most reliable). Folder + filename, e.g.
+    # /OP15/OP15-061_EN.webp, /ST10/ST10-010_EN.webp, /P/P-045_EN.webp
+    img_pattern = re.compile(r'/[A-Za-z0-9]+/((?:OP|ST|EB|PRB)\d{2}-\d{3}|P-\d{3})_')
     seen = set()
     for img in soup.find_all("img"):
         src = img.get("src", "")
         m = img_pattern.search(src)
         if m:
-            cid = m.group(1).split("/")[1]  # "OP15/OP15-061" -> "OP15-061"
+            cid = m.group(1)
             if cid not in seen:
                 seen.add(cid)
                 card_ids.append(cid)
 
-    # Also extract from anchor hrefs: /cards/OP15-061
-    for a in soup.find_all("a", href=re.compile(r"/cards/[A-Z]{2,5}\d{2}-\d{3}")):
-        m = re.search(r"/cards/([A-Z]{2,5}\d{2}-\d{3})", a["href"])
+    # Also extract from anchor hrefs: /cards/OP15-061, /cards/P-045
+    for a in soup.find_all("a", href=re.compile(r"/cards/((?:OP|ST|EB|PRB)\d{2}-\d{3}|P-\d{3})")):
+        m = re.search(r"/cards/((?:OP|ST|EB|PRB)\d{2}-\d{3}|P-\d{3})", a["href"])
         if m and m.group(1) not in seen:
             seen.add(m.group(1))
             card_ids.append(m.group(1))
@@ -192,6 +206,9 @@ def slugify(text):
 
 # ── Main command ──────────────────────────────────────────────────────────────
 def cmd_update(format_id, min_share, replace_format):
+    # Store the canonical short form (OP16) for the stored deck records to match
+    # the existing convention, but the scraper builds the hyphenated URL itself.
+    format_id = format_id.strip().upper().replace("-", "")
     print("Fetching meta deck list for format {}...".format(format_id))
     meta = get_meta_decks(format_id, min_share)
     if not meta:
