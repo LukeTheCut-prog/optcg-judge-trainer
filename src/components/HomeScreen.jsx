@@ -24,11 +24,25 @@ function cardMatchesColor(card, color) {
   return card.color.split('/').map(c => c.trim()).includes(color)
 }
 
-export default function HomeScreen({ decks, cards, onStart }) {
+export default function HomeScreen({ decks, cards, faq = {}, onStart }) {
   const [mode, setMode]               = useState(null)
   const [selectedDeck, setSelectedDeck] = useState(null)
   const [filterColor, setFilterColor] = useState('All')
   const [filterFormat, setFilterFormat] = useState('All') // 'All' | 'Standard' | 'Extended' | 'Meta'
+  const [query, setQuery]             = useState('')
+
+  // Search by card code (P-001, OP16-080) or name. Code match is prioritised.
+  const matches = useMemo(() => {
+    const q = query.trim().toLowerCase()
+    if (q.length < 2) return []
+    const byId = [], byName = []
+    for (const c of cards) {
+      const id = c.id.toLowerCase()
+      if (id.includes(q)) byId.push(c)
+      else if ((c.name || '').toLowerCase().includes(q)) byName.push(c)
+    }
+    return [...byId, ...byName].slice(0, 8)
+  }, [query, cards])
 
   // "Meta Cards" = the unique pool of every card that appears across all meta
   // decks (leaders included), so you can drill it by color (e.g. all yellow
@@ -71,6 +85,35 @@ export default function HomeScreen({ decks, cards, onStart }) {
         <h1 className="home__title">Judge Trainer</h1>
         <p className="home__subtitle">One Piece Card Game</p>
       </header>
+
+      <section className="home__search">
+        <input
+          type="text"
+          className="home__search-input"
+          placeholder="Search a card by code or name (e.g. OP16-080, Luffy)"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          autoComplete="off"
+        />
+        {matches.length > 0 && (
+          <ul className="home__search-results">
+            {matches.map(c => (
+              <li key={c.id}>
+                <button className="search-result" onClick={() => onStart({ mode: 'lookup', card: c })}>
+                  <span className="search-result__id">{c.id}</span>
+                  <span className="search-result__name">{c.name}</span>
+                  {(faq[c.id]?.length > 0) && (
+                    <span className="search-result__faq">FAQ {faq[c.id].length}</span>
+                  )}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+        {query.trim().length >= 2 && matches.length === 0 && (
+          <p className="home__search-empty">No card matches “{query.trim()}”.</p>
+        )}
+      </section>
 
       <section className="home__modes">
         <h2 className="home__section-label">Choose Mode</h2>

@@ -17,7 +17,7 @@ export default function App() {
   if (loading) return <LoadingScreen />
   if (error)   return <ErrorScreen message={error} />
 
-  function handleStart({ mode, cards: pool, deck }) {
+  function handleStart({ mode, cards: pool, deck, card }) {
     let cardList = []
     let deckName = null
 
@@ -30,6 +30,8 @@ export default function App() {
           .filter(Boolean)
       )
       deckName = deck.name
+    } else if (mode === 'lookup') {
+      cardList = [card]
     }
 
     if (cardList.length === 0) return
@@ -64,7 +66,7 @@ export default function App() {
     if (cards.length === 0) {
       return <EmptyDatabase />
     }
-    return <HomeScreen decks={decks} cards={cards} onStart={handleStart} />
+    return <HomeScreen decks={decks} cards={cards} faq={faq} onStart={handleStart} />
   }
 
   if (screen === 'session') {
@@ -73,6 +75,7 @@ export default function App() {
         key={sessionIndex}
         card={sessionCards[sessionIndex]}
         faqEntries={faq[sessionCards[sessionIndex].id] || []}
+        lookup={sessionMeta?.mode === 'lookup'}
         current={sessionIndex + 1}
         total={sessionCards.length}
         onNext={handleNext}

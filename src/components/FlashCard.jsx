@@ -24,8 +24,8 @@ function FaqItem({ entry, index }) {
   )
 }
 
-export default function FlashCard({ card, faqEntries = [], onNext, onHome, current, total }) {
-  const [revealed, setRevealed] = useState(false)
+export default function FlashCard({ card, faqEntries = [], lookup = false, onNext, onHome, current, total }) {
+  const [revealed, setRevealed] = useState(lookup)
   const [imgError, setImgError]  = useState(false)
 
   const colorVar = getColorVar(card.color)
@@ -46,11 +46,13 @@ export default function FlashCard({ card, faqEntries = [], onNext, onHome, curre
       style={{ '--card-color': `var(${colorVar})` }}
     >
 
-      {/* Progress bar */}
-      <div className="fc-progress">
-        <div className="fc-progress__bar" style={{ width: `${(current / total) * 100}%` }} />
-        <span className="fc-progress__label">{current} / {total}</span>
-      </div>
+      {/* Progress bar — hidden in single-card lookup */}
+      {!lookup && (
+        <div className="fc-progress">
+          <div className="fc-progress__bar" style={{ width: `${(current / total) * 100}%` }} />
+          <span className="fc-progress__label">{current} / {total}</span>
+        </div>
+      )}
 
       {/* Top bar: card ID + home button */}
       <div className="fc-topbar">
@@ -133,7 +135,11 @@ export default function FlashCard({ card, faqEntries = [], onNext, onHome, curre
 
       {/* Navigation */}
       <div className="fc-nav">
-        {revealed && (
+        {lookup ? (
+          <button className="fc-next-btn" onClick={onHome}>
+            ← Back to Search
+          </button>
+        ) : revealed && (
           <button className="fc-next-btn" onClick={handleNext}>
             {current < total ? 'Next Card →' : 'Finish Session'}
           </button>

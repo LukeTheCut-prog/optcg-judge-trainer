@@ -43,6 +43,87 @@
   margin-top: 0.4rem;
 }
 
+/* Search bar */
+.home__search {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.home__search-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+.home__search-input::placeholder { color: var(--text-muted); }
+.home__search-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: var(--glow-gold);
+}
+.home__search-results {
+  list-style: none;
+  margin: 0.4rem 0 0;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.home__search-results li + li { border-top: 1px solid var(--border); }
+.search-result {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.85rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition);
+}
+.search-result:hover { background: var(--raised); }
+.search-result__id {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--gold);
+  flex-shrink: 0;
+  min-width: 5.5rem;
+}
+.search-result__name {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.search-result__faq {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green-op);
+  border: 1px solid var(--green-op);
+  border-radius: 99px;
+  padding: 0.1rem 0.45rem;
+}
+.home__search-empty {
+  margin: 0.5rem 0 0;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
 /* Section label */
 .home__section-label {
   font-family: var(--font-mono);
