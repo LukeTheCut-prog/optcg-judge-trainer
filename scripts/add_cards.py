@@ -39,6 +39,8 @@ except ImportError:
 # ── Paths ─────────────────────────────────────────────────────────────────────
 ROOT       = Path(__file__).parent.parent
 CARDS_FILE = ROOT / "public" / "data" / "cards.json"
+DECKS_FILE = ROOT / "public" / "data" / "decks.json"
+FAQ_FILE   = ROOT / "public" / "data" / "faq.json"
 IMAGES_DIR = ROOT / "public" / "images" / "cards"
 
 # ── Set ID mapping ─────────────────────────────────────────────────────────────
@@ -262,6 +264,13 @@ def cmd_add(card_ids, force):
             continue
         print("  -> {}...".format(cid), end=" ", flush=True)
         card = fetch_card(cid)
+        src = "optcgapi"
+        if not card and HAS_BS4:
+            # optcgapi is missing many cards (e.g. starter-deck reprints like
+            # ST29-007); fall back to scraping the card from Limitless.
+            card = fetch_promo_card(cid)
+            if card:
+                src = "Limitless"
         if not card:
             print("NOT FOUND")
             failed += 1
@@ -281,7 +290,7 @@ def cmd_add(card_ids, force):
         if s:
             print("already exists (use --force to overwrite)")
         else:
-            print("OK  {} [{}]".format(card["name"], img_status))
+            print("OK  {} [{}, {}]".format(card["name"], img_status, src))
 
         time.sleep(DELAY)
 
@@ -598,7 +607,7 @@ def fetch_promo_card(card_id):
         "attribute": family,
         "effect":    effect,
         "image_url": LIMITLESS_CDN.format(card_id=cid),
-        "set":       "P",
+        "set":       cid.split("-")[0] if "-" in cid else "P",
     }
 
 
@@ -746,6 +755,62 @@ def cmd_add_promos(force, max_gap=PROMO_MAX_GAP):
     _summary(stats["added"], stats["updated"], stats["skipped"], stats["failed"], len(db))
 
 
+def cmd_fill_missing(force):
+    """Fetch cards referenced by FAQ or meta decks but missing from the DB.
+
+    optcgapi omits many cards (notably starter-deck reprints like ST29-007),
+    so anything referenced elsewhere but absent is pulled from Limitless.
+    """
+    if not HAS_BS4:
+        print("beautifulsoup4 required. Run: pip install beautifulsoup4")
+        return
+
+    db = load_db()
+    have = {c["id"].upper() for c in db}
+
+    referenced = set()
+    if FAQ_FILE.exists():
+        try:
+            referenced |= {k.upper() for k in json.loads(FAQ_FILE.read_text(encoding="utf-8"))}
+        except ValueError:
+            pass
+    if DECKS_FILE.exists():
+        try:
+            for d in json.loads(DECKS_FILE.read_text(encoding="utf-8")):
+                if d.get("leader"):
+                    referenced.add(d["leader"].upper())
+                referenced |= {c.upper() for c in d.get("cards", [])}
+        except ValueError:
+            pass
+
+    missing = sorted(c for c in referenced if c not in have)
+    if not missing:
+        print("No missing referenced cards. Database is complete.")
+        return
+
+    print("Found {} referenced card(s) missing from the DB. Fetching from Limitless...".format(
+        len(missing)))
+    added = updated = skipped = failed = 0
+    for cid in missing:
+        print("  -> {}...".format(cid), end=" ", flush=True)
+        card = fetch_promo_card(cid)
+        if not card:
+            print("not on Limitless (skipped)")
+            failed += 1
+            time.sleep(DELAY)
+            continue
+        local_path = download_image(cid, LIMITLESS_CDN.format(card_id=cid))
+        if local_path:
+            card["image_url"] = local_path
+        a, u, s = upsert_cards([card], db, force)
+        added += a; updated += u; skipped += s
+        print("OK  {}".format(card["name"]))
+        time.sleep(DELAY)
+
+    save_db(db)
+    _summary(added, updated, skipped, failed, len(db))
+
+
 # ── CLI ────────────────────────────────────────────────────────────────────────
 def main():
     parser = argparse.ArgumentParser(
@@ -761,6 +826,7 @@ Examples:
   python scripts/add_cards.py --force --set OP01
   python scripts/add_cards.py --list-sets
   python scripts/add_cards.py --check-sets
+  python scripts/add_cards.py --fill-missing
   python scripts/add_cards.py --redownload-images
   python scripts/add_cards.py --show
         """
@@ -774,6 +840,7 @@ Examples:
     parser.add_argument("--show",              action="store_true", help="List all cards in the database")
     parser.add_argument("--list-sets",         action="store_true", help="Show all available sets")
     parser.add_argument("--check-sets",        action="store_true", help="Compare released sets vs. what's in the database (shows missing sets)")
+    parser.add_argument("--fill-missing",      action="store_true", help="Fetch cards referenced by FAQ/decks but missing from the DB (via Limitless)")
     parser.add_argument("--redownload-images", action="store_true", help="Re-download images for all cards")
     args = parser.parse_args()
 
@@ -783,6 +850,8 @@ Examples:
         cmd_list_sets()
     elif args.check_sets:
         cmd_check_sets()
+    elif args.fill_missing:
+        cmd_fill_missing(args.force)
     elif args.update_all_sets:
         cmd_update_all_sets(args.force)
     elif args.redownload_images:

@@ -255,6 +255,8 @@ class App(tk.Tk):
                    self.cmd_check_sets, color=GREEN_OK, width=34).pack(anchor="w", pady=2)
         styled_btn(p, "❓  Aggiorna FAQ ufficiali",
                    self.cmd_update_faq, width=34).pack(anchor="w", pady=2)
+        styled_btn(p, "🩹  Recupera carte mancanti",
+                   self.cmd_fill_missing, width=34).pack(anchor="w", pady=2)
         styled_btn(p, "📋  Mostra database (--show)",
                    self.cmd_show, width=34).pack(anchor="w", pady=2)
         styled_btn(p, "🖼  Re-scarica immagini mancanti",
@@ -435,6 +437,9 @@ class App(tk.Tk):
 
     def cmd_update_faq(self):
         run_script(["scripts/fetch_faq.py"], self.output, self._after_run)
+
+    def cmd_fill_missing(self):
+        run_script(["scripts/add_cards.py", "--fill-missing"], self.output, self._after_run)
 
     def cmd_show(self):
         run_script(["scripts/add_cards.py", "--show"], self.output)
