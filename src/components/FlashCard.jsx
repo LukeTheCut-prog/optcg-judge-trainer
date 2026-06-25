@@ -2,7 +2,29 @@ import { useState } from 'react'
 import { getColorVar, formatPower, formatCost, formatCounter } from '../utils/helpers.js'
 import './FlashCard.css'
 
-export default function FlashCard({ card, onNext, onHome, current, total }) {
+function FaqItem({ entry, index }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div className="fc-faq__item">
+      <div className="fc-faq__q">
+        <span className="fc-faq__tag">Q{index + 1}</span>
+        <span className="fc-faq__text">{entry.q}</span>
+      </div>
+      {open ? (
+        <div className="fc-faq__a">
+          <span className="fc-faq__tag fc-faq__tag--a">A</span>
+          <span className="fc-faq__text">{entry.a}</span>
+        </div>
+      ) : (
+        <button className="fc-faq__toggle" onClick={() => setOpen(true)}>
+          Show answer
+        </button>
+      )}
+    </div>
+  )
+}
+
+export default function FlashCard({ card, faqEntries = [], onNext, onHome, current, total }) {
   const [revealed, setRevealed] = useState(false)
   const [imgError, setImgError]  = useState(false)
 
@@ -95,6 +117,17 @@ export default function FlashCard({ card, onNext, onHome, current, total }) {
             </div>
             <p className="fc-effect__text">{card.effect}</p>
           </div>
+
+          {faqEntries.length > 0 && (
+            <div className="fc-faq">
+              <div className="fc-faq__title">
+                Official FAQ · {faqEntries.length}
+              </div>
+              {faqEntries.map((entry, i) => (
+                <FaqItem key={i} entry={entry} index={i} />
+              ))}
+            </div>
+          )}
         </div>
       )}
 

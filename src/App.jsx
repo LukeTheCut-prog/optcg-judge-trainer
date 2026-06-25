@@ -8,7 +8,7 @@ import './styles/App.css'
 
 // Screens: 'home' | 'session' | 'end'
 export default function App() {
-  const { cards, decks, cardMap, loading, error } = useData()
+  const { cards, decks, faq, cardMap, loading, error } = useData()
   const [screen, setScreen]         = useState('home')
   const [sessionCards, setSession]  = useState([])
   const [sessionIndex, setIndex]    = useState(0)
@@ -72,6 +72,7 @@ export default function App() {
       <FlashCard
         key={sessionIndex}
         card={sessionCards[sessionIndex]}
+        faqEntries={faq[sessionCards[sessionIndex].id] || []}
         current={sessionIndex + 1}
         total={sessionCards.length}
         onNext={handleNext}

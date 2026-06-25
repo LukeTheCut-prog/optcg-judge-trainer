@@ -253,6 +253,8 @@ class App(tk.Tk):
         section_label(p, "7 · Utility")
         styled_btn(p, "🔍  Confronta set (mancanti)",
                    self.cmd_check_sets, color=GREEN_OK, width=34).pack(anchor="w", pady=2)
+        styled_btn(p, "❓  Aggiorna FAQ ufficiali",
+                   self.cmd_update_faq, width=34).pack(anchor="w", pady=2)
         styled_btn(p, "📋  Mostra database (--show)",
                    self.cmd_show, width=34).pack(anchor="w", pady=2)
         styled_btn(p, "🖼  Re-scarica immagini mancanti",
@@ -430,6 +432,9 @@ class App(tk.Tk):
 
     def cmd_check_sets(self):
         run_script(["scripts/add_cards.py", "--check-sets"], self.output)
+
+    def cmd_update_faq(self):
+        run_script(["scripts/fetch_faq.py"], self.output, self._after_run)
 
     def cmd_show(self):
         run_script(["scripts/add_cards.py", "--show"], self.output)

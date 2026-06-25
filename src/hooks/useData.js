@@ -13,6 +13,7 @@ function fixImageUrl(url) {
 export function useData() {
   const [cards, setCards]   = useState([])
   const [decks, setDecks]   = useState([])
+  const [faq, setFaq]       = useState({})
   const [loading, setLoading] = useState(true)
   const [error, setError]   = useState(null)
 
@@ -35,6 +36,12 @@ export function useData() {
         }))
         setCards(fixedCards)
         setDecks(decksData)
+
+        // FAQ is optional — a missing/old faq.json must not break the app.
+        try {
+          const faqRes = await fetch(`${BASE}data/faq.json`)
+          if (faqRes.ok) setFaq(await faqRes.json())
+        } catch { /* no FAQ data available */ }
       } catch (e) {
         setError(e.message)
       } finally {
@@ -46,5 +53,5 @@ export function useData() {
 
   const cardMap = Object.fromEntries(cards.map(c => [c.id, c]))
 
-  return { cards, decks, cardMap, loading, error }
+  return { cards, decks, faq, cardMap, loading, error }
 }
