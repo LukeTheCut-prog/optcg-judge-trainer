@@ -31,17 +31,23 @@ export default function HomeScreen({ decks, cards, faq = {}, onStart }) {
   const [filterFormat, setFilterFormat] = useState('All') // 'All' | 'Standard' | 'Extended' | 'Meta'
   const [query, setQuery]             = useState('')
 
-  // Search by card code (P-001, OP16-080) or name. Code match is prioritised.
+  // Partial multi-token search across code + name, order-independent and
+  // punctuation-insensitive: "op16 yamato" or "Monkey D Luffy OP07" both work
+  // ("Monkey.D.Luffy" is matched even without the dots). Every token must be
+  // found somewhere in the card's "code + name" haystack.
   const matches = useMemo(() => {
-    const q = query.trim().toLowerCase()
-    if (q.length < 2) return []
-    const byId = [], byName = []
+    const norm = s => (s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+    if (query.trim().length < 2) return []
+    const tokens = norm(query).split(' ').filter(Boolean)
+    if (tokens.length === 0) return []
+
+    const res = []
     for (const c of cards) {
-      const id = c.id.toLowerCase()
-      if (id.includes(q)) byId.push(c)
-      else if ((c.name || '').toLowerCase().includes(q)) byName.push(c)
+      const hay = norm(c.id + ' ' + (c.name || ''))
+      if (tokens.every(t => hay.includes(t))) res.push(c)
     }
-    return [...byId, ...byName].slice(0, 8)
+    res.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }))
+    return res.slice(0, 12)
   }, [query, cards])
 
   // "Meta Cards" = the unique pool of every card that appears across all meta
