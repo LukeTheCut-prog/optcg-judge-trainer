@@ -755,6 +755,74 @@ def cmd_add_promos(force, max_gap=PROMO_MAX_GAP):
     _summary(stats["added"], stats["updated"], stats["skipped"], stats["failed"], len(db))
 
 
+def fetch_limitless_set_base(set_code):
+    """Return the set of BASE (non-alternate) English card ids Limitless lists
+    for a set, or None if Limitless has no set page for it.
+
+    The set page links base cards as /cards/ST29-001 and alternate arts as
+    /cards/ST29-001?v=1 — we keep only the former (the user doesn't want alts).
+    """
+    import re
+    soup = _get_html("{}/cards/{}".format(LIMITLESS_BASE, set_code))
+    if not soup:
+        return None
+    pat = re.compile(r"^/cards/({}-\d+)$".format(re.escape(set_code)))
+    ids = set()
+    for a in soup.find_all("a", href=pat):
+        ids.add(pat.match(a["href"]).group(1))
+    return ids
+
+
+def cmd_complete_sets(force):
+    """Add base English cards present on Limitless but missing from the DB.
+
+    optcgapi is incomplete for some sets (e.g. ST29 had 5 of 17 cards); this
+    cross-checks every set against Limitless and pulls the missing base cards
+    (alternate arts are skipped).
+    """
+    if not HAS_BS4:
+        print("beautifulsoup4 required. Run: pip install beautifulsoup4")
+        return
+
+    from collections import defaultdict
+    db = load_db()
+    have = defaultdict(set)
+    for c in db:
+        have[c["set"]].add(c["id"].upper())
+
+    sets = sorted(s for s in have if s != "P")
+    print("Comparing {} sets against Limitless (base English cards only)...".format(len(sets)))
+    added = updated = skipped = failed = grand_missing = 0
+
+    for s in sets:
+        base = fetch_limitless_set_base(s)
+        if base is None:
+            continue  # no Limitless set page (e.g. EB04) — already from optcgapi
+        missing = sorted(c for c in base if c not in have[s])
+        if not missing:
+            continue
+        grand_missing += len(missing)
+        print("\n{}: {} missing -> {}".format(s, len(missing), ", ".join(missing)))
+        for cid in missing:
+            card = fetch_promo_card(cid)
+            if not card:
+                print("  {} FAILED".format(cid))
+                failed += 1
+                continue
+            local_path = download_image(cid, LIMITLESS_CDN.format(card_id=cid))
+            if local_path:
+                card["image_url"] = local_path
+            a, u, sk = upsert_cards([card], db, force)
+            added += a; updated += u; skipped += sk
+            print("  {} OK  {}".format(cid, card["name"]))
+            time.sleep(DELAY)
+
+    save_db(db)
+    if grand_missing == 0:
+        print("\nAll sets already complete vs Limitless (base English cards).")
+    _summary(added, updated, skipped, failed, len(db))
+
+
 def cmd_fill_missing(force):
     """Fetch cards referenced by FAQ or meta decks but missing from the DB.
 
@@ -841,6 +909,7 @@ Examples:
     parser.add_argument("--list-sets",         action="store_true", help="Show all available sets")
     parser.add_argument("--check-sets",        action="store_true", help="Compare released sets vs. what's in the database (shows missing sets)")
     parser.add_argument("--fill-missing",      action="store_true", help="Fetch cards referenced by FAQ/decks but missing from the DB (via Limitless)")
+    parser.add_argument("--complete-sets",     action="store_true", help="Add base English cards on Limitless but missing from the DB (skips alt arts)")
     parser.add_argument("--redownload-images", action="store_true", help="Re-download images for all cards")
     args = parser.parse_args()
 
@@ -852,6 +921,8 @@ Examples:
         cmd_check_sets()
     elif args.fill_missing:
         cmd_fill_missing(args.force)
+    elif args.complete_sets:
+        cmd_complete_sets(args.force)
     elif args.update_all_sets:
         cmd_update_all_sets(args.force)
     elif args.redownload_images:

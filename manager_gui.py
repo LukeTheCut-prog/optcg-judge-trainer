@@ -257,6 +257,8 @@ class App(tk.Tk):
                    self.cmd_update_faq, width=34).pack(anchor="w", pady=2)
         styled_btn(p, "🩹  Recupera carte mancanti",
                    self.cmd_fill_missing, width=34).pack(anchor="w", pady=2)
+        styled_btn(p, "🧩  Completa set da Limitless",
+                   self.cmd_complete_sets, width=34).pack(anchor="w", pady=2)
         styled_btn(p, "📋  Mostra database (--show)",
                    self.cmd_show, width=34).pack(anchor="w", pady=2)
         styled_btn(p, "🖼  Re-scarica immagini mancanti",
@@ -440,6 +442,9 @@ class App(tk.Tk):
 
     def cmd_fill_missing(self):
         run_script(["scripts/add_cards.py", "--fill-missing"], self.output, self._after_run)
+
+    def cmd_complete_sets(self):
+        run_script(["scripts/add_cards.py", "--complete-sets"], self.output, self._after_run)
 
     def cmd_show(self):
         run_script(["scripts/add_cards.py", "--show"], self.output)
