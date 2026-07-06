@@ -62,10 +62,17 @@ export default function HomeScreen({ decks, cards, faq = {}, onStart }) {
     return ids
   }, [decks])
 
+  // "Q&A" = only cards that have at least one official FAQ entry.
+  const faqCardIds = useMemo(
+    () => new Set(Object.keys(faq).filter(k => faq[k]?.length > 0)),
+    [faq]
+  )
+
   function getPool() {
     let pool = cards
     if (filterFormat === 'Standard') pool = pool.filter(isStandard)
     if (filterFormat === 'Meta')     pool = pool.filter(c => metaCardIds.has(c.id))
+    if (filterFormat === 'Q&A')      pool = pool.filter(c => faqCardIds.has(c.id))
     if (filterColor !== 'All') pool = pool.filter(c => cardMatchesColor(c, filterColor))
     return pool
   }
@@ -149,7 +156,7 @@ export default function HomeScreen({ decks, cards, faq = {}, onStart }) {
           {/* Format filter */}
           <h2 className="home__section-label">Format</h2>
           <div className="home__format-filters">
-            {['All','Standard','Extended','Meta'].map(f => (
+            {['All','Standard','Extended','Meta','Q&A'].map(f => (
               <button
                 key={f}
                 className={`format-pill ${filterFormat === f ? 'format-pill--active' : ''}`}
@@ -160,6 +167,7 @@ export default function HomeScreen({ decks, cards, faq = {}, onStart }) {
                 {f === 'Extended' && <span className="format-pill__sub">All sets</span>}
                 {f === 'All' && <span className="format-pill__sub">No filter</span>}
                 {f === 'Meta' && <span className="format-pill__sub">From meta decks</span>}
+                {f === 'Q&A' && <span className="format-pill__sub">Has FAQ</span>}
               </button>
             ))}
           </div>
