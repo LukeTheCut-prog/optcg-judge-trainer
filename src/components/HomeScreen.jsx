@@ -243,7 +243,7 @@ export default function HomeScreen({ decks, cards, faq = {}, onStart }) {
       <footer className="home__footer">
         <p className="home__footer-credit">
           Made by <a
-            href="https://github.com/LukeTheCut-prog"
+            href="https://x.com/LukeTheCut"
             target="_blank"
             rel="noopener noreferrer"
             className="home__footer-link"
