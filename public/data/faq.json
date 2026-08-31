@@ -1,4 +1,298 @@
 {
+  "OP17-001": [
+    {
+      "q": "If I have 0 cards in my hand, can I give up to 1 of my Leader or Character cards +4000 power during this battle with this [On Your Opponent's Attack] effect?",
+      "a": "No, you cannot."
+    }
+  ],
+  "OP17-005": [
+    {
+      "q": "What does “your monocolored Leader” refer to?",
+      "a": "It refers to a Leader that has only 1 color and does not have 2 or more colors."
+    }
+  ],
+  "OP17-008": [
+    {
+      "q": "If the base power of my Leader [Edward.Newgate] has been changed to 7000 by another effect that states “set its base power to 7000,” and I activate this [On Play] effect, what will my Leader's base power be?",
+      "a": "In this case, its base power will be 8000 until the end of your opponent's next End Phase."
+    }
+  ],
+  "OP17-010": [
+    {
+      "q": "If my Leader has the effect “This Leader is treated as a card with all card names, types, and attributes.”, does this Character gain [Blocker] and +2000 power with this [Activate: Main] effect?",
+      "a": "No. In this case, this Character cannot gain [Blocker] and does not gain +2000 power."
+    }
+  ],
+  "OP17-015": [
+    {
+      "q": "If this Character and another one of my Characters, Character A, would be K.O.'d at the same time by an opponent's effect, can I use this Character's effect to K.O. this Character instead?",
+      "a": "Yes, you can. In this case, only this Character is K.O.'d, and Character A remains on the field."
+    },
+    {
+      "q": "If this Character would be returned to my hand or placed at the bottom of my deck by an opponent's effect, can I K.O. this Character instead?",
+      "a": "Yes, you can."
+    }
+  ],
+  "OP17-021": [
+    {
+      "q": "If this Character itself would leave the field, can I rest 1 of my cards instead?",
+      "a": "Yes, you can."
+    },
+    {
+      "q": "Can I rest this Character itself as the card to be rested instead with this effect?",
+      "a": "Yes, you can."
+    },
+    {
+      "q": "If 2 of my Characters with a type including \"Red-Haired Pirates\" would leave the field at the same time, do I have to rest 2 cards?",
+      "a": "No. In this case, rest 1 of your cards, and neither Character leaves the field."
+    }
+  ],
+  "OP17-023": [
+    {
+      "q": "If this Character itself would be K.O.'d, can I rest this Character instead?",
+      "a": "Yes, you can."
+    },
+    {
+      "q": "If 2 of my Characters with the {East Blue} or {Straw Hat Crew} type would be K.O.'d at the same time, can I rest this Character so that neither of them is K.O.'d?",
+      "a": "Yes, you can."
+    }
+  ],
+  "OP17-034": [
+    {
+      "q": "If my opponent's Leader has 5000 power or less, can my Leader with the {Red-Haired Pirates} type have its base power set to 6000 until the end of my opponent's next End Phase?",
+      "a": "No, you cannot."
+    }
+  ],
+  "OP17-040": [
+    {
+      "q": "During my opponent's turn, when my Leader with a type including \"Rocks Pirates\" is attacked, which do I activate first: this [Once Per Turn] effect or my [Blocker] or Counter?",
+      "a": "This “when attacked” effect activates at the same timing as your [On Your Opponent's Attack] effects, before activating your [Blocker] or Counter."
+    }
+  ],
+  "OP17-043": [
+    {
+      "q": "If my Leader's base power has been changed to 7000 by another card's effect that states something like “set your Leader's base power to 7000,” what happens when this [On Play] effect is activated?",
+      "a": "In this case, the effect that sets the base power to 7000 takes priority."
+    }
+  ],
+  "OP17-044": [
+    {
+      "q": "If I have this rested Character and a rested “P-067 Eustass\"Captain\"Kid” on my field, and my Leader has a type including \"Rocks Pirates\" or has the effect “This Leader is treated as a card with all card names, types, and attributes.”, can my opponent attack?",
+      "a": "In this case, your opponent can attack either your rested [Eustass\"Captain\"Kid] or your rested [Captain John]."
+    }
+  ],
+  "OP17-045": [
+    {
+      "q": "If I have 0 or 1 card in my hand, can I choose “you may trash 2 cards from your hand instead.”?",
+      "a": "No, you cannot."
+    }
+  ],
+  "OP17-047": [
+    {
+      "q": "With this [End of Your Turn] effect, which player chooses the card to be placed at the bottom of the deck?",
+      "a": "The opponent of the player who activated this [End of Your Turn] effect chooses 1 card from their own hand and places it at the bottom of their deck."
+    }
+  ],
+  "OP17-049": [
+    {
+      "q": "If my opponent chooses “• Draw 2 cards.” with this [On Play] effect, which player draws the cards?",
+      "a": "In this case, the player who activated this [On Play] effect draws 2 cards."
+    },
+    {
+      "q": "If my opponent has 1 or fewer cards in their hand when this [On Play] effect is activated, can they choose “• Your opponent trashes 2 cards from their hand.”?",
+      "a": "Yes, they can. In this case, if your opponent has 1 card in their hand, they trash that card. If they have 0 cards in their hand, nothing happens."
+    }
+  ],
+  "OP17-050": [
+    {
+      "q": "Of the 2 cards from the deck looked at with this [On Play] effect, can I place 1 card on top of the deck and 1 card at the bottom of the deck?",
+      "a": "No, you cannot."
+    }
+  ],
+  "OP17-053": [
+    {
+      "q": "With this [On K.O.] effect, which player chooses the cards to be placed at the bottom of the deck?",
+      "a": "The opponent of the player who activated this [On K.O.] effect chooses 2 cards from their own hand and places them at the bottom of their deck in any order."
+    }
+  ],
+  "OP17-058": [
+    {
+      "q": "An opponent's Character attacked, and I chose not to activate this Leader's [On Your Opponent's Attack] effect. If another opponent's Character attacks later during the same turn, can I activate this Leader's [On Your Opponent's Attack] effect?",
+      "a": "Yes, you can."
+    }
+  ],
+  "OP17-063": [
+    {
+      "q": "If “OP16-118 Portgas.D.Ace” is on my field, what happens to Character cards in my hand with 8000 power or more and no Counter?",
+      "a": "In this case, they are treated as having Counter +2000."
+    }
+  ],
+  "OP17-072": [
+    {
+      "q": "An opponent's Character attacked, and I chose not to activate this Character's [On Your Opponent's Attack] effect. If another opponent's Character attacks later during the same turn, can I activate this Character's [On Your Opponent's Attack] effect?",
+      "a": "Yes, you can."
+    }
+  ],
+  "OP17-079": [
+    {
+      "q": "If this Leader's effect is negated by another effect such as “negate its effects,” do my Characters with a cost of 12 or more lose [Blocker] while that effect is negated?",
+      "a": "Yes, they do."
+    },
+    {
+      "q": "If one of my Characters with a cost of 12 or more has gained [Blocker] from this Leader's effect, and that Character is affected by another effect such as “negate its effects,” can that Character activate [Blocker]?",
+      "a": "In this case, if the Character affected by the “negate its effects” effect still has a cost of 12 or more, it can activate [Blocker]. However, if an effect such as “This Character gains +12 cost.” is negated and its cost therefore becomes lower than 12, it loses [Blocker] while that effect is negated."
+    }
+  ],
+  "OP17-085": [
+    {
+      "q": "Does the effect “This Character gains +12 cost.” also give this card +12 cost while it is in my hand, trash, or deck?",
+      "a": "No. This effect only gives this Character +12 cost while this card is on the field."
+    }
+  ],
+  "OP17-089": [
+    {
+      "q": "Does the effect “This Character gains +12 cost.” also give this card +12 cost while it is in my hand, trash, or deck?",
+      "a": "No. This effect only gives this Character +12 cost while this card is on the field."
+    }
+  ],
+  "OP17-091": [
+    {
+      "q": "With this [On Play] effect, which player chooses the card to be trashed?",
+      "a": "The opponent of the player who activated this [On Play] effect chooses 1 card from their own hand and trashes it."
+    }
+  ],
+  "OP17-092": [
+    {
+      "q": "Does the effect “This Character gains +12 cost.” also give this card +12 cost while it is in my hand, trash, or deck?",
+      "a": "No. This effect only gives this Character +12 cost while this card is on the field."
+    }
+  ],
+  "OP17-095": [
+    {
+      "q": "If this Character itself would leave the field due to an opponent's effect, can I instead place 3 cards from my trash at the bottom of my deck in any order?",
+      "a": "Yes, you can."
+    },
+    {
+      "q": "If 2 of my Characters would leave the field at the same time due to an opponent's effect, do I have to place 6 cards from my trash at the bottom of my deck in any order?",
+      "a": "In this case, you can place 3 cards from your trash at the bottom of your deck in any order, and if you do, neither Character leaves the field."
+    }
+  ],
+  "OP17-097": [
+    {
+      "q": "After activating this [Main] effect, do opponent's Characters played later during that turn also get −1 cost from this effect?",
+      "a": "No, they do not."
+    }
+  ],
+  "OP17-099": [
+    {
+      "q": "After activating this [When Attacking] effect and trashing 1 card from my hand, if my opponent chooses “• Trash 1 card from your hand. Then, add up to 1 card from the top of your deck to the top of your Life cards.”, which player trashes a card from their hand?",
+      "a": "The player who activated this [When Attacking] effect trashes 1 additional card from their hand, then adds up to 1 card from the top of their deck to the top of their Life cards."
+    },
+    {
+      "q": "If I have 1 card in my hand and activate this [When Attacking] effect by trashing that card, then my opponent chooses “• Trash 1 card from your hand. Then, add up to 1 card from the top of your deck to the top of your Life cards.”, what happens?",
+      "a": "In this case, since you have no cards in your hand when resolving “• Trash 1 card from your hand. Then, add up to 1 card from the top of your deck to the top of your Life cards.”, you do not trash a card and add up to 1 card from the top of your deck to the top of your Life cards."
+    },
+    {
+      "q": "After activating this [When Attacking] effect and trashing 1 card from my hand, if my opponent chooses “• Trash 1 card from your opponent's hand.”, how is the card to be trashed chosen?",
+      "a": "In this case, the player who activated this [When Attacking] effect randomly chooses 1 card from their opponent's hand without looking at it, and the opponent trashes that card."
+    }
+  ],
+  "OP17-103": [
+    {
+      "q": "If this Character is played during my opponent's turn, can this [On Play] effect be activated?",
+      "a": "No, it cannot."
+    }
+  ],
+  "OP17-104": [
+    {
+      "q": "If this Character is played during my opponent's turn, can this [On Play] effect be activated?",
+      "a": "No, it cannot."
+    }
+  ],
+  "OP17-105": [
+    {
+      "q": "With this [On Play] effect, can I return to the hand an opponent's Character that does not have a [Trigger] effect itself, but has text in its effect such as “1 card with a [Trigger]...”?",
+      "a": "No, you cannot. This effect returns to the hand a Character that has an actual [Trigger] effect beginning with “[Trigger]” at the bottom of its card effect text."
+    }
+  ],
+  "OP17-106": [
+    {
+      "q": "With this [On Play] effect, which player chooses the card to be trashed?",
+      "a": "The opponent of the player who activated this [On Play] effect chooses 1 card from their own hand and trashes it."
+    },
+    {
+      "q": "If this Character is played during my opponent's turn, can this [On Play] effect be activated?",
+      "a": "No, it cannot."
+    }
+  ],
+  "OP17-110": [
+    {
+      "q": "Which Character gains [Rush] with this [On Play] effect?",
+      "a": "This [Charlotte Perospero] itself gains [Rush]."
+    }
+  ],
+  "OP17-112": [
+    {
+      "q": "With this [On Play] effect, which player chooses whether to apply “• Add up to 1 card from the top of your deck to the top of your Life cards.” or “• Add up to 1 card from the top of your opponent's Life cards to the owner's hand.”?",
+      "a": "The player who activated this [On Play] effect chooses."
+    },
+    {
+      "q": "Does a Character whose base power has become 8000 with this [Your Turn] effect also count as having 4000 base power?",
+      "a": "No, it does not."
+    }
+  ],
+  "OP17-114": [
+    {
+      "q": "If this Character is played during my opponent's turn, can this [On Play] effect be activated?",
+      "a": "No, it cannot."
+    }
+  ],
+  "OP17-117": [
+    {
+      "q": "When my opponent trashes cards with this [Trigger] effect, which player makes the choice?",
+      "a": "The opponent of the player who activated this [Trigger] chooses whether to trash 3 cards from their own hand or do nothing. If the opponent does not trash 3 cards from their hand as a result, the player who activated this [Trigger] KOs up to 1 of their opponent's Characters with a cost of 6 or less."
+    }
+  ],
+  "OP17-118": [
+    {
+      "q": "If I have 0 Characters, does this card have “Counter +2000”?",
+      "a": "No, it does not."
+    },
+    {
+      "q": "With this [On Play] effect, can I play only 1 card with a cost of 9 or less and the {Rocks Pirates} type from my hand?",
+      "a": "Yes, you can."
+    }
+  ],
+  "OP17-119": [
+    {
+      "q": "Can I K.O. 2 or more of my opponent's Characters with this [On Play] effect?",
+      "a": "Yes, you can. This effect allows you to choose any number of your opponent's Characters whose total cost is 4 or less and K.O. them."
+    },
+    {
+      "q": "Does the effect “This Character gains +12 cost.” also give this card +12 cost while it is in my hand, trash, or deck?",
+      "a": "No. This effect only gives this Character +12 cost while this card is on the field."
+    }
+  ],
+  "OP16-040": [
+    {
+      "q": "If my Leader has an effect that reads \"is treated as a card with all card names, types, and attributes,\" but I do not have a [Monkey.D.Luffy] or [Mr.3(Galdino)], can I still prevent up to 1 of my opponent's rested Characters with a cost of 6 or less from becoming active in my opponent's next Refresh Phase?",
+      "a": "Yes, you can."
+    },
+    {
+      "q": "If my opponent has [Mr.3(Galdino)] on his field, and I have [Monkey.D.Luffy] on mine, can I use this card's [Main] effect to ensure up to 1 of my opponent's rested Characters with a cost of 6 or less will not become active in my opponent's next Refresh Phase?",
+      "a": "No, you cannot."
+    }
+  ],
+  "OP16-048": [
+    {
+      "q": "If my Leader has the effect “This Leader is treated as a card with all card names, types, and attributes.”, can my Leader gain [Blocker] with this [Once Per Turn] effect?",
+      "a": "Yes, it can."
+    },
+    {
+      "q": "If I activate this [Once Per Turn] effect when my opponent attacks one of my [Prisoner of Impel Down] Characters and I give the attacked card [Blocker], can that [Prisoner of Impel Down] Character use [Blocker] against that attack?",
+      "a": "Yes, it can."
+    }
+  ],
   "OP16-001": [
     {
       "q": "Can I use this [Activate: Main] effect to give 1 of my \"Whitebeard Pirates\" Characters with 7000 power or less [Rush]?",
@@ -123,12 +417,6 @@
       "a": "Yes, you can."
     }
   ],
-  "OP16-040": [
-    {
-      "q": "If my opponent has [Mr.3(Galdino)] on his field, and I have [Monkey.D.Luffy] on mine, can I use this card's [Main] effect to ensure up to 1 of my opponent's rested Characters with a cost of 6 or less will not become active in my opponent's next Refresh Phase?",
-      "a": "No, you cannot."
-    }
-  ],
   "OP16-041": [
     {
       "q": "Imagine I have 1 DON!! attached to this Leader and 5 Characters on my field. Then, in order to play a new Character card, I trash one of my Characters with the {Impel Down} type to play it. Can I still use this card's effect to play 1 [Prisoner of Impel Down] card from my hand?",
@@ -145,12 +433,6 @@
     {
       "q": "Which player chooses what cards are placed at the bottom of the deck when this card's effect is activated?",
       "a": "The owner of the cards being placed at the bottom of their deck is the one who chooses them and places them at the bottom of their deck in the order they choose."
-    }
-  ],
-  "OP16-048": [
-    {
-      "q": "If I activate this [Once Per Turn] effect when my opponent attacks one of my [Prisoner of Impel Down] Characters and I give the attacked card [Blocker], can that [Prisoner of Impel Down] Character use [Blocker] against that attack?",
-      "a": "Yes, it can."
     }
   ],
   "OP16-050": [
@@ -201,10 +483,10 @@
       "a": "Yes, you do."
     }
   ],
-  "OP16-080": [
+  "OP16-079": [
     {
-      "q": "Imagine my Leader is this card, and my opponent's Leader is \"OP12-020 Roronoa Zoro\". My opponent uses their Leader to attack one of my Characters, and I use this [On Your Opponent's Attack] effect to change their target to my Leader. Can my opponent use the [Activate: Main] effect of their \"OP12-020 Roronoa Zoro\" to set \"OP12-020 Roronoa Zoro\" as active?",
-      "a": "No, they cannot."
+      "q": "If I play a {Land of Wano} type Character card from my trash, and it is then affected by another effect such as one which negates card effects, can this Character still attack during that turn?",
+      "a": "Yes, it can."
     }
   ],
   "OP16-081": [
@@ -237,10 +519,10 @@
       "a": "Yes, you can."
     }
   ],
-  "OP16-100": [
+  "OP16-098": [
     {
-      "q": "If my opponent's Character is K.O.'d by their own effect during my turn, can I set my Leader [Yamato] as active?",
-      "a": "Yes, you can."
+      "q": "When using this card's [Activate: Main] effect to play 1 black [Yamato] with a cost of 8, can I also choose to play a [Yamato] with a cost of 7 or less, or a cost of 9 or more?",
+      "a": "No, you cannot."
     }
   ],
   "OP16-101": [
@@ -273,11 +555,13 @@
       "a": "No, you cannot."
     }
   ],
-  "OP16-118": [
+  "OP16-116": [
     {
-      "q": "If this Character is on the field, and I have a Character in my hand with 8000 power and [Counter +1000], can I use the latter Character's counter as [Counter +1000] when my opponent attacks?",
-      "a": "No, you cannot. In this case, you will use it as [Counter +2000]."
-    },
+      "q": "If I have 10 DON!! cards on my field but my opponent has 0 Life cards, can I still use this [Main] effect to play up to 1 [Marshall.D.Teach] from my hand?",
+      "a": "Yes, you can."
+    }
+  ],
+  "OP16-118": [
     {
       "q": "If I have 2 or more of this Character on the field, does the counter of my Character cards with 8000 power in my hand become [Counter +4000]?",
       "a": "No, it doesn't. It remains [Counter +2000]."
@@ -287,6 +571,452 @@
     {
       "q": "Do I reveal the card I add to my Life cards using this card's [On Play] effect to my opponent?",
       "a": "No, you add it to your Life cards without revealing it to your opponent."
+    }
+  ],
+  "ST34-001": [
+    {
+      "q": "Imagine that I have two \"ST34-001 Charlotte Katakuri\" and 10 DON!! cards on my field during my turn. I return 1 DON!! card to my DON!! deck, and activate the effect of one of my \"ST34-001 Charlotte Katakuri\" to add 1 DON!! card from my DON!! deck and rest it. Can I then use another card's effect to return 1 of the DON!! cards on my field to my DON!! deck, activate the effect of the other \"ST34-001 Charlotte Katakuri\", and add 1 more DON!! card from my DON!! deck and",
+      "a": "No, you cannot."
+    }
+  ],
+  "ST34-002": [
+    {
+      "q": "rest it? Can still I use this [On Play] effect to add 1 DON!! card from my DON!! deck and rest it if my opponent has no Characters with a cost of 2 or less on their field?",
+      "a": "Yes, you can."
+    },
+    {
+      "q": "If I have no cards in my DON!! deck, can I still use this [On Play] effect to K.O. 1 of my opponent's Characters with a cost of 2 or less?",
+      "a": "Yes, you can."
+    }
+  ],
+  "ST34-004": [
+    {
+      "q": "If an opponent's Character selected by this [On Play] effect has its base power changed by another effect, such as an effect that sets its base power to 6000, what will that Character's base power be?",
+      "a": "In this case, among the effects applied to the same Character that change its base power, the effect that changes its base power to the highest value is applied. For example, if an effect that sets the Character's base power to 0 and an effect that sets its base power to 6000 are both applied to the same Character, its base power will be 6000."
+    },
+    {
+      "q": "Can I still play this card and activate its [On Play] effect if this card is the only card in my hand?",
+      "a": "No, you cannot. In this case, you will also be unable to DON!! −4, and will be unable to resolve the \"Add up to 1 card from the top of your deck to the top of your Life cards. Then, up to 1 of your opponent's Characters' base power becomes 0 during this turn.\" part of the effect."
+    }
+  ],
+  "ST36-001": [
+    {
+      "q": "If I have no cards in my hand, can I use this [On K.O.] effect to add 1 card from the top of my deck to the top of my Life cards without trashing 1 card from my hand?",
+      "a": "No, you cannot."
+    }
+  ],
+  "ST36-002": [
+    {
+      "q": "Can I activate this [On Play] effect during my opponent's turn?",
+      "a": "No, you cannot."
+    }
+  ],
+  "ST36-003": [
+    {
+      "q": "Can I still use this [Trigger] effect to draw 1 card even if my Leader doesn't have the {Supernovas} type?",
+      "a": "Yes, you can. In this case, you will be unable to change your Leader's base power to 7000 after drawing 1 card."
+    }
+  ],
+  "ST36-004": [
+    {
+      "q": "If I have no {Supernovas} type cards in my hand, can I still use this [On Play] effect to draw 2 cards?",
+      "a": "No, you cannot."
+    }
+  ],
+  "ST36-005": [
+    {
+      "q": "Can I still activate this [On Your Opponent's Attack] effect if both the top and bottom cards of my Life cards are already face-down?",
+      "a": "No, you cannot."
+    },
+    {
+      "q": "Can I still activate this [Activate: Main] effect if both the top and bottom cards of my Life cards are already face-up?",
+      "a": "No, you cannot."
+    }
+  ],
+  "ST35-003": [
+    {
+      "q": "Which player chooses what cards are trashed when this card's [When Attacking] effect is activated?",
+      "a": "The opponent of the player who used this [When Attacking] effect will choose 1 card to trash from their hand."
+    },
+    {
+      "q": "If my opponent has 6 or less cards in their hand, can I still use this card's [When Attacking] effect to trash 2 cards from the top of my deck?",
+      "a": "Yes, you can. In this case, since your opponent does not have 7 or more cards in their hand, your opponent will not trash any cards from their hand."
+    }
+  ],
+  "ST33-001": [
+    {
+      "q": "I play this card and activate its [On Play] effect when I only have this card in my hand. Can I draw 1 card without trashing 1 card from my hand?",
+      "a": "No, you cannot."
+    }
+  ],
+  "ST33-002": [
+    {
+      "q": "If I have no cards in my hand, can I use this [When Attacking] effect to make my opponent trash 1 card from their hand without trashing 1 from mine?",
+      "a": "No, you cannot."
+    },
+    {
+      "q": "If my opponent has 5 or less cards in their hand, can I still use this card's [When Attacking] effect to trash 1 card from my hand?",
+      "a": "Yes, you can. In this case, since your opponent does not have 6 or more cards in their hand, your opponent will not trash any cards from their hand."
+    }
+  ],
+  "ST33-003": [
+    {
+      "q": "I play this card and activate its [On Play] effect when I only have this card in my hand. Can I place up to 2 of my opponent's Characters with a cost of 2 or less at the bottom of the owner's deck without trashing 1 card from my hand?",
+      "a": "No, you cannot."
+    }
+  ],
+  "ST33-004": [
+    {
+      "q": "If a card in my hand is trashed by my opponent's effect, will this card in my hand be given −3 cost during that turn?",
+      "a": "Yes, it will be given −3 cost."
+    }
+  ],
+  "ST32-003": [
+    {
+      "q": "Can I use this [On Play] effect to play a Character card with a cost of 6 or more?",
+      "a": "No, you cannot. This effect allows you to either play up to 1 [Perona] with a cost of 5 or less from your hand, or up to 1 Character card with a cost of 5 or less and the <Slash> attribute from your hand."
+    }
+  ],
+  "ST32-005": [
+    {
+      "q": "Can I use this Character to attack Characters during my first turn?",
+      "a": "No, you cannot."
+    }
+  ],
+  "ST31-002": [
+    {
+      "q": "Can I use this [On Play] effect to play \"ST31-005 Thousand Sunny\"?",
+      "a": "Yes, you can."
+    }
+  ],
+  "ST31-003": [
+    {
+      "q": "Does the condition \"if you have a total of 3 or more given DON!! cards\" count both the DON!! cards given to this Character and the DON!! cards given to my other Characters and Leader?",
+      "a": "Yes, it counts both the DON!! cards given to this Character and the ones given to your other Characters and Leader."
+    },
+    {
+      "q": "My opponent declared an attack when I had a total of 3 or more given DON!! cards. They then used their [When Attacking] effect to remove another of my Characters with given DON!! cards from the field, causing my total number of given DON!! cards to drop to 2 or less. Can I still activate this Character's [Blocker] to block that attack?",
+      "a": "No, you cannot."
+    }
+  ],
+  "ST31-004": [
+    {
+      "q": "Does the condition \"if you have a total of 3 or more given DON!! cards\" count both the DON!! cards given to this Character and the DON!! cards given to my other Characters and Leader?",
+      "a": "Yes, it counts both the DON!! cards given to this Character and the ones given to your other Characters and Leader."
+    }
+  ],
+  "OP14-001": [
+    {
+      "q": "Can I use this [Activate: Main] effect to swap the base power of my character with that of an opponent's Character, or to swap the base powers of two of my opponent's Characters?",
+      "a": "No, you cannot."
+    },
+    {
+      "q": "If one of the Characters I've selected with this [Activate: Main] effect would be removed from the field, does the power of the Character that remains on the field revert to its original value?",
+      "a": "No. That Character's power does not revert to its original value and maintains the swapped value until the end of that turn."
+    },
+    {
+      "q": "After using the [Once Per Turn] effect of my \"PRB02- 002 Trafalgar Law\", I then use this [Activate: Main] effect to swap the power of \"PRB02-002 Trafalgar Law\" with that of \"OP14-013 Monkey.D.Luffy\". In this situation, what would the power of \"PRB02-002 Trafalgar Law\" become?",
+      "a": "The base power of \"PRB02-002 Trafalgar Law\" would become 0, and since the effect from \"PRB02-002 Trafalgar Law\" is giving −2000 power , the card's power would be −2000."
+    }
+  ],
+  "OP14-002": [
+    {
+      "q": "When I activate this [When Attacking] effect, if this Character's power is 4000 or less, can I K.O. up to 1 of my opponent's Characters with 3000 base power or less?",
+      "a": "No, you cannot."
+    }
+  ],
+  "OP14-003": [
+    {
+      "q": "\"OP13-084 St. Shepherd Ju Peter\" is on the field, and I played \"OP13-091 St. Marcus Mars\" when I have 10 or more cards in my trash. Since the base power of \"St. Marcus Mars\" becomes 7000, can I use its [On Play] effect to K.O. this card?",
+      "a": "Yes, you can."
+    }
+  ],
+  "OP14-009": [
+    {
+      "q": "Can I select my Leader and 1 of my opponent's Characters with this [On Your Opponent's Attack] effect?",
+      "a": "No, you cannot."
+    }
+  ],
+  "OP14-020": [
+    {
+      "q": "During a turn in which I use this [Activate: Main] effect to set 3 of my DON!! cards as active, can I play Character cards using other effects?",
+      "a": "No, you cannot."
+    },
+    {
+      "q": "When this card's [Activate: Main] effect says \"You may rest 1 of your cards\", what kind of cards can I rest to activate this effect?",
+      "a": "You can activate this effect by resting 1 of your active Leader, Character, Stage, or DON!! cards."
+    },
+    {
+      "q": "If neither I nor my opponent has a Character with a cost of 5 or more on the field, can I still activate this [Activate: Main] effect to rest 1 of my cards?",
+      "a": "Yes, you can. In this case, you will not set any of your DON!! cards as active after resting 1 of your cards, and the \"Then, you cannot play Character cards during this turn.\" part of the effect will not be applied."
+    }
+  ],
+  "OP14-021": [
+    {
+      "q": "Does the \"When this Character becomes rested\" effect activate when this Character attacks?",
+      "a": "Yes, it does. When this character attacks, the activation timing is fulfilled at the same time as other effects such as [When Attacking]."
+    }
+  ],
+  "OP14-024": [
+    {
+      "q": "When this card's [On K.O.] effect says \"Rest up to 1 of your opponent's cards\", what kind of cards can I rest with this effect?",
+      "a": "This effect allows you to rest 1 Leader, Character, Stage, or DON!! card on your opponent's field that is active."
+    }
+  ],
+  "OP14-027": [
+    {
+      "q": "Does the \"When this Character becomes rested\" effect activate when this Character attacks?",
+      "a": "Yes, it does."
+    }
+  ],
+  "OP14-028": [
+    {
+      "q": "Does the \"When this Character becomes rested\" effect activate when this Character attacks?",
+      "a": "Yes, it does."
+    }
+  ],
+  "OP14-029": [
+    {
+      "q": "Can I use these [Opponent's Turn] or [Activate: Main] effects to rest this \"Tashigi\" card itself?",
+      "a": "Yes, you can."
+    }
+  ],
+  "OP14-031": [
+    {
+      "q": "When 5 or more of my DON!! cards are rested, can I use this card's [On Play] effect to set 4 or less of my rested DON!! cards as active?",
+      "a": "Yes, you can. At the end of the turn you activated this Character's [On Play] effect, you may select up to 5 of your rested DON!! cards and set them as active."
+    }
+  ],
+  "OP14-032": [
+    {
+      "q": "Does the \"When this Character becomes rested\" effect activate when this Character attacks?",
+      "a": "Yes, it does."
+    }
+  ],
+  "OP14-033": [
+    {
+      "q": "When this active Character is K.O.'d, can I rest this Character to activate this [On K.O.] effect?",
+      "a": "No, you cannot. This [On K.O.] effect can only be activated by resting any other card on your field."
+    }
+  ],
+  "OP14-034": [
+    {
+      "q": "Can I use this [Once Per Turn] effect to rest the Character that is about to be K.O.'d itself?",
+      "a": "Yes, you can."
+    }
+  ],
+  "OP14-035": [
+    {
+      "q": "Does the \"When this Character becomes rested\" effect activate when this Character attacks?",
+      "a": "Yes, it does."
+    }
+  ],
+  "OP14-041": [
+    {
+      "q": "When I play a Character during my opponent's turn, can I choose not to draw a card with this [Opponent's Turn] effect?",
+      "a": "No, you cannot. You must draw 1 card in this case."
+    },
+    {
+      "q": "If an effect allows me to play 2 or more of my Characters at the same time during my opponent's turn, how many cards will I be able to draw using this Leader's [Opponent's Turn] effect?",
+      "a": "In this case, the effect will be activated for each Character played simultaneously. For example, if you use the [Trigger] effect of \"OP16-105 Gecko Moria\" to play 3 Characters at once, you draw 3 cards in total."
+    }
+  ],
+  "OP14-044": [
+    {
+      "q": "If I use this [On Play] effect to reveal 1 card from the top of my deck, and the revealed card's type includes \"Whitebeard Pirates\", what happens to that revealed card?",
+      "a": "In this case you would draw 2 cards from the top of your deck, including the revealed card, and then you would trash 1 card from your hand."
+    }
+  ],
+  "OP14-045": [
+    {
+      "q": "If a card is trashed from my hand by an opponent's [Trigger] effect like \"OP09-111 Brook\", does this Character gain [Rush]?",
+      "a": "Yes, it does."
+    }
+  ],
+  "OP14-048": [
+    {
+      "q": "Do I still have to trash all cards from my hand even if I do not return an opponent's Character to their hand with this [On Play] effect?",
+      "a": "Yes, you must trash all cards from your hand."
+    },
+    {
+      "q": "If this Character was the only card in my hand when I played it, and I have 0 cards in my hand after playing it, can I still use this [On Play] effect to return an opponent's Character to the owner's hand?",
+      "a": "Yes, you can."
+    }
+  ],
+  "OP14-049": [
+    {
+      "q": "If a card is trashed from my hand by an opponent's [Trigger] effect like \"OP09-111 Brook\", does this Character gain [Rush]?",
+      "a": "Yes, it does."
+    }
+  ],
+  "OP14-054": [
+    {
+      "q": "Do I still have to trash cards from my hand with this [End of Your Turn] effect when I have 5 or less cards in my hand?",
+      "a": "No, you do not. You must trash cards until you have 5 cards in your hand only if you have 6 or more cards in your hand."
+    }
+  ],
+  "OP14-056": [
+    {
+      "q": "\"When a card is trashed from your hand by an effect, this Character's effect is negated during this turn.\" Are other effects this Character gained from other cards are also negated by this effect?",
+      "a": "No, those effects are not negated."
+    }
+  ],
+  "OP14-057": [
+    {
+      "q": "After activating this [Main] effect, if I play any {Fish- Men} or {Merfolk} type Characters during this turn, do those Characters gain +1000 power?",
+      "a": "No, they do not."
+    }
+  ],
+  "OP14-059": [
+    {
+      "q": "If I have 3 cards in my hand including this card when I activate this [Main] effect, can I draw 2 cards?",
+      "a": "Yes, you can."
+    }
+  ],
+  "OP14-060": [
+    {
+      "q": "Can I choose one of my opponent's Characters with this [On Your Opponent's Attack] effect?",
+      "a": "No, you cannot."
+    }
+  ],
+  "OP14-069": [
+    {
+      "q": "If my Leader does not have the {Donquixote Pirates} type and I returned 3 of my DON!! cards from my field to my DON!! deck using this card's [On Play] effect, can I still activate the \"Up to 3 of your opponent's Characters with a cost of 7 or less cannot be rested until the end of your opponent's next End Phase.\" effect?",
+      "a": "Yes, you can."
+    }
+  ],
+  "OP14-078": [
+    {
+      "q": "If my Leader does not have the {Donquixote Pirates} type, can I use the part of this [Counter] effect that says \"Then, that card gains +2000 power during this turn.\"?",
+      "a": "No, you cannot."
+    }
+  ],
+  "OP14-079": [
+    {
+      "q": "Which player's effects is the \"your effects\" in \"All of your opponent's Characters cannot be removed from the field by your effects.\" referring to?",
+      "a": "This refers to the effects of whichever player is using this Crocodile card as their Leader. For example, if this card is your Leader and you activate \"EB01-051 Finger Gun\", you may use the \"trash 2 cards from the top of your deck\" effect, but even if you select \"1 of your opponent's Characters with a cost of 5 or less\", that Character belonging to your opponent will not be K.O.'d."
+    },
+    {
+      "q": "If I use this [Activate: Main] effect to K.O. one of my Characters, can I activate that Character's [On K.O.] effect if it has one?",
+      "a": "Yes, you can. In this case, the \"Give up to 1 of your opponent's Characters −10 cost during this turn. Then, you may trash 2 cards from the top of your deck.\" effect would activate first, and then that Character's [On K.O.] effect would activate."
+    }
+  ],
+  "OP14-080": [
+    {
+      "q": "If I use this [Activate: Main] effect to K.O. one of my Characters, can I activate that Character's [On K.O.] effect if it has one?",
+      "a": "Yes, you can. In this case, the \"Your Leader and all of your Characters gain +1000 power during this turn.\" effect would activate first, and then that Character's [On K.O.] effect would activate."
+    },
+    {
+      "q": "If I play a Character during the turn after activating this [Activate: Main] effect, does that Character gain +1000 power?",
+      "a": "No, it does not."
+    }
+  ],
+  "OP14-082": [
+    {
+      "q": "If I play a {Thriller Bark Pirates} type Character after activating this [On K.O.] effect, does that Character gain +4 cost until the end of my opponent's next End Phase?",
+      "a": "No, it does not."
+    }
+  ],
+  "OP14-089": [
+    {
+      "q": "Can I use this card's [Trigger] effect to play this card itself from my trash?",
+      "a": "No, you cannot. Cards are not considered to be in the trash while their [Trigger] effects are being resolved."
+    }
+  ],
+  "OP14-096": [
+    {
+      "q": "If I have 9 cards in my trash when I activate this [Counter] effect, can I still use the \"up to 1 of your Leader or Character cards gains +4000 power during this battle.\" effect?",
+      "a": "Yes, you can."
+    }
+  ],
+  "OP14-098": [
+    {
+      "q": "If I play a Character with a type including \"Baroque Works\" after activating this [Main] effect, does that Character gain +3 cost until the end of my opponent's next End Phase?",
+      "a": "No, it does not."
+    }
+  ],
+  "OP14-100": [
+    {
+      "q": "Can I use this card's [Trigger] effect to play this card itself from my trash?",
+      "a": "No, you cannot. Cards are not considered to be in the trash while their [Trigger] effects are being resolved."
+    }
+  ],
+  "OP14-102": [
+    {
+      "q": "Can I use this card's [Trigger] effect to play this card itself from my trash?",
+      "a": "No, you cannot. Cards are not considered to be in the trash while their [Trigger] effects are being resolved."
+    }
+  ],
+  "OP14-109": [
+    {
+      "q": "Can I use this card's [Trigger] effect to play this card itself from my trash?",
+      "a": "No, you cannot. Cards are not considered to be in the trash while their [Trigger] effects are being resolved."
+    }
+  ],
+  "OP14-111": [
+    {
+      "q": "Can I use this card's [Trigger] effect to play this card itself from my trash?",
+      "a": "No, you cannot. Cards are not considered to be in the trash while their [Trigger] effects are being resolved."
+    }
+  ],
+  "OP14-112": [
+    {
+      "q": "If my Leader does not have the {Seven Warlords of the Sea} type, can I use the \"Then, add up to 1 card from the top of your opponent's Life cards to the owner's hand.\" part of this [On Play] effect?",
+      "a": "No, you cannot."
+    }
+  ],
+  "OP14-115": [
+    {
+      "q": "If I don't use this [Opponent's Turn] effect to add a card from the top of my deck to my Life cards, do I still take 1 damage?",
+      "a": "Yes, you do."
+    }
+  ],
+  "OP14-119": [
+    {
+      "q": "Does the \"When this Character becomes rested\" effect activate when this Character attacks?",
+      "a": "Yes, it does."
+    }
+  ],
+  "OP14-120": [
+    {
+      "q": "If my opponent only has a Character with a cost of 10 or more, can I use this [On Play] effect to draw 1 card?",
+      "a": "Yes, you can."
+    }
+  ],
+  "EB04-011": [
+    {
+      "q": "If this card is the only {Neptunian} type Character you have, what happens to its [On Play] effect?",
+      "a": "In this case, you will draw 1 card, then trash 1 card from your hand."
+    }
+  ],
+  "EB04-015": [
+    {
+      "q": "When this Character is K.O.'d, can I use its [On K.O.] effect to rest itself?",
+      "a": "No, you cannot."
+    }
+  ],
+  "EB04-016": [
+    {
+      "q": "After using this card's [Activate: Main] effect, can I use the [End of Your Turn] effect of \"OP07-021 Urouge\" to set 1 of my DON!! cards as active at the end of my turn?",
+      "a": "No, you cannot."
+    }
+  ],
+  "EB04-018": [
+    {
+      "q": "If this card is played in a rested state due to an effect, can I still K.O. 1 of my opponent's characters with its [On Play] effect?",
+      "a": "No, you cannot."
+    }
+  ],
+  "EB04-022": [
+    {
+      "q": "If my opponent has 5 or less cards in their hand, can I still use this card's [On Play] effect to trash 2 cards from my hand?",
+      "a": "Yes, you can. In this situation, your opponent does not place 2 cards from their hand at the bottom of their deck in any order."
+    }
+  ],
+  "EB04-040": [
+    {
+      "q": "If none of my Kaido cards are on the field, can I still use this card's [Main] effect to rest 6 of my DON!! cards and 1 of my opponent's Characters?",
+      "a": "Yes, you can."
     }
   ],
   "ST30-001": [
@@ -1615,312 +2345,6 @@
     {
       "q": "If a character with [Unblockable] attacks a character, can OP14-060 Donquixote Doflamingo's [On Your Opponent's Attack] effect be used to change the target of the attack to your Leader Donquixote Doflamingo?",
       "a": "Yes, it can. Changing the attack's target with an effect is different from using [Blocker] to block."
-    }
-  ],
-  "OP14-001": [
-    {
-      "q": "Can I use this [Activate: Main] effect to swap the base power of my character with that of an opponent's Character, or to swap the base powers of two of my opponent's Characters?",
-      "a": "No, you cannot."
-    },
-    {
-      "q": "If one of the Characters I've selected with this [Activate: Main] effect would be removed from the field, does the power of the Character that remains on the field revert to its original value?",
-      "a": "No. That Character's power does not revert to its original value and maintains the swapped value until the end of that turn."
-    },
-    {
-      "q": "After using the [Once Per Turn] effect of my \"PRB02- 002 Trafalgar Law\", I then use this [Activate: Main] effect to swap the power of \"PRB02-002 Trafalgar Law\" with that of \"OP14-013 Monkey.D.Luffy\". In this situation, what would the power of \"PRB02-002 Trafalgar Law\" become?",
-      "a": "The base power of \"PRB02-002 Trafalgar Law\" would become 0, and since the effect from \"PRB02-002 Trafalgar Law\" is giving −2000 power , the card's power would be −2000."
-    }
-  ],
-  "OP14-002": [
-    {
-      "q": "When I activate this [When Attacking] effect, if this Character's power is 4000 or less, can I K.O. up to 1 of my opponent's Characters with 3000 base power or less?",
-      "a": "No, you cannot."
-    }
-  ],
-  "OP14-003": [
-    {
-      "q": "\"OP13-084 St. Shepherd Ju Peter\" is on the field, and I played \"OP13-091 St. Marcus Mars\" when I have 10 or more cards in my trash. Since the base power of \"St. Marcus Mars\" becomes 7000, can I use its [On Play] effect to K.O. this card?",
-      "a": "Yes, you can."
-    }
-  ],
-  "OP14-009": [
-    {
-      "q": "Can I select my Leader and 1 of my opponent's Characters with this [On Your Opponent's Attack] effect?",
-      "a": "No, you cannot."
-    }
-  ],
-  "OP14-020": [
-    {
-      "q": "During a turn in which I use this [Activate: Main] effect to set 3 of my DON!! cards as active, can I play Character cards using other effects?",
-      "a": "No, you cannot."
-    },
-    {
-      "q": "When this card's [Activate: Main] effect says \"You may rest 1 of your cards\", what kind of cards can I rest to activate this effect?",
-      "a": "You can activate this effect by resting 1 of your active Leader, Character, Stage, or DON!! cards."
-    }
-  ],
-  "OP14-021": [
-    {
-      "q": "Does the \"When this Character becomes rested\" effect activate when this Character attacks?",
-      "a": "Yes, it does. When this character attacks, the activation timing is fulfilled at the same time as other effects such as [When Attacking]."
-    }
-  ],
-  "OP14-024": [
-    {
-      "q": "When this card's [On K.O.] effect says \"Rest up to 1 of your opponent's cards\", what kind of cards can I rest with this effect?",
-      "a": "This effect allows you to rest 1 Leader, Character, Stage, or DON!! card on your opponent's field that is active."
-    }
-  ],
-  "OP14-027": [
-    {
-      "q": "Does the \"When this Character becomes rested\" effect activate when this Character attacks?",
-      "a": "Yes, it does."
-    }
-  ],
-  "OP14-028": [
-    {
-      "q": "Does the \"When this Character becomes rested\" effect activate when this Character attacks?",
-      "a": "Yes, it does."
-    }
-  ],
-  "OP14-029": [
-    {
-      "q": "Can I use these [Opponent's Turn] or [Activate: Main] effects to rest this \"Tashigi\" card itself?",
-      "a": "Yes, you can."
-    }
-  ],
-  "OP14-031": [
-    {
-      "q": "When 5 or more of my DON!! cards are rested, can I use this card's [On Play] effect to set 4 or less of my rested DON!! cards as active?",
-      "a": "Yes, you can. At the end of the turn you activated this Character's [On Play] effect, you may select up to 5 of your rested DON!! cards and set them as active."
-    }
-  ],
-  "OP14-032": [
-    {
-      "q": "Does the \"When this Character becomes rested\" effect activate when this Character attacks?",
-      "a": "Yes, it does."
-    }
-  ],
-  "OP14-033": [
-    {
-      "q": "When this active Character is K.O.'d, can I rest this Character to activate this [On K.O.] effect?",
-      "a": "No, you cannot. This [On K.O.] effect can only be activated by resting any other card on your field."
-    }
-  ],
-  "OP14-034": [
-    {
-      "q": "Can I use this [Once Per Turn] effect to rest the Character that is about to be K.O.'d itself?",
-      "a": "Yes, you can."
-    }
-  ],
-  "OP14-035": [
-    {
-      "q": "Does the \"When this Character becomes rested\" effect activate when this Character attacks?",
-      "a": "Yes, it does."
-    }
-  ],
-  "OP14-041": [
-    {
-      "q": "When I play a Character during my opponent's turn, can I choose not to draw a card with this [Opponent's Turn] effect?",
-      "a": "No, you cannot. You must draw 1 card in this case."
-    }
-  ],
-  "OP14-044": [
-    {
-      "q": "If I use this [On Play] effect to reveal 1 card from the top of my deck, and the revealed card's type includes \"Whitebeard Pirates\", what happens to that revealed card?",
-      "a": "In this case you would draw 2 cards from the top of your deck, including the revealed card, and then you would trash 1 card from your hand."
-    }
-  ],
-  "OP14-045": [
-    {
-      "q": "If a card is trashed from my hand by an opponent's [Trigger] effect like \"OP09-111 Brook\", does this Character gain [Rush]?",
-      "a": "Yes, it does."
-    }
-  ],
-  "OP14-048": [
-    {
-      "q": "Do I still have to trash all cards from my hand even if I do not return an opponent's Character to their hand with this [On Play] effect?",
-      "a": "Yes, you must trash all cards from your hand."
-    },
-    {
-      "q": "If this Character was the only card in my hand when I played it, and I have 0 cards in my hand after playing it, can I still use this [On Play] effect to return an opponent's Character to the owner's hand?",
-      "a": "Yes, you can."
-    }
-  ],
-  "OP14-049": [
-    {
-      "q": "If a card is trashed from my hand by an opponent's [Trigger] effect like \"OP09-111 Brook\", does this Character gain [Rush]?",
-      "a": "Yes, it does."
-    }
-  ],
-  "OP14-054": [
-    {
-      "q": "Do I still have to trash cards from my hand with this [End of Your Turn] effect when I have 5 or less cards in my hand?",
-      "a": "No, you do not. You must trash cards until you have 5 cards in your hand only if you have 6 or more cards in your hand."
-    }
-  ],
-  "OP14-056": [
-    {
-      "q": "\"When a card is trashed from your hand by an effect, this Character's effect is negated during this turn.\" Are other effects this Character gained from other cards are also negated by this effect?",
-      "a": "No, those effects are not negated."
-    }
-  ],
-  "OP14-057": [
-    {
-      "q": "After activating this [Main] effect, if I play any {Fish- Men} or {Merfolk} type Characters during this turn, do those Characters gain +1000 power?",
-      "a": "No, they do not."
-    }
-  ],
-  "OP14-059": [
-    {
-      "q": "If I have 3 cards in my hand including this card when I activate this [Main] effect, can I draw 2 cards?",
-      "a": "Yes, you can."
-    }
-  ],
-  "OP14-060": [
-    {
-      "q": "Can I choose one of my opponent's Characters with this [On Your Opponent's Attack] effect?",
-      "a": "No, you cannot."
-    }
-  ],
-  "OP14-069": [
-    {
-      "q": "If my Leader does not have the {Donquixote Pirates} type and I returned 3 of my DON!! cards from my field to my DON!! deck using this card's [On Play] effect, can I still activate the \"Up to 3 of your opponent's Characters with a cost of 7 or less cannot be rested until the end of your opponent's next End Phase.\" effect?",
-      "a": "Yes, you can."
-    }
-  ],
-  "OP14-078": [
-    {
-      "q": "If my Leader does not have the {Donquixote Pirates} type, can I use the part of this [Counter] effect that says \"Then, that card gains +2000 power during this turn.\"?",
-      "a": "No, you cannot."
-    }
-  ],
-  "OP14-079": [
-    {
-      "q": "Which player's effects is the \"your effects\" in \"All of your opponent's Characters cannot be removed from the field by your effects.\" referring to?",
-      "a": "This refers to the effects of whichever player is using this Crocodile card as their Leader. For example, if this card is your Leader and you activate \"EB01-051 Finger Gun\", you may use the \"trash 2 cards from the top of your deck\" effect, but even if you select \"1 of your opponent's Characters with a cost of 5 or less\", that Character belonging to your opponent will not be K.O.'d."
-    },
-    {
-      "q": "If I use this [Activate: Main] effect to K.O. one of my Characters, can I activate that Character's [On K.O.] effect if it has one?",
-      "a": "Yes, you can. In this case, the \"Give up to 1 of your opponent's Characters −10 cost during this turn. Then, you may trash 2 cards from the top of your deck.\" effect would activate first, and then that Character's [On K.O.] effect would activate."
-    }
-  ],
-  "OP14-080": [
-    {
-      "q": "If I use this [Activate: Main] effect to K.O. one of my Characters, can I activate that Character's [On K.O.] effect if it has one?",
-      "a": "Yes, you can. In this case, the \"Your Leader and all of your Characters gain +1000 power during this turn.\" effect would activate first, and then that Character's [On K.O.] effect would activate."
-    },
-    {
-      "q": "If I play a Character during the turn after activating this [Activate: Main] effect, does that Character gain +1000 power?",
-      "a": "No, it does not."
-    }
-  ],
-  "OP14-082": [
-    {
-      "q": "If I play a {Thriller Bark Pirates} type Character after activating this [On K.O.] effect, does that Character gain +4 cost until the end of my opponent's next End Phase?",
-      "a": "No, it does not."
-    }
-  ],
-  "OP14-089": [
-    {
-      "q": "Can I use this card's [Trigger] effect to play this card itself from my trash?",
-      "a": "No, you cannot. Cards are not considered to be in the trash while their [Trigger] effects are being resolved."
-    }
-  ],
-  "OP14-096": [
-    {
-      "q": "If I have 9 cards in my trash when I activate this [Counter] effect, can I still use the \"up to 1 of your Leader or Character cards gains +4000 power during this battle.\" effect?",
-      "a": "Yes, you can."
-    }
-  ],
-  "OP14-098": [
-    {
-      "q": "If I play a Character with a type including \"Baroque Works\" after activating this [Main] effect, does that Character gain +3 cost until the end of my opponent's next End Phase?",
-      "a": "No, it does not."
-    }
-  ],
-  "OP14-100": [
-    {
-      "q": "Can I use this card's [Trigger] effect to play this card itself from my trash?",
-      "a": "No, you cannot. Cards are not considered to be in the trash while their [Trigger] effects are being resolved."
-    }
-  ],
-  "OP14-102": [
-    {
-      "q": "Can I use this card's [Trigger] effect to play this card itself from my trash?",
-      "a": "No, you cannot. Cards are not considered to be in the trash while their [Trigger] effects are being resolved."
-    }
-  ],
-  "OP14-109": [
-    {
-      "q": "Can I use this card's [Trigger] effect to play this card itself from my trash?",
-      "a": "No, you cannot. Cards are not considered to be in the trash while their [Trigger] effects are being resolved."
-    }
-  ],
-  "OP14-111": [
-    {
-      "q": "Can I use this card's [Trigger] effect to play this card itself from my trash?",
-      "a": "No, you cannot. Cards are not considered to be in the trash while their [Trigger] effects are being resolved."
-    }
-  ],
-  "OP14-112": [
-    {
-      "q": "If my Leader does not have the {Seven Warlords of the Sea} type, can I use the \"Then, add up to 1 card from the top of your opponent's Life cards to the owner's hand.\" part of this [On Play] effect?",
-      "a": "No, you cannot."
-    }
-  ],
-  "OP14-115": [
-    {
-      "q": "If I don't use this [Opponent's Turn] effect to add a card from the top of my deck to my Life cards, do I still take 1 damage?",
-      "a": "Yes, you do."
-    }
-  ],
-  "OP14-119": [
-    {
-      "q": "Does the \"When this Character becomes rested\" effect activate when this Character attacks?",
-      "a": "Yes, it does."
-    }
-  ],
-  "OP14-120": [
-    {
-      "q": "If my opponent only has a Character with a cost of 10 or more, can I use this [On Play] effect to draw 1 card?",
-      "a": "Yes, you can."
-    }
-  ],
-  "EB04-011": [
-    {
-      "q": "If this card is the only {Neptunian} type Character you have, what happens to its [On Play] effect?",
-      "a": "In this case, you will draw 1 card, then trash 1 card from your hand."
-    }
-  ],
-  "EB04-015": [
-    {
-      "q": "When this Character is K.O.'d, can I use its [On K.O.] effect to rest itself?",
-      "a": "No, you cannot."
-    }
-  ],
-  "EB04-016": [
-    {
-      "q": "After using this card's [Activate: Main] effect, can I use the [End of Your Turn] effect of \"OP07-021 Urouge\" to set 1 of my DON!! cards as active at the end of my turn?",
-      "a": "No, you cannot."
-    }
-  ],
-  "EB04-018": [
-    {
-      "q": "If this card is played in a rested state due to an effect, can I still K.O. 1 of my opponent's characters with its [On Play] effect?",
-      "a": "No, you cannot."
-    }
-  ],
-  "EB04-022": [
-    {
-      "q": "If my opponent has 5 or less cards in their hand, can I still use this card's [On Play] effect to trash 2 cards from my hand?",
-      "a": "Yes, you can. In this situation, your opponent does not place 2 cards from their hand at the bottom of their deck in any order."
-    }
-  ],
-  "EB04-034": [
-    {
-      "q": "If I activate this card's [On Your Opponent's Attack] effect while I have 3 cards in my trash, then use it to discard 1 more card so I have 4 cards in my trash, can I give up to 1 of my Leader or Character cards +2000 power for this battle?",
-      "a": "Yes, you can."
     }
   ],
   "PRB02-001": [
