@@ -1,19 +1,22 @@
 import { useState, useMemo } from 'react'
 import './HomeScreen.css'
 
-// Standard format: OP05+ (Block 1 = OP01-OP04 rotated out April 2026)
-// ST sets: ST01-ST12 are Block 1 (out), ST13+ are Standard
-// EB01 = Block 1 (out), EB02+ = Standard
-const STANDARD_SETS = [
-  'OP05','OP06','OP07','OP08','OP09','OP10','OP11','OP12','OP13','OP14','OP15',
-  'EB02','EB03','EB04',
-  'ST13','ST14','ST15','ST16','ST17','ST18','ST19','ST20',
-  'ST21','ST22','ST23','ST24','ST25','ST26','ST27','ST28',
-  'PRB01','PRB02',
-]
+// Standard format = everything except Block 1 (rotated out April 2026):
+// OP01-OP04, ST01-ST12, EB01. Listing what's OUT rather than what's IN means
+// every new set (OP17, ST37, EB06...) counts as Standard the moment it lands in
+// cards.json, with no code change needed.
+const ROTATED_OUT_SETS = new Set([
+  'OP01','OP02','OP03','OP04',
+  'ST01','ST02','ST03','ST04','ST05','ST06',
+  'ST07','ST08','ST09','ST10','ST11','ST12',
+  'EB01',
+  // Promos stay out, as they were before: a 'P' reprint of a rotated card
+  // would otherwise sneak back into the Standard pool.
+  'P',
+])
 
 function isStandard(card) {
-  return STANDARD_SETS.includes(card.set)
+  return !ROTATED_OUT_SETS.has(card.set)
 }
 
 const COLORS = ['Red','Green','Blue','Purple','Yellow','Black']
@@ -24,7 +27,7 @@ function cardMatchesColor(card, color) {
   return card.color.split('/').map(c => c.trim()).includes(color)
 }
 
-export default function HomeScreen({ decks, cards, faq = {}, onStart }) {
+export default function HomeScreen({ decks, cards, cardMap = {}, faq = {}, onStart }) {
   const [mode, setMode]               = useState(null)
   const [selectedDeck, setSelectedDeck] = useState(null)
   const [filterColor, setFilterColor] = useState('All')
@@ -212,19 +215,38 @@ export default function HomeScreen({ decks, cards, faq = {}, onStart }) {
             <p className="home__count">No meta decks available yet.</p>
           ) : (
             <div className="home__deck-list">
-              {decks.map(deck => (
-                <button
-                  key={deck.id}
-                  className={`deck-item ${selectedDeck?.id === deck.id ? 'deck-item--active' : ''}`}
-                  onClick={() => setSelectedDeck(deck)}
-                >
-                  <span className="deck-item__name">{deck.name}</span>
-                  <span className="deck-item__meta">{deck.cards.length} cards · {deck.set}</span>
-                  {deck.description && (
-                    <span className="deck-item__desc">{deck.description}</span>
-                  )}
-                </button>
-              ))}
+              {decks.map(deck => {
+                // Leader thumbnail: the archetype is easier to recognise by art
+                // than by name, and every deck's leader is a card we already have.
+                const leader = cardMap[deck.leader]
+                return (
+                  <button
+                    key={deck.id}
+                    className={`deck-item ${selectedDeck?.id === deck.id ? 'deck-item--active' : ''}`}
+                    onClick={() => setSelectedDeck(deck)}
+                  >
+                    {leader?.image_url && (
+                      <img
+                        className="deck-item__leader"
+                        src={leader.image_url}
+                        alt={leader.name}
+                        loading="lazy"
+                      />
+                    )}
+                    <span className="deck-item__info">
+                      <span className="deck-item__name">{deck.name}</span>
+                      {/* +1 for the leader, which the session includes but
+                          deck.cards doesn't store */}
+                      <span className="deck-item__meta">
+                        {deck.cards.length + (deck.leader ? 1 : 0)} cards · {deck.set}
+                      </span>
+                      {deck.description && (
+                        <span className="deck-item__desc">{deck.description}</span>
+                      )}
+                    </span>
+                  </button>
+                )
+              })}
             </div>
           )}
         </section>

@@ -270,8 +270,9 @@
 }
 .deck-item {
   display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
   padding: 0.9rem 1rem;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -283,6 +284,21 @@
 }
 .deck-item:hover { border-color: var(--gold-dim); background: var(--raised); }
 .deck-item--active { border-color: var(--gold); background: var(--raised); box-shadow: var(--shadow-gold); }
+.deck-item__leader {
+  flex: 0 0 auto;
+  width: 50px;
+  aspect-ratio: 600 / 838;   /* the card scans' native ratio: no crop */
+  object-fit: cover;
+  border-radius: var(--radius-sm, 4px);
+  border: 1px solid var(--border);
+  background: var(--raised);
+}
+.deck-item__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
 .deck-item__name { font-size: 1rem; font-weight: 600; }
 .deck-item__meta { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.05em; }
 .deck-item__desc { font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.1rem; }

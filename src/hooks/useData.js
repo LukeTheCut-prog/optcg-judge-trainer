@@ -32,7 +32,8 @@ export function useData() {
         // Fix image URLs for GitHub Pages subdirectory hosting
         const fixedCards = cardsData.map(c => ({
           ...c,
-          image_url: fixImageUrl(c.image_url)
+          image_url: fixImageUrl(c.image_url),
+          alt_images: (c.alt_images || []).map(fixImageUrl),
         }))
         setCards(fixedCards)
         setDecks(decksData)

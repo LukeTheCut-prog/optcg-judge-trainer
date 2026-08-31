@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { getColorVar, formatPower, formatCost, formatCounter } from '../utils/helpers.js'
+import { getColorVar, formatPower, formatCost, formatCounter, randomArt } from '../utils/helpers.js'
 import './FlashCard.css'
 
 function FaqItem({ entry, index }) {
@@ -27,6 +27,10 @@ function FaqItem({ entry, index }) {
 export default function FlashCard({ card, faqEntries = [], lookup = false, onNext, onHome, current, total }) {
   const [revealed, setRevealed] = useState(lookup)
   const [imgError, setImgError]  = useState(false)
+  // Rolled once per mount. App re-mounts FlashCard for every card (key=index),
+  // so each card in the session gets its own independent roll, and restarting
+  // a session rolls again.
+  const [art] = useState(() => randomArt(card))
 
   const colorVar = getColorVar(card.color)
 
@@ -71,7 +75,7 @@ export default function FlashCard({ card, faqEntries = [], lookup = false, onNex
           <div className="fc-card-container">
             {/* Full card underneath — visible when revealed */}
             <img
-              src={card.image_url}
+              src={art}
               alt={card.name}
               className="fc-image"
               onError={() => setImgError(true)}

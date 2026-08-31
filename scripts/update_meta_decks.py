@@ -419,7 +419,8 @@ def merge_limitless_pools(decks):
 
 
 # ── Main command ──────────────────────────────────────────────────────────────
-def cmd_update(format_id, min_share, replace_format, source="egman"):
+def cmd_update(format_id, min_share, replace_format, source="egman",
+               only_format=False):
     # Store the canonical short form (OP16) for the stored deck records.
     format_id = format_id.strip().upper().replace("-", "")
     print("Fetching meta decks for format {} from {}...".format(format_id, source))
@@ -443,6 +444,15 @@ def cmd_update(format_id, min_share, replace_format, source="egman"):
     print("Built {} decks (share >= {}%).".format(len(decks), min_share))
 
     all_decks = load_decks()
+    if only_format:
+        # Keep decks.json to the current format only: once a new set is legal the
+        # previous format's decks are dead weight in the app's deck picker.
+        others = [d for d in all_decks if d.get("format") != format_id]
+        if others:
+            gone = sorted(set(str(d.get("format")) for d in others))
+            print("Dropped {} deck(s) from other format(s): {}".format(
+                len(others), ", ".join(gone)))
+        all_decks = [d for d in all_decks if d.get("format") == format_id]
     if replace_format:
         before = len(all_decks)
         all_decks = [d for d in all_decks if d.get("format") != format_id]
@@ -508,6 +518,9 @@ Examples:
   Replace (full refresh, removes dropped cards):
     python scripts/update_meta_decks.py --format OP15 --replace
 
+  Keep only the current format (drops OP16 decks when OP17 is out):
+    python scripts/update_meta_decks.py --format OP17 --replace --only-format
+
   Update ALL formats already in decks.json (full refresh):
     python scripts/update_meta_decks.py --update-all
 
@@ -527,6 +540,8 @@ Examples:
                              "(current meta only), or both (egman + union Limitless cards for matching leaders)")
     parser.add_argument("--min-share",    type=float, default=0.0, help="Minimum meta share %% to include (default: 0)")
     parser.add_argument("--replace",      action="store_true", help="Replace existing decks for this format")
+    parser.add_argument("--only-format",  action="store_true",
+                        help="Keep ONLY this format in decks.json (deletes every other format's decks)")
     parser.add_argument("--update-all",   action="store_true", help="Re-fetch and replace ALL formats in decks.json")
     parser.add_argument("--list-formats", action="store_true", help="List available formats")
     args = parser.parse_args()
@@ -534,9 +549,13 @@ Examples:
     if args.list_formats:
         cmd_list_formats()
     elif args.update_all:
+        if args.only_format:
+            parser.error("--only-format cannot be combined with --update-all "
+                         "(--update-all refreshes every format already stored)")
         cmd_update_all(args.min_share, args.source)
     else:
-        cmd_update(args.format, args.min_share, args.replace, args.source)
+        cmd_update(args.format, args.min_share, args.replace, args.source,
+                   only_format=args.only_format)
 
 
 if __name__ == "__main__":

@@ -130,6 +130,114 @@ def download_image(card_id, remote_url=None):
     return None
 
 
+# ── Alternate arts ─────────────────────────────────────────────────────────────
+# Bandai serves parallel/alternate printings under the same card ID with a _pN
+# suffix (OP01-001_p1.png, _p2.png, ...). There's no index listing them, so the
+# only way to find them is to walk N upwards until one 404s.
+MAX_ALT_ARTS = 12
+
+
+def download_alt_arts(card_id, known=0):
+    """Probe for alt arts starting after the `known` ones already downloaded.
+
+    Returns the list of newly saved local paths (in order)."""
+    IMAGES_DIR.mkdir(parents=True, exist_ok=True)
+    found = []
+    n = known + 1
+    while n <= MAX_ALT_ARTS:
+        alt_id = "{}_p{}".format(card_id, n)
+        dest   = IMAGES_DIR / "{}.png".format(alt_id)
+        if dest.exists():
+            found.append("/images/cards/{}.png".format(alt_id))
+            n += 1
+            continue
+        try:
+            r = requests.get(BANDAI_IMAGE_URL.format(card_id=alt_id),
+                             headers=BANDAI_HEADERS, timeout=15,
+                             verify=False, stream=True)
+        except requests.RequestException:
+            break
+        time.sleep(DELAY)
+        if r.status_code != 200 or "image" not in r.headers.get("Content-Type", ""):
+            break  # first gap ends the run
+        with open(dest, "wb") as f:
+            for chunk in r.iter_content(8192):
+                f.write(chunk)
+        found.append("/images/cards/{}.png".format(alt_id))
+        n += 1
+    return found
+
+
+def _meta_card_ids():
+    """Every card ID referenced by decks.json, leaders included."""
+    ids = set()
+    if DECKS_FILE.exists():
+        for d in json.loads(DECKS_FILE.read_text(encoding="utf-8")):
+            if d.get("leader"):
+                ids.add(d["leader"])
+            ids.update(d.get("cards") or [])
+    return ids
+
+
+def _save_alt_arts(scoped):
+    """Merge alt_images from a scoped card list back into the full database."""
+    by_id = {c["id"]: c.get("alt_images") for c in scoped}
+    full  = load_db()
+    for card in full:
+        alts = by_id.get(card["id"])
+        if alts:
+            card["alt_images"] = alts
+    save_db(full)
+
+
+def cmd_alt_arts(set_filter=None, meta_only=False):
+    """Fill in `alt_images` for every card so the app can shuffle printings.
+
+    Resumable: a card that already has N alt arts is only probed for N+1, so
+    re-running after a new set only costs one request per card."""
+    db = load_db()
+    if not db:
+        print("Database is empty.")
+        return
+
+    # Scoping matters: the card images are already ~800MB and GitHub Pages caps
+    # a published site at 1GB, so pulling every alt art in the game would push
+    # the site over. --meta-only / --set keep the download affordable.
+    if set_filter:
+        want = set_filter.strip().upper()
+        db = [c for c in db if str(c.get("set", "")).upper() == want]
+        print("Scope: set {} ({} cards)".format(want, len(db)))
+    elif meta_only:
+        ids = _meta_card_ids()
+        db = [c for c in db if c["id"] in ids]
+        print("Scope: cards used in decks.json ({} cards)".format(len(db)))
+    if not db:
+        print("Nothing in scope. Nothing changed.")
+        return
+
+    total_new = with_alts = 0
+    print("Probing {} cards for alternate arts (this takes a while)...".format(len(db)))
+    for i, card in enumerate(db, 1):
+        cid   = card["id"]
+        known = list(card.get("alt_images") or [])
+        alts  = known + download_alt_arts(cid, known=len(known))
+        if alts:
+            card["alt_images"] = alts
+            with_alts += 1
+        fresh = len(alts) - len(known)
+        if fresh:
+            total_new += fresh
+            print("  [{}/{}] {}: +{} alt art(s)".format(i, len(db), cid, fresh),
+                  flush=True)
+        if i % 200 == 0:
+            _save_alt_arts(db)  # checkpoint: a long run shouldn't lose everything
+            print("  ...checkpoint saved at {}/{}".format(i, len(db)), flush=True)
+
+    _save_alt_arts(db)
+    print("\nAlt arts: {} new image(s); {} of {} cards in scope now have at least one."
+          .format(total_new, with_alts, len(db)))
+
+
 # ── API helpers ────────────────────────────────────────────────────────────────
 def _get(url):
     try:
@@ -911,6 +1019,8 @@ Examples:
     parser.add_argument("--fill-missing",      action="store_true", help="Fetch cards referenced by FAQ/decks but missing from the DB (via Limitless)")
     parser.add_argument("--complete-sets",     action="store_true", help="Add base English cards on Limitless but missing from the DB (skips alt arts)")
     parser.add_argument("--redownload-images", action="store_true", help="Re-download images for all cards")
+    parser.add_argument("--alt-arts",          action="store_true", help="Download alternate/parallel arts (_pN) so the app can shuffle printings")
+    parser.add_argument("--meta-only",         action="store_true", help="With --alt-arts: only cards used in decks.json (keeps the site under the 1GB Pages limit)")
     args = parser.parse_args()
 
     if args.show:
@@ -925,6 +1035,8 @@ Examples:
         cmd_complete_sets(args.force)
     elif args.update_all_sets:
         cmd_update_all_sets(args.force)
+    elif args.alt_arts:
+        cmd_alt_arts(set_filter=args.set, meta_only=args.meta_only)
     elif args.redownload_images:
         cmd_redownload_images()
     elif args.promos:

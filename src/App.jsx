@@ -24,8 +24,11 @@ export default function App() {
     if (mode === 'random') {
       cardList = shuffle(pool)
     } else if (mode === 'deck') {
+      // The leader is part of the deck you're studying, so it belongs in the
+      // pool too. It isn't in deck.cards (stored separately), hence the concat.
+      const ids = deck.leader ? [deck.leader, ...deck.cards] : deck.cards
       cardList = shuffle(
-        deck.cards
+        [...new Set(ids)]
           .map(id => cardMap[id])
           .filter(Boolean)
       )
@@ -66,7 +69,7 @@ export default function App() {
     if (cards.length === 0) {
       return <EmptyDatabase />
     }
-    return <HomeScreen decks={decks} cards={cards} faq={faq} onStart={handleStart} />
+    return <HomeScreen decks={decks} cards={cards} cardMap={cardMap} faq={faq} onStart={handleStart} />
   }
 
   if (screen === 'session') {

@@ -234,6 +234,12 @@ class App(tk.Tk):
                        bg=BG, fg=TEXT_DIM, selectcolor=RAISED,
                        activebackground=BG, font=FONT).pack(anchor="w")
 
+        self.deck_only_var = tk.BooleanVar(value=False)
+        tk.Checkbutton(p, text="Solo questo formato (cancella gli altri)",
+                       variable=self.deck_only_var,
+                       bg=BG, fg=RED, selectcolor=RAISED,
+                       activebackground=BG, font=FONT).pack(anchor="w")
+
         styled_btn(p, "🗂  Aggiorna meta deck",
                    self.cmd_update_decks, width=34).pack(anchor="w", pady=(8, 2))
         styled_btn(p, "🔄  Aggiorna TUTTI i formati",
@@ -263,6 +269,13 @@ class App(tk.Tk):
                    self.cmd_show, width=34).pack(anchor="w", pady=2)
         styled_btn(p, "🖼  Re-scarica immagini mancanti",
                    self.cmd_redownload, width=34).pack(anchor="w", pady=2)
+        styled_btn(p, "🎨  Art alternative (carte meta)",
+                   self.cmd_alt_arts, width=34).pack(anchor="w", pady=2)
+        tk.Label(p, text="Art parallele (_p1, _p2...) delle carte nei meta deck."
+                         " Scaricarle per TUTTE le carte supererebbe il limite"
+                         " di 1GB di GitHub Pages.",
+                 bg=BG, fg=TEXT_DIM, font=FONT, justify="left",
+                 wraplength=300).pack(anchor="w", pady=(0, 4))
         styled_btn(p, "🔃  Aggiorna stats",
                    self._refresh_stats, color=TEXT_DIM, width=34).pack(anchor="w", pady=(2, 16))
 
@@ -400,6 +413,18 @@ class App(tk.Tk):
                   "--min-share", share, "--source", source]
         if self.deck_replace_var.get():
             args.append("--replace")
+        if self.deck_only_var.get():
+            # Destructive across formats, so confirm before wiping the others.
+            n_other = sum(1 for d in (json.loads(DECKS_FILE.read_text())
+                                      if DECKS_FILE.exists() else [])
+                          if d.get("format") != fmt)
+            msg = ("Tenere SOLO il formato {}?\n\n"
+                   "{} deck di altri formati verranno cancellati da decks.json.\n"
+                   "(Nulla viene toccato se il download di {} non trova deck.)"
+                   ).format(fmt, n_other, fmt)
+            if not messagebox.askyesno("Conferma", msg):
+                return
+            args.append("--only-format")
         run_script(args, self.output, self._after_run)
 
     def cmd_update_all_decks(self):
@@ -448,6 +473,10 @@ class App(tk.Tk):
 
     def cmd_show(self):
         run_script(["scripts/add_cards.py", "--show"], self.output)
+
+    def cmd_alt_arts(self):
+        run_script(["scripts/add_cards.py", "--alt-arts", "--meta-only"],
+                   self.output, self._after_run)
 
     def cmd_redownload(self):
         run_script(["scripts/add_cards.py", "--redownload-images"], self.output, self._after_run)

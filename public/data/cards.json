@@ -192,7 +192,14 @@
     "attribute": "On-Air Pirates Supernovas",
     "effect": "[On Play] Rest up to 1 of your opponent's Characters with a cost of 2 or less.",
     "image_url": "/images/cards/EB01-015.png",
-    "set": "EB01"
+    "set": "EB01",
+    "alt_images": [
+      "/images/cards/EB01-015_p1.png",
+      "/images/cards/EB01-015_p2.png",
+      "/images/cards/EB01-015_p3.png",
+      "/images/cards/EB01-015_p4.png",
+      "/images/cards/EB01-015_p5.png"
+    ]
   },
   {
     "id": "EB01-016",
@@ -725,7 +732,11 @@
     "attribute": "Big Mom Pirates",
     "effect": "[On Play] You may add 1 card from the top or bottom of your Life cards to your hand: Draw 1 card.",
     "image_url": "/images/cards/EB01-056.png",
-    "set": "EB01"
+    "set": "EB01",
+    "alt_images": [
+      "/images/cards/EB01-056_p1.png",
+      "/images/cards/EB01-056_p2.png"
+    ]
   },
   {
     "id": "EB01-057",
@@ -790,7 +801,10 @@
     "attribute": "Former Baroque Works",
     "effect": "[On Play] Add up to 1 DON!! card from your DON!! deck and set it as active.[When Attacking] Select up to 1 of your opponent's Characters. This Character's base power becomes the same as the selected Character's power during this turn.",
     "image_url": "/images/cards/EB01-061.png",
-    "set": "EB01"
+    "set": "EB01",
+    "alt_images": [
+      "/images/cards/EB01-061_p1.png"
+    ]
   },
   {
     "id": "EB02-001",
@@ -868,7 +882,11 @@
     "attribute": "Land of Wano",
     "effect": "[Activate: Main] [Once Per Turn] If your Leader has the \"Land of Wano\" type or is [Portgas.D.Ace], give up to 1 rested DON!! card to 1 of your Leader. Then, this Character gains [Rush] during this turn.",
     "image_url": "/images/cards/EB02-006.png",
-    "set": "EB02"
+    "set": "EB02",
+    "alt_images": [
+      "/images/cards/EB02-006_p1.png",
+      "/images/cards/EB02-006_p2.png"
+    ]
   },
   {
     "id": "EB02-007",
@@ -1011,7 +1029,10 @@
     "attribute": "Straw Hat Crew East Blue",
     "effect": "[On Play] Look at 5 cards from the top of your deck; reveal up to 1 \"Straw Hat Crew\" type card other than [Nami] and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
     "image_url": "/images/cards/EB02-017.png",
-    "set": "EB02"
+    "set": "EB02",
+    "alt_images": [
+      "/images/cards/EB02-017_p1.png"
+    ]
   },
   {
     "id": "EB02-018",
@@ -1466,7 +1487,11 @@
     "attribute": "Sky Island",
     "effect": "If your Leader has the \"Sky Island\" type, this Character gains [Rush].[When Attacking] You may trash 1 card from your hand: If you have 1 or less Life cards, add up to 1 card from the top of your deck to the top of your Life cards. Then, this Character gains +1000 power during this turn.",
     "image_url": "/images/cards/EB02-052.png",
-    "set": "EB02"
+    "set": "EB02",
+    "alt_images": [
+      "/images/cards/EB02-052_p1.png",
+      "/images/cards/EB02-052_p2.png"
+    ]
   },
   {
     "id": "EB02-053",
@@ -2298,7 +2323,11 @@
     "attribute": "Straw Hat Crew",
     "effect": "[On Play] You may trash 1 card from the top of your Life cards: If your Leader has the {Straw Hat Crew} type, add up to 2 cards from the top of your deck to the top of your Life cards.\n[Opponent's Turn] [On K.O.] You may deal 1 damage to your opponent.",
     "image_url": "/images/cards/EB03-055.png",
-    "set": "EB03"
+    "set": "EB03",
+    "alt_images": [
+      "/images/cards/EB03-055_p1.png",
+      "/images/cards/EB03-055_p2.png"
+    ]
   },
   {
     "id": "EB03-056",
@@ -2415,7 +2444,10 @@
     "attribute": "Bonney Pirates Egghead",
     "effect": "[On Play] Look at 4 cards from the top of your deck; reveal up to 1 {Egghead} or {Straw Hat Crew} type card other than [Jewelry Bonney] and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
     "image_url": "/images/cards/EB04-002.png",
-    "set": "EB04"
+    "set": "EB04",
+    "alt_images": [
+      "/images/cards/EB04-002_p1.png"
+    ]
   },
   {
     "id": "EB04-003",
@@ -2480,7 +2512,11 @@
     "attribute": "Straw Hat Crew Egghead",
     "effect": "[On Play] Your Leader gains +2000 power until the end of your opponent's next End Phase.[Activate: Main] [Once Per Turn] If your opponent has a Character with 8000 power or more, this Character gains [Rush: Character] during this turn.",
     "image_url": "/images/cards/EB04-007.png",
-    "set": "EB04"
+    "set": "EB04",
+    "alt_images": [
+      "/images/cards/EB04-007_p1.png",
+      "/images/cards/EB04-007_p2.png"
+    ]
   },
   {
     "id": "EB04-008",
@@ -2792,7 +2828,10 @@
     "attribute": "Animal Kingdom Pirates Lunarian",
     "effect": "If this Character would be K.O.'d, you may return 1 DON!! card from your field to your DON!! deck instead.\n[Activate: Main] [Once Per Turn] If your Leader has the {Animal Kingdom Pirates} type and you have no other [King] Characters, add up to 1 DON!! card from your, DON!! deck and set it as active, and add up to 1 additional DON!! card and rest it.",
     "image_url": "/images/cards/EB04-031.png",
-    "set": "EB04"
+    "set": "EB04",
+    "alt_images": [
+      "/images/cards/EB04-031_p1.png"
+    ]
   },
   {
     "id": "EB04-032",
@@ -3143,7 +3182,10 @@
     "attribute": "Navy Egghead",
     "effect": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)\n[On Play] If you have 2 or less Life cards, add up to 1 card from the top of your deck to the top of your Life cards.",
     "image_url": "/images/cards/EB04-058.png",
-    "set": "EB04"
+    "set": "EB04",
+    "alt_images": [
+      "/images/cards/EB04-058_p1.png"
+    ]
   },
   {
     "id": "EB04-059",
@@ -3182,7 +3224,11 @@
     "attribute": "Straw Hat Crew The Four Emperors Egghead",
     "effect": "If you have 1 or less Life cards, give this card in your hand -1 cost.\n[On Play] You may trash 1 card from your hand: Your Leader gains +2000 power until the end of your opponent's next End Phase. Then, this Character gains [Blocker] until the end of your opponent's next End Phase.",
     "image_url": "/images/cards/EB04-061.png",
-    "set": "EB04"
+    "set": "EB04",
+    "alt_images": [
+      "/images/cards/EB04-061_p1.png",
+      "/images/cards/EB04-061_p2.png"
+    ]
   },
   {
     "id": "OP01-001",
@@ -3390,7 +3436,14 @@
     "attribute": "Straw Hat Crew",
     "effect": "[On Play] Look at 5 cards from the top of your deck; reveal up to 1 [Straw Hat Crew] type card other than [Nami] and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
     "image_url": "/images/cards/OP01-016.png",
-    "set": "OP01"
+    "set": "OP01",
+    "alt_images": [
+      "/images/cards/OP01-016_p1.png",
+      "/images/cards/OP01-016_p2.png",
+      "/images/cards/OP01-016_p3.png",
+      "/images/cards/OP01-016_p4.png",
+      "/images/cards/OP01-016_p5.png"
+    ]
   },
   {
     "id": "OP01-017",
@@ -3897,7 +3950,10 @@
     "attribute": "Land of Wano Kouzuki Clan",
     "effect": "[Main] You may rest 2 of your Characters: Draw 2 cards.",
     "image_url": "/images/cards/OP01-055.png",
-    "set": "OP01"
+    "set": "OP01",
+    "alt_images": [
+      "/images/cards/OP01-055_p1.png"
+    ]
   },
   {
     "id": "OP01-056",
@@ -8135,7 +8191,10 @@
     "attribute": "Alabasta Straw Hat Crew",
     "effect": "[Counter] You may trash 1 card from your hand: Up to 1 of your Leader or Character cards gains +3000 power during this battle. [Trigger] Give up to 1 of your opponent's Leader or Character cards -3000 power during this turn.",
     "image_url": "/images/cards/OP04-016.png",
-    "set": "OP04"
+    "set": "OP04",
+    "alt_images": [
+      "/images/cards/OP04-016_p1.png"
+    ]
   },
   {
     "id": "OP04-017",
@@ -10475,7 +10534,10 @@
     "attribute": "Heart Pirates",
     "effect": "[Main] DON!! -1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Give up to 1 of your opponent's Characters -5000 power during this turn. [Trigger] Add up to 1 DON!! card from your DON!! deck and set it as active.",
     "image_url": "/images/cards/OP05-077.png",
-    "set": "OP05"
+    "set": "OP05",
+    "alt_images": [
+      "/images/cards/OP05-077_p1.png"
+    ]
   },
   {
     "id": "OP05-078",
@@ -10527,7 +10589,13 @@
     "attribute": "Dressrosa",
     "effect": "[Activate:Main] You may trash this Character: Give up to 1 of your opponent's Characters -3 cost during this turn.",
     "image_url": "/images/cards/OP05-081.png",
-    "set": "OP05"
+    "set": "OP05",
+    "alt_images": [
+      "/images/cards/OP05-081_p1.png",
+      "/images/cards/OP05-081_p2.png",
+      "/images/cards/OP05-081_p3.png",
+      "/images/cards/OP05-081_p4.png"
+    ]
   },
   {
     "id": "OP05-082",
@@ -10748,7 +10816,11 @@
     "attribute": "Sky Island",
     "effect": "[Opponent's Turn][Once Per Turn] When your number of Life cards becomes 0, add 1 card from the top of your deck to the top of your Life cards. Then, trash 1 card from your hand.",
     "image_url": "/images/cards/OP05-098.png",
-    "set": "OP05"
+    "set": "OP05",
+    "alt_images": [
+      "/images/cards/OP05-098_p1.png",
+      "/images/cards/OP05-098_p2.png"
+    ]
   },
   {
     "id": "OP05-099",
@@ -11476,7 +11548,12 @@
     "attribute": "Fish-Man New Fish-Man Pirates",
     "effect": "[Rush] (This card can attack on the turn in which it is played.)\n[On Play] Rest up to a total of 2 of your opponent's Characters or DON!! cards. Then, add 1 card from the top of your Life cards to your hand.",
     "image_url": "/images/cards/OP06-035.png",
-    "set": "OP06"
+    "set": "OP06",
+    "alt_images": [
+      "/images/cards/OP06-035_p1.png",
+      "/images/cards/OP06-035_p2.png",
+      "/images/cards/OP06-035_p3.png"
+    ]
   },
   {
     "id": "OP06-036",
@@ -11515,7 +11592,12 @@
     "attribute": "Straw Hat Crew Dressrosa",
     "effect": "[Counter] Up to 1 of your Leader or Character cards gains +2000 power during this battle. Then, if you have 8 or more rested cards, that card gains an additional +2000 power during this battle.\n[Trigger] K.O. up to 1 of your opponent's rested Characters with a cost of 3 or less.",
     "image_url": "/images/cards/OP06-038.png",
-    "set": "OP06"
+    "set": "OP06",
+    "alt_images": [
+      "/images/cards/OP06-038_p1.png",
+      "/images/cards/OP06-038_p2.png",
+      "/images/cards/OP06-038_p3.png"
+    ]
   },
   {
     "id": "OP06-039",
@@ -12009,7 +12091,11 @@
     "attribute": "Kid Pirates Supernovas SMILE",
     "effect": "[Your Turn][Once Per Turn] When a DON!! card on your field is returned to your DON!! deck, K.O. up to 1 of your opponent's Characters with a cost of 2 or less.",
     "image_url": "/images/cards/OP06-076.png",
-    "set": "OP06"
+    "set": "OP06",
+    "alt_images": [
+      "/images/cards/OP06-076_p1.png",
+      "/images/cards/OP06-076_p2.png"
+    ]
   },
   {
     "id": "OP06-077",
@@ -12191,7 +12277,10 @@
     "attribute": "Thriller Bark Pirates",
     "effect": "[On Play] You may return 2 cards from your trash to the bottom of your deck in any order: Add up to 1 \"Thriller Bark Pirates\" type card other than [Dr. Hogback] from your trash to your hand.",
     "image_url": "/images/cards/OP06-090.png",
-    "set": "OP06"
+    "set": "OP06",
+    "alt_images": [
+      "/images/cards/OP06-090_p1.png"
+    ]
   },
   {
     "id": "OP06-091",
@@ -12204,7 +12293,12 @@
     "attribute": "Thriller Bark Pirates",
     "effect": "[On Play] If your Leader has the [Thriller Bark Pirates] type, trash 5 cards from the top of your deck.",
     "image_url": "/images/cards/OP06-091.png",
-    "set": "OP06"
+    "set": "OP06",
+    "alt_images": [
+      "/images/cards/OP06-091_p1.png",
+      "/images/cards/OP06-091_p2.png",
+      "/images/cards/OP06-091_p3.png"
+    ]
   },
   {
     "id": "OP06-092",
@@ -12516,7 +12610,10 @@
     "attribute": "Sky Island",
     "effect": "[Counter] You may trash 1 card from your hand: Up to 1 of your Leader or Character cards gains +3000 power during this battle.\n[Trigger] If you have 0 Life cards, you may add up to 1 card from the top of your deck to the top of your Life cards. Then, trash 1 card from your hand.",
     "image_url": "/images/cards/OP06-115.png",
-    "set": "OP06"
+    "set": "OP06",
+    "alt_images": [
+      "/images/cards/OP06-115_p1.png"
+    ]
   },
   {
     "id": "OP06-116",
@@ -12568,7 +12665,12 @@
     "attribute": "Straw Hat Crew",
     "effect": "[On Play] Reveal 1 card from the top of your deck and play up to 1 Character with a cost of 9 or less other than [Sanji]. Then, place the rest at the bottom of your deck.",
     "image_url": "/images/cards/OP06-119.png",
-    "set": "OP06"
+    "set": "OP06",
+    "alt_images": [
+      "/images/cards/OP06-119_p1.png",
+      "/images/cards/OP06-119_p2.png",
+      "/images/cards/OP06-119_p3.png"
+    ]
   },
   {
     "id": "OP07-001",
@@ -12854,7 +12956,10 @@
     "attribute": "Land of Wano",
     "effect": "[On Play] Look at 5 cards from the top of your deck; reveal up to 1 green [Land of Wano] type card other than [Otama] and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
     "image_url": "/images/cards/OP07-022.png",
-    "set": "OP07"
+    "set": "OP07",
+    "alt_images": [
+      "/images/cards/OP07-022_p1.png"
+    ]
   },
   {
     "id": "OP07-023",
@@ -12906,7 +13011,10 @@
     "attribute": "Bonney Pirates Supernovas",
     "effect": "[On Play] Up to 1 of your opponent's rested Character or DON!! cards will not become active in your opponent's next Refresh Phase.",
     "image_url": "/images/cards/OP07-026.png",
-    "set": "OP07"
+    "set": "OP07",
+    "alt_images": [
+      "/images/cards/OP07-026_p1.png"
+    ]
   },
   {
     "id": "OP07-027",
@@ -13400,7 +13508,11 @@
     "attribute": "Straw Hat Crew",
     "effect": "If the number of DON!! cards on your field is at least 2 less than the number on your opponent's field, give this card in your hand -3 cost. [Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",
     "image_url": "/images/cards/OP07-064.png",
-    "set": "OP07"
+    "set": "OP07",
+    "alt_images": [
+      "/images/cards/OP07-064_p1.png",
+      "/images/cards/OP07-064_p2.png"
+    ]
   },
   {
     "id": "OP07-065",
@@ -13517,7 +13629,10 @@
     "attribute": "Straw Hat Crew",
     "effect": "[Activate: Main][Once Per Turn] DON!! -3 (You may return the specified number of DON!! cards from your field to your DON!! deck.): If your opponent has 3 or more Characters, set this Character as active.",
     "image_url": "/images/cards/OP07-073.png",
-    "set": "OP07"
+    "set": "OP07",
+    "alt_images": [
+      "/images/cards/OP07-073_p1.png"
+    ]
   },
   {
     "id": "OP07-074",
@@ -13556,7 +13671,10 @@
     "attribute": "Foxy Pirates",
     "effect": "[Counter] DON!! -1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Up to 1 of your Leader or Character cards gains +2000 power during this battle. Then, rest up to 1 of your opponent's Characters. [Trigger] Add up to 1 DON!! card from your DON!! deck and set it as active.",
     "image_url": "/images/cards/OP07-076.png",
-    "set": "OP07"
+    "set": "OP07",
+    "alt_images": [
+      "/images/cards/OP07-076_p1.png"
+    ]
   },
   {
     "id": "OP07-077",
@@ -14583,7 +14701,10 @@
     "attribute": "Minks",
     "effect": "[Main] All of your opponent's rested Characters with a cost of 7 or less will not become active in your opponent's next Refresh Phase. [Trigger] Rest up to 1 of your opponent's Characters.",
     "image_url": "/images/cards/OP08-036.png",
-    "set": "OP08"
+    "set": "OP08",
+    "alt_images": [
+      "/images/cards/OP08-036_p1.png"
+    ]
   },
   {
     "id": "OP08-037",
@@ -15012,7 +15133,11 @@
     "attribute": "Big Mom Pirates Former Rocks Pirates",
     "effect": "[On Play] DON!! 1, You may trash 1 card from your hand: Add up to 1 card from the top of your deck to the top of your Life cards. Then, add up to 1 of your opponent's Characters with a cost of 6 or less to the top or bottom of your opponent's Life cards face-up.",
     "image_url": "/images/cards/OP08-069.png",
-    "set": "OP08"
+    "set": "OP08",
+    "alt_images": [
+      "/images/cards/OP08-069_p1.png",
+      "/images/cards/OP08-069_p2.png"
+    ]
   },
   {
     "id": "OP08-070",
@@ -15077,7 +15202,10 @@
     "attribute": "Animal Kingdom Pirates",
     "effect": "[Activate:Main] [Once Per Turn] If you have no other [Black Maria] Characters, add up to 5 DON!! cards from your DON!! deck and rest them. Then, at the end of this turn, return DON!! cards from your field to your DON!! deck until you have the same number of DON!! cards on your field as your opponent.",
     "image_url": "/images/cards/OP08-074.png",
-    "set": "OP08"
+    "set": "OP08",
+    "alt_images": [
+      "/images/cards/OP08-074_p1.png"
+    ]
   },
   {
     "id": "OP08-075",
@@ -15103,7 +15231,10 @@
     "attribute": "The Four Emperors Big Mom Pirates",
     "effect": "[Main] Add up to 1 DON!! card from your DON!! deck and set it as active. Then, if your opponent has a Character with 6000 power or more, add up to 1 DON!! card from your DON!! deck and set it as active.",
     "image_url": "/images/cards/OP08-076.png",
-    "set": "OP08"
+    "set": "OP08",
+    "alt_images": [
+      "/images/cards/OP08-076_p1.png"
+    ]
   },
   {
     "id": "OP08-077",
@@ -15844,7 +15975,11 @@
     "attribute": "Red-Haired Pirates",
     "effect": "[On Play] Your opponent cannot activate up to 1 [Blocker] Character that has 4000 power or less during this turn.",
     "image_url": "/images/cards/OP09-014.png",
-    "set": "OP09"
+    "set": "OP09",
+    "alt_images": [
+      "/images/cards/OP09-014_p1.png",
+      "/images/cards/OP09-014_p2.png"
+    ]
   },
   {
     "id": "OP09-015",
@@ -16468,7 +16603,10 @@
     "attribute": "Straw Hat Crew",
     "effect": "[Banish] (When this card deals damage, the target card is trashed without activating its Trigger.)\n[When Attacking] You may trash 1 card with a [Trigger] from your hand: Add up to 1 DON!! card from your DON!! deck and rest it.",
     "image_url": "/images/cards/OP09-062.png",
-    "set": "OP09"
+    "set": "OP09",
+    "alt_images": [
+      "/images/cards/OP09-062_p1.png"
+    ]
   },
   {
     "id": "OP09-063",
@@ -16598,7 +16736,10 @@
     "attribute": "Straw Hat Crew",
     "effect": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)\n[On Play] DON!! 2, You may trash 1 card from your hand: Draw 2 cards.",
     "image_url": "/images/cards/OP09-072.png",
-    "set": "OP09"
+    "set": "OP09",
+    "alt_images": [
+      "/images/cards/OP09-072_p1.png"
+    ]
   },
   {
     "id": "OP09-073",
@@ -16663,7 +16804,11 @@
     "attribute": "Straw Hat Crew The Four Emperors",
     "effect": "[Main] DON!! 2 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O. up to 1 of your opponent's Characters with 6000 power or less.\n[Trigger] Add up to 1 DON!! card from your DON!! deck and set it as active.",
     "image_url": "/images/cards/OP09-077.png",
-    "set": "OP09"
+    "set": "OP09",
+    "alt_images": [
+      "/images/cards/OP09-077_p1.png",
+      "/images/cards/OP09-077_p2.png"
+    ]
   },
   {
     "id": "OP09-078",
@@ -16676,7 +16821,11 @@
     "attribute": "Straw Hat Crew The Four Emperors",
     "effect": "[Counter] DON!! 2, You may trash 1 card from your hand: If your Leader has the \"Straw Hat Crew\" type, up to 1 of your Leader or Character cards gains +4000 power during this battle. Then, draw 2 cards.",
     "image_url": "/images/cards/OP09-078.png",
-    "set": "OP09"
+    "set": "OP09",
+    "alt_images": [
+      "/images/cards/OP09-078_p1.png",
+      "/images/cards/OP09-078_p2.png"
+    ]
   },
   {
     "id": "OP09-079",
@@ -16715,7 +16864,11 @@
     "attribute": "Blackbeard Pirates The Four Emperors",
     "effect": "Your [On Play] effects are negated.\n[Activate: Main] You may trash 1 card from your hand: Your opponent's [On Play] effects are negated until the end of your opponent's next turn.",
     "image_url": "/images/cards/OP09-081.png",
-    "set": "OP09"
+    "set": "OP09",
+    "alt_images": [
+      "/images/cards/OP09-081_p1.png",
+      "/images/cards/OP09-081_p2.png"
+    ]
   },
   {
     "id": "OP09-082",
@@ -16754,7 +16907,10 @@
     "attribute": "Blackbeard Pirates",
     "effect": "[Activate: Main] [Once Per Turn] If your Leader has the \"Blackbeard Pirates\" type, this Character gains [Double Attack], [Banish] or [Blocker] until the end of your opponent's next turn.",
     "image_url": "/images/cards/OP09-084.png",
-    "set": "OP09"
+    "set": "OP09",
+    "alt_images": [
+      "/images/cards/OP09-084_p1.png"
+    ]
   },
   {
     "id": "OP09-085",
@@ -16780,7 +16936,10 @@
     "attribute": "Blackbeard Pirates",
     "effect": "This Character cannot be K.O.'d by your opponent's effects.\nIf your Leader has the \"Blackbeard Pirates\" type, this Character gains +1000 power for every 4 cards in your trash.",
     "image_url": "/images/cards/OP09-086.png",
-    "set": "OP09"
+    "set": "OP09",
+    "alt_images": [
+      "/images/cards/OP09-086_p1.png"
+    ]
   },
   {
     "id": "OP09-087",
@@ -16819,7 +16978,12 @@
     "attribute": "Animal Blackbeard Pirates",
     "effect": "[Activate: Main] You may trash 1 card from your hand and trash this Character: If your Leader has the \"Blackbeard Pirates\" type, draw 1 card. Then, give up to 1 of your opponent's Characters –2 cost during this turn.",
     "image_url": "/images/cards/OP09-089.png",
-    "set": "OP09"
+    "set": "OP09",
+    "alt_images": [
+      "/images/cards/OP09-089_p1.png",
+      "/images/cards/OP09-089_p2.png",
+      "/images/cards/OP09-089_p3.png"
+    ]
   },
   {
     "id": "OP09-090",
@@ -16871,7 +17035,14 @@
     "attribute": "Blackbeard Pirates The Four Emperors",
     "effect": "[Blocker]\n[Activate: Main] [Once Per Turn] If your Leader has the \"Blackbeard Pirates\" type and this Character was played on this turn, negate the effect of up to 1 of your opponent's Leader during this turn. Then, negate the effect of up to 1 of your opponent's Characters and that Character cannot attack until the end of your opponent's next turn.",
     "image_url": "/images/cards/OP09-093.png",
-    "set": "OP09"
+    "set": "OP09",
+    "alt_images": [
+      "/images/cards/OP09-093_p1.png",
+      "/images/cards/OP09-093_p2.png",
+      "/images/cards/OP09-093_p3.png",
+      "/images/cards/OP09-093_p4.png",
+      "/images/cards/OP09-093_p5.png"
+    ]
   },
   {
     "id": "OP09-094",
@@ -16897,7 +17068,10 @@
     "attribute": "Blackbeard Pirates",
     "effect": "[Activate: Main] You may rest 1 of your DON!! cards and this Character: Look at 5 cards from the top of your deck; reveal up to 1 \"Blackbeard Pirates\" type card and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
     "image_url": "/images/cards/OP09-095.png",
-    "set": "OP09"
+    "set": "OP09",
+    "alt_images": [
+      "/images/cards/OP09-095_p1.png"
+    ]
   },
   {
     "id": "OP09-096",
@@ -16910,7 +17084,10 @@
     "attribute": "Blackbeard Pirates",
     "effect": "[Main] Look at 3 cards from the top of your deck; reveal up to 1 \"Blackbeard Pirates\" type card other than [My Era...Begins!!] and add it to your hand. Then, trash the rest.\n[Trigger] Activate this card's [Main] effect.",
     "image_url": "/images/cards/OP09-096.png",
-    "set": "OP09"
+    "set": "OP09",
+    "alt_images": [
+      "/images/cards/OP09-096_p1.png"
+    ]
   },
   {
     "id": "OP09-097",
@@ -16936,7 +17113,10 @@
     "attribute": "Blackbeard Pirates",
     "effect": "[Main] If your Leader has the \"Blackbeard Pirates\" type, negate the effect of up to 1 of your opponent's Characters during this turn. Then, if that Character has a cost of 4 or less, K.O. it.\n[Trigger] Negate the effect of up to 1 of your opponent's Leader or Character cards during this turn.",
     "image_url": "/images/cards/OP09-098.png",
-    "set": "OP09"
+    "set": "OP09",
+    "alt_images": [
+      "/images/cards/OP09-098_p1.png"
+    ]
   },
   {
     "id": "OP09-099",
@@ -17040,7 +17220,15 @@
     "attribute": "Ohara",
     "effect": "[On Play] Up to 1 of your [Nico Robin] Leader gains +3000 power during this turn.[Trigger] If your Leader is [Nico Robin], draw 3 cards and trash 2 cards from your hand.",
     "image_url": "/images/cards/OP09-106.png",
-    "set": "OP09"
+    "set": "OP09",
+    "alt_images": [
+      "/images/cards/OP09-106_p1.png",
+      "/images/cards/OP09-106_p2.png",
+      "/images/cards/OP09-106_p3.png",
+      "/images/cards/OP09-106_p4.png",
+      "/images/cards/OP09-106_p5.png",
+      "/images/cards/OP09-106_p6.png"
+    ]
   },
   {
     "id": "OP09-107",
@@ -17196,7 +17384,12 @@
     "attribute": "Roger Pirates King of the Pirates",
     "effect": "[Rush] (This card can attack on the turn in which it is played.)\nWhen your opponent activates [Blocker], if either you or your opponent has 0 Life cards, you win the game.",
     "image_url": "/images/cards/OP09-118.png",
-    "set": "OP09"
+    "set": "OP09",
+    "alt_images": [
+      "/images/cards/OP09-118_p1.png",
+      "/images/cards/OP09-118_p2.png",
+      "/images/cards/OP09-118_p3.png"
+    ]
   },
   {
     "id": "OP09-119",
@@ -17274,7 +17467,11 @@
     "attribute": "Straw Hat Crew Punk Hazard",
     "effect": "[Your Turn] This Character gains +3000 power.\n[On K.O.] Draw 1 card.",
     "image_url": "/images/cards/OP10-005.png",
-    "set": "OP10"
+    "set": "OP10",
+    "alt_images": [
+      "/images/cards/OP10-005_p1.png",
+      "/images/cards/OP10-005_p2.png"
+    ]
   },
   {
     "id": "OP10-006",
@@ -17599,7 +17796,11 @@
     "attribute": "Navy Punk Hazard",
     "effect": "[Banish] (When this card deals damage, the target card is trashed without activating its Trigger.)\n[Activate: Main] Set up to 1 of your DON!! cards as active. Then, you cannot set DON!! cards as active using Character effects during this turn.",
     "image_url": "/images/cards/OP10-030.png",
-    "set": "OP10"
+    "set": "OP10",
+    "alt_images": [
+      "/images/cards/OP10-030_p1.png",
+      "/images/cards/OP10-030_p2.png"
+    ]
   },
   {
     "id": "OP10-031",
@@ -18080,7 +18281,10 @@
     "attribute": "Donquixote Pirates",
     "effect": "[On Play] DON!! 1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Add up to 1 purple Event with a cost of 5 or less from your trash to your hand. Then, set up to 1 of your DON!! cards as active.",
     "image_url": "/images/cards/OP10-067.png",
-    "set": "OP10"
+    "set": "OP10",
+    "alt_images": [
+      "/images/cards/OP10-067_p1.png"
+    ]
   },
   {
     "id": "OP10-068",
@@ -18275,7 +18479,11 @@
     "attribute": "Blackbeard Pirates Former Navy",
     "effect": "This Character cannot be removed from the field by your opponent's effects.\n[Activate: Main] You may trash this Character: Draw 1 card. Then, play up to 1 \"Blackbeard Pirates\" type Character card with a cost of 5 or less other than [Kuzan] from your trash.",
     "image_url": "/images/cards/OP10-082.png",
-    "set": "OP10"
+    "set": "OP10",
+    "alt_images": [
+      "/images/cards/OP10-082_p1.png",
+      "/images/cards/OP10-082_p2.png"
+    ]
   },
   {
     "id": "OP10-083",
@@ -19276,7 +19484,10 @@
     "attribute": "Straw Hat Crew",
     "effect": "This effect can be activated at the start of your turn. If you have 8 or more DON!! cards on your field, look at 5 cards from the top of your deck; reveal up to 1 \"Straw Hat Crew\" type card and add it to your hand. Then, place the rest at the top or bottom of the deck in any order.",
     "image_url": "/images/cards/OP11-040.png",
-    "set": "OP11"
+    "set": "OP11",
+    "alt_images": [
+      "/images/cards/OP11-040_p1.png"
+    ]
   },
   {
     "id": "OP11-041",
@@ -19458,7 +19669,11 @@
     "attribute": "Straw Hat Crew",
     "effect": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)\n[On Play] If your Leader is multicolored, draw 3 cards and place 2 cards from your hand at the top or bottom of your deck in any order.",
     "image_url": "/images/cards/OP11-054.png",
-    "set": "OP11"
+    "set": "OP11",
+    "alt_images": [
+      "/images/cards/OP11-054_p1.png",
+      "/images/cards/OP11-054_p2.png"
+    ]
   },
   {
     "id": "OP11-055",
@@ -19627,7 +19842,12 @@
     "attribute": "Big Mom Pirates",
     "effect": "[Blocker]\n[End of Your Turn] Set up to 2 of your \"Big Mom Pirates\" type Characters with a cost of 3 or more as active. Then, add up to 1 DON!! card from your DON!! deck and rest it.",
     "image_url": "/images/cards/OP11-067.png",
-    "set": "OP11"
+    "set": "OP11",
+    "alt_images": [
+      "/images/cards/OP11-067_p1.png",
+      "/images/cards/OP11-067_p2.png",
+      "/images/cards/OP11-067_p3.png"
+    ]
   },
   {
     "id": "OP11-068",
@@ -19796,7 +20016,10 @@
     "attribute": "Straw Hat Crew",
     "effect": "[Main] You may rest 2 of your DON!! cards: If your Leader's colors include blue, add up to 1 DON!! card from your DON!! deck and rest it.\n[Counter] Up to 1 of your Leader gains +3000 power during this battle.",
     "image_url": "/images/cards/OP11-080.png",
-    "set": "OP11"
+    "set": "OP11",
+    "alt_images": [
+      "/images/cards/OP11-080_p1.png"
+    ]
   },
   {
     "id": "OP11-081",
@@ -20134,7 +20357,11 @@
     "attribute": "Big Mom Pirates Homies",
     "effect": "[On Play] You may add 1 card from the top or bottom of your Life cards to your hand: K.O. up to 1 of your opponent's Characters with a cost of 5 or less.",
     "image_url": "/images/cards/OP11-106.png",
-    "set": "OP11"
+    "set": "OP11",
+    "alt_images": [
+      "/images/cards/OP11-106_p1.png",
+      "/images/cards/OP11-106_p2.png"
+    ]
   },
   {
     "id": "OP11-107",
@@ -20498,7 +20725,11 @@
     "attribute": "Straw Hat Crew Supernovas",
     "effect": "If you have a total of 2 or more given DON!! cards, this Character gains +2000 power.\n[On Play] You may reveal 2 Events from your hand: Play up to 1 red Character card with 3000 power or less from your hand. Then, give up to 1 rested DON!! card to your Leader or 1 of your Characters.",
     "image_url": "/images/cards/OP12-015.png",
-    "set": "OP12"
+    "set": "OP12",
+    "alt_images": [
+      "/images/cards/OP12-015_p1.png",
+      "/images/cards/OP12-015_p2.png"
+    ]
   },
   {
     "id": "OP12-016",
@@ -20706,7 +20937,11 @@
     "attribute": "Navy East Blue",
     "effect": "[On Play] Rest up to 1 of your opponent's Characters with a base cost of 6 or less. Then, give up to 3 rested DON!! cards to your [Roronoa Zoro] Leader.",
     "image_url": "/images/cards/OP12-031.png",
-    "set": "OP12"
+    "set": "OP12",
+    "alt_images": [
+      "/images/cards/OP12-031_p1.png",
+      "/images/cards/OP12-031_p2.png"
+    ]
   },
   {
     "id": "OP12-032",
@@ -20745,7 +20980,11 @@
     "attribute": "Thriller Bark Pirates Muggy Kingdom",
     "effect": "[On Play] If your Leader has the (Slash) attribute, look at 5 cards from the top of your deck; reveal up to 1 (Slash) attribute card or green Event and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
     "image_url": "/images/cards/OP12-034.png",
-    "set": "OP12"
+    "set": "OP12",
+    "alt_images": [
+      "/images/cards/OP12-034_p1.png",
+      "/images/cards/OP12-034_p2.png"
+    ]
   },
   {
     "id": "OP12-035",
@@ -20784,7 +21023,10 @@
     "attribute": "Straw Hat Crew",
     "effect": "[Main] You may rest 3 of your DON!! cards: Rest up to a total of 2 of your opponent's Characters or DON!! cards.\n[Counter] Your Leader gains +3000 power during this battle.",
     "image_url": "/images/cards/OP12-037.png",
-    "set": "OP12"
+    "set": "OP12",
+    "alt_images": [
+      "/images/cards/OP12-037_p1.png"
+    ]
   },
   {
     "id": "OP12-038",
@@ -21122,7 +21364,10 @@
     "attribute": "The Vinsmoke Family GERMA 66",
     "effect": "If you have 4 or more Events in your trash, this Character gains +2000 power and +5 cost.\n[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",
     "image_url": "/images/cards/OP12-063.png",
-    "set": "OP12"
+    "set": "OP12",
+    "alt_images": [
+      "/images/cards/OP12-063_p1.png"
+    ]
   },
   {
     "id": "OP12-064",
@@ -21759,7 +22004,12 @@
     "attribute": "Donquixote Pirates",
     "effect": "[Trigger] If your Leader is multicolored, draw 2 cards.",
     "image_url": "/images/cards/OP12-112.png",
-    "set": "OP12"
+    "set": "OP12",
+    "alt_images": [
+      "/images/cards/OP12-112_p1.png",
+      "/images/cards/OP12-112_p2.png",
+      "/images/cards/OP12-112_p3.png"
+    ]
   },
   {
     "id": "OP12-113",
@@ -21837,7 +22087,11 @@
     "attribute": "Bonney Pirates Supernovas",
     "effect": "[Blocker]\n[On Play] If you have 8 or more rested cards, draw 2 cards and trash 1 card from your hand. Then, set up to 1 of your DON!! cards as active.",
     "image_url": "/images/cards/OP12-118.png",
-    "set": "OP12"
+    "set": "OP12",
+    "alt_images": [
+      "/images/cards/OP12-118_p1.png",
+      "/images/cards/OP12-118_p2.png"
+    ]
   },
   {
     "id": "OP12-119",
@@ -21902,7 +22156,11 @@
     "attribute": "Revolutionary Army Dressrosa",
     "effect": "If you have 4 or more Life cards, give this Leader 1000 power.\n[DON!! x1] If you have a Character with a cost of 8 or more, your Leader and all of your Characters gain +1000 power.",
     "image_url": "/images/cards/OP13-004.png",
-    "set": "OP13"
+    "set": "OP13",
+    "alt_images": [
+      "/images/cards/OP13-004_p1.png",
+      "/images/cards/OP13-004_p2.png"
+    ]
   },
   {
     "id": "OP13-005",
@@ -21941,7 +22199,10 @@
     "attribute": "Goa Kingdom",
     "effect": "[Activate: Main] You may give 1 of your active DON!! cards to 1 of your Leader or Character cards and trash this Character: Give up to 1 of your opponent's Characters 3000 power during this turn.",
     "image_url": "/images/cards/OP13-007.png",
-    "set": "OP13"
+    "set": "OP13",
+    "alt_images": [
+      "/images/cards/OP13-007_p1.png"
+    ]
   },
   {
     "id": "OP13-008",
@@ -22058,7 +22319,10 @@
     "attribute": "Navy",
     "effect": "[On Play] If your Leader is [Sabo], [Portgas.D.Ace] or [Monkey.D.Luffy], look at 4 cards from the top of your deck; reveal up to 1 card with a cost of 3 or more and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
     "image_url": "/images/cards/OP13-016.png",
-    "set": "OP13"
+    "set": "OP13",
+    "alt_images": [
+      "/images/cards/OP13-016_p1.png"
+    ]
   },
   {
     "id": "OP13-017",
@@ -22253,7 +22517,10 @@
     "attribute": "FILM Heart Pirates Supernovas",
     "effect": "If you have 1 or less Life cards, this Character gains [Blocker].\n[On Play] You may return 1 of your Characters to the owner's hand: Play up to 1 Character card with a cost of 5 or less from your hand rested.",
     "image_url": "/images/cards/OP13-031.png",
-    "set": "OP13"
+    "set": "OP13",
+    "alt_images": [
+      "/images/cards/OP13-031_p1.png"
+    ]
   },
   {
     "id": "OP13-032",
@@ -22409,7 +22676,10 @@
     "attribute": "Land of Wano",
     "effect": "[On Play] If you have 3 or less Life cards, draw 2 cards and trash 1 card from your hand.",
     "image_url": "/images/cards/OP13-043.png",
-    "set": "OP13"
+    "set": "OP13",
+    "alt_images": [
+      "/images/cards/OP13-043_p1.png"
+    ]
   },
   {
     "id": "OP13-044",
@@ -22838,7 +23108,10 @@
     "attribute": "Roger Pirates King of the Pirates",
     "effect": "[Main] You may rest 5 of your DON!! cards: If you have any DON!! cards given, give up to 1 of your opponent's Characters 8000 power during this turn.\n[Counter] You may trash 1 card from your hand: Up to 1 of your Leader or Character cards gains +3000 power during this battle.",
     "image_url": "/images/cards/OP13-076.png",
-    "set": "OP13"
+    "set": "OP13",
+    "alt_images": [
+      "/images/cards/OP13-076_p1.png"
+    ]
   },
   {
     "id": "OP13-077",
@@ -23319,7 +23592,10 @@
     "attribute": "Scientist Egghead",
     "effect": "[On Play] Look at 4 cards from the top of your deck; reveal up to 1 card with a [Trigger] other than [Lilith] and add it to your hand. Then, place the rest at the bottom of your deck in any order.\n[Trigger] Activate this card's [On Play] effect.",
     "image_url": "/images/cards/OP13-113.png",
-    "set": "OP13"
+    "set": "OP13",
+    "alt_images": [
+      "/images/cards/OP13-113_p1.png"
+    ]
   },
   {
     "id": "OP13-114",
@@ -23410,7 +23686,13 @@
     "attribute": "Revolutionary Army Dressrosa",
     "effect": "[Blocker]\n[Activate: Main] [Once Per Turn] Up to 1 of your Characters gains +2 cost until the end of your opponent's next turn. Then, give up to 1 rested DON!! card to your Leader.",
     "image_url": "/images/cards/OP13-120.png",
-    "set": "OP13"
+    "set": "OP13",
+    "alt_images": [
+      "/images/cards/OP13-120_p1.png",
+      "/images/cards/OP13-120_p2.png",
+      "/images/cards/OP13-120_p3.png",
+      "/images/cards/OP13-120_p4.png"
+    ]
   },
   {
     "id": "OP14-001",
@@ -23670,7 +23952,10 @@
     "attribute": "The Seven Warlords of the Sea",
     "effect": "If your opponent's Leader has the \"Slash\" attribute, this leader gains +1000 power.\n[Activate:Main] [Once Per Turn] You may rest 1 of your cards: If there is a Character with a cost of 5 or more, set up to 3 of your DON!! cards as active. Then, you cannot play character cards during this turn.",
     "image_url": "/images/cards/OP14-020.png",
-    "set": "OP14"
+    "set": "OP14",
+    "alt_images": [
+      "/images/cards/OP14-020_p1.png"
+    ]
   },
   {
     "id": "OP14-021",
@@ -23761,7 +24046,10 @@
     "attribute": "The Four Emperors Red-Haired Pirates East Blue",
     "effect": "[Your Turn] When this Character becomes rested, rest up to 1 of your opponent's Characters with 7000 base power or less.\n[Opponent's Turn] If this Character is rested, give all of your opponent's Characters 1000 power.",
     "image_url": "/images/cards/OP14-027.png",
-    "set": "OP14"
+    "set": "OP14",
+    "alt_images": [
+      "/images/cards/OP14-027_p1.png"
+    ]
   },
   {
     "id": "OP14-028",
@@ -23813,7 +24101,10 @@
     "attribute": "FILM Straw Hat Crew",
     "effect": "[Blocker]\n[On Play] Rest up to 2 of your opponent's Characters with a cost of 8 or less. Then, set up to 5 of your DON!! cards as active at the end of this turn.",
     "image_url": "/images/cards/OP14-031.png",
-    "set": "OP14"
+    "set": "OP14",
+    "alt_images": [
+      "/images/cards/OP14-031_p1.png"
+    ]
   },
   {
     "id": "OP14-032",
@@ -23839,7 +24130,11 @@
     "attribute": "Thriller Bark Pirates Muggy Kingdom",
     "effect": "[On Play] Up to 2 of your opponent's Characters with a cost of 5 or less cannot be rested until the end of your opponent's next End Phase.\n[On K.O.] You may rest 1 of your cards: Play up to 1 green Character card with a cost of 5 or less from your hand.",
     "image_url": "/images/cards/OP14-033.png",
-    "set": "OP14"
+    "set": "OP14",
+    "alt_images": [
+      "/images/cards/OP14-033_p1.png",
+      "/images/cards/OP14-033_p2.png"
+    ]
   },
   {
     "id": "OP14-034",
@@ -23891,7 +24186,10 @@
     "attribute": "The Seven Warlords of the Sea East Blue",
     "effect": "[Main] You may rest 3 of your cards: K.O. up to 1 of your opponent's rested Characters with 7000 base power or less.\n[Counter] Your Leader gains +3000 power during this battle.",
     "image_url": "/images/cards/OP14-037.png",
-    "set": "OP14"
+    "set": "OP14",
+    "alt_images": [
+      "/images/cards/OP14-037_p1.png"
+    ]
   },
   {
     "id": "OP14-038",
@@ -24047,7 +24345,10 @@
     "attribute": "Fish-Man The Seven Warlords of the Sea The Sun Pirates",
     "effect": "When a card is trashed from your hand by an effect, this Character gains [Rush] during this turn.\n[On Play] You may rest 2 of your DON!! cards: Draw 2 cards and return up to 1 Character with a cost of 7 or less to the owner's hand.",
     "image_url": "/images/cards/OP14-049.png",
-    "set": "OP14"
+    "set": "OP14",
+    "alt_images": [
+      "/images/cards/OP14-049_p1.png"
+    ]
   },
   {
     "id": "OP14-050",
@@ -24450,7 +24751,10 @@
     "attribute": "The Seven Warlords of the Sea Thriller Bark Pirates",
     "effect": "[Activate: Main] [Once Per Turn] You may K.O. 1 of your {Thriller Bark Pirates} type Characters: Your Leader and all of your Characters gain +1000 power during this turn. [When Attacking] You may trash 3 cards from your hand: Add up to 1 card from the top of your deck to the top of your Life cards.",
     "image_url": "/images/cards/OP14-080.png",
-    "set": "OP14"
+    "set": "OP14",
+    "alt_images": [
+      "/images/cards/OP14-080_p1.png"
+    ]
   },
   {
     "id": "OP14-081",
@@ -24658,7 +24962,10 @@
     "attribute": "Baroque Works The Seven Warlords of the Sea",
     "effect": "[Main] You may rest 2 of your DON!! cards: Negate the effect of up to 1 of your opponent's Characters with a cost of 5 or less during this turn.\n[Counter] If you have 10 or more cards in your trash, up to 1 of your Leader or Character cards gains +4000 power during this battle.",
     "image_url": "/images/cards/OP14-096.png",
-    "set": "OP14"
+    "set": "OP14",
+    "alt_images": [
+      "/images/cards/OP14-096_p1.png"
+    ]
   },
   {
     "id": "OP14-097",
@@ -24762,7 +25069,10 @@
     "attribute": "The Seven Warlords of the Sea Thriller Bark Pirates",
     "effect": "[On Play] Select up to 1 {Thriller Bark Pirates} type Character with a cost of 4 or less from your trash and play it or add it to the top of your Life cards face-up.\n[Trigger] Play up to 1 Character card with a cost of 4 or less from your trash.",
     "image_url": "/images/cards/OP14-104.png",
-    "set": "OP14"
+    "set": "OP14",
+    "alt_images": [
+      "/images/cards/OP14-104_p1.png"
+    ]
   },
   {
     "id": "OP14-105",
@@ -24853,7 +25163,10 @@
     "attribute": "Thriller Bark Pirates",
     "effect": "[On Play]/[On K.O.] Up to 1 of your opponent's Characters with a cost of 6 or less cannot attack until the end of your opponent's next End Phase.\n[Trigger] Play up to 1 {Thriller Bark Pirates} type Character card with a cost of 4 or less from your trash rested.",
     "image_url": "/images/cards/OP14-111.png",
-    "set": "OP14"
+    "set": "OP14",
+    "alt_images": [
+      "/images/cards/OP14-111_p1.png"
+    ]
   },
   {
     "id": "OP14-112",
@@ -24866,7 +25179,11 @@
     "attribute": "Kuja Pirates The Seven Warlords of the Sea",
     "effect": "[On Play] If your Leader has the {The Seven Warlords of the Sea} type, add up to 1 card from the top of your deck to the top of your Life cards. Then, add up to 1 card from the top of your opponent's Life cards to the owner's hand.\n[Trigger] Play up to 1 Character card with 6000 power or less and a [Trigger] from your hand.",
     "image_url": "/images/cards/OP14-112.png",
-    "set": "OP14"
+    "set": "OP14",
+    "alt_images": [
+      "/images/cards/OP14-112_p1.png",
+      "/images/cards/OP14-112_p2.png"
+    ]
   },
   {
     "id": "OP14-113",
@@ -24957,7 +25274,11 @@
     "attribute": "The Seven Warlords of the Sea",
     "effect": "[Your Turn] When this Character becomes rested, up to 1 of your opponent's Characters with a cost or 9 or less cannot be rested until the end of your opponent's next End Phase.\n[On Your Opponent's Attack] [Once Per Turn] You may trash 1 card from your hand: Up to 1 of your Leader or Character cards gains +2000 power during this battle.",
     "image_url": "/images/cards/OP14-119.png",
-    "set": "OP14"
+    "set": "OP14",
+    "alt_images": [
+      "/images/cards/OP14-119_p1.png",
+      "/images/cards/OP14-119_p2.png"
+    ]
   },
   {
     "id": "OP14-120",
@@ -25386,7 +25707,10 @@
     "attribute": "Straw Hat Crew",
     "effect": "[On Play] Rest up to 1 of your opponent's cards.\n[Activate: Main] You may trash this Character: If your Leader has the {Straw Hat Crew} type, set up to 1 of your Characters with a base cost of 8 or less as active.",
     "image_url": "/images/cards/OP15-032.png",
-    "set": "OP15"
+    "set": "OP15",
+    "alt_images": [
+      "/images/cards/OP15-032_p1.png"
+    ]
   },
   {
     "id": "OP15-033",
@@ -25724,7 +26048,10 @@
     "attribute": "Sky Island",
     "effect": "Under the rules of this game, your DON!! deck consists of 6 cards.\n[Activate: Main] [Once Per Turn] If it is your second turn or later, add up to 1 DON!! card from your DON!! deck and set it as active, and add up to 4 additional DON!! cards and rest them. Then, give up to 4 rested DON!! cards to 1 of your Characters.",
     "image_url": "/images/cards/OP15-058.png",
-    "set": "OP15"
+    "set": "OP15",
+    "alt_images": [
+      "/images/cards/OP15-058_p1.png"
+    ]
   },
   {
     "id": "OP15-059",
@@ -25750,7 +26077,10 @@
     "attribute": "Sky Island",
     "effect": "If you have 6 or less DON!! cards on your field, this Character cannot be removed from the field by your opponent's effects and gains +2000 power.\n[Activate: Main] DON!! 1: This Character gains [Blocker] until the end of your opponent's next End Phase. Then, trash 1 card from your hand.",
     "image_url": "/images/cards/OP15-060.png",
-    "set": "OP15"
+    "set": "OP15",
+    "alt_images": [
+      "/images/cards/OP15-060_p1.png"
+    ]
   },
   {
     "id": "OP15-061",
@@ -25763,7 +26093,10 @@
     "attribute": "Sky Island Vassals",
     "effect": "[On Play] DON!! 1: Draw 1 card.\n[When Attacking] If you have 6 or less DON!! cards on your field, give up to 1 of your opponent's Characters 1000 power during this turn.",
     "image_url": "/images/cards/OP15-061.png",
-    "set": "OP15"
+    "set": "OP15",
+    "alt_images": [
+      "/images/cards/OP15-061_p1.png"
+    ]
   },
   {
     "id": "OP15-062",
@@ -25945,7 +26278,10 @@
     "attribute": "Sky Island",
     "effect": "[Main] DON!! 1: If your Leader is [Enel], up to 1 of your Leader or Character cards gains +1000 power during this turn. Then, K.O. up to 1 of your opponent's Characters with 3000 power or less.\n[Counter] Up to 1 of your [Enel] cards gains +2000 power during this battle.",
     "image_url": "/images/cards/OP15-075.png",
-    "set": "OP15"
+    "set": "OP15",
+    "alt_images": [
+      "/images/cards/OP15-075_p1.png"
+    ]
   },
   {
     "id": "OP15-076",
@@ -25971,7 +26307,10 @@
     "attribute": "Sky Island",
     "effect": "[Main] DON!! 1: Draw 1 card. Then, up to 1 of your opponent's rested Characters with 6000 power or less will not become active in your opponent's next Refresh Phase.",
     "image_url": "/images/cards/OP15-077.png",
-    "set": "OP15"
+    "set": "OP15",
+    "alt_images": [
+      "/images/cards/OP15-077_p1.png"
+    ]
   },
   {
     "id": "OP15-078",
@@ -25984,7 +26323,10 @@
     "attribute": "Sky Island",
     "effect": "[Main] DON!! 2: Draw 1 card. Then, rest up to 1 of your opponent's Characters with 5000 power or less.\n[Counter] Up to 1 of your Leader or Character cards gains +1000 power during this battle. Then, if you have 6 or less DON!! cards on your field, draw 1 card.",
     "image_url": "/images/cards/OP15-078.png",
-    "set": "OP15"
+    "set": "OP15",
+    "alt_images": [
+      "/images/cards/OP15-078_p1.png"
+    ]
   },
   {
     "id": "OP15-079",
@@ -26088,7 +26430,10 @@
     "attribute": "Straw Hat Crew",
     "effect": "[On Play] If your Leader has the {Straw Hat Crew} type, play up to 1 {Straw Hat Crew} type Character with a cost of 7 or less from your trash. The Character played with this effect gains [Rush] during this turn.",
     "image_url": "/images/cards/OP15-086.png",
-    "set": "OP15"
+    "set": "OP15",
+    "alt_images": [
+      "/images/cards/OP15-086_p1.png"
+    ]
   },
   {
     "id": "OP15-087",
@@ -26166,7 +26511,10 @@
     "attribute": "Straw Hat Crew",
     "effect": "Apply each of the following effects based on the number of cards in your trash:\n• If there are 10 or more cards, this Character's base power becomes 9000 and it gains +10 cost.\n• If you have 20 or more cards, during your opponent's turn, your Leader's base power becomes 7000.\n• If you have 30 or more cards, this Character gains +1000 power.",
     "image_url": "/images/cards/OP15-092.png",
-    "set": "OP15"
+    "set": "OP15",
+    "alt_images": [
+      "/images/cards/OP15-092_p1.png"
+    ]
   },
   {
     "id": "OP15-093",
@@ -26439,7 +26787,10 @@
     "attribute": "Straw Hat Crew Sky Island",
     "effect": "[On Play] You may trash 1 card from your hand: Add up to 1 card from the top of your deck to the top of your Life cards.",
     "image_url": "/images/cards/OP15-113.png",
-    "set": "OP15"
+    "set": "OP15",
+    "alt_images": [
+      "/images/cards/OP15-113_p1.png"
+    ]
   },
   {
     "id": "OP15-114",
@@ -26452,7 +26803,10 @@
     "attribute": "Sky Island Shandian Warrior",
     "effect": "[On Play] You may turn 1 card from the top of your Life cards face-up: Give all of your opponent's Characters 2000 power during this turn. Then, K.O. all of your opponent's Characters with 0 power or less.\n[Activate: Main] [Once Per Turn] Give up to 1 rested DON!! card to 1 of your {Sky Island} type Leader or Character cards.",
     "image_url": "/images/cards/OP15-114.png",
-    "set": "OP15"
+    "set": "OP15",
+    "alt_images": [
+      "/images/cards/OP15-114_p1.png"
+    ]
   },
   {
     "id": "OP15-115",
@@ -26478,7 +26832,10 @@
     "attribute": "Straw Hat Crew Sky Island",
     "effect": "[Main] If your Leader has the {Straw Hat Crew} type, trash 1 card from the top of your Life cards. Then, add up to 1 card from the top of your deck to the top of your Life cards and trash 1 card from your hand.\n[Counter] Your Leader gains +4000 power during this battle.",
     "image_url": "/images/cards/OP15-116.png",
-    "set": "OP15"
+    "set": "OP15",
+    "alt_images": [
+      "/images/cards/OP15-116_p1.png"
+    ]
   },
   {
     "id": "OP15-117",
@@ -26504,7 +26861,11 @@
     "attribute": "Sky Island",
     "effect": "If you have 6 or less DON!! cards on your field, this Character cannot be removed from the field by your opponent's effects and gains +2000 power.\n[On Play] DON!! 1: Look at 5 cards from the top of your deck and add up to 1 card to your hand. Then, place the rest at the bottom of your deck in any order, and trash 1 card from your hand.",
     "image_url": "/images/cards/OP15-118.png",
-    "set": "OP15"
+    "set": "OP15",
+    "alt_images": [
+      "/images/cards/OP15-118_p1.png",
+      "/images/cards/OP15-118_p2.png"
+    ]
   },
   {
     "id": "OP15-119",
@@ -26530,7 +26891,10 @@
     "attribute": "Whitebeard Pirates",
     "effect": "[Activate:Main] [Once Per Turn] Up to 1 of your [Monkey.D.Luffy] Characters or up to 1 of your Characters with a type including \"Whitebeard Pirates\", with 8000 power or more, gains [Rush] during this turn.",
     "image_url": "/images/cards/OP16-001.png",
-    "set": "OP16"
+    "set": "OP16",
+    "alt_images": [
+      "/images/cards/OP16-001_p1.png"
+    ]
   },
   {
     "id": "OP16-002",
@@ -26556,7 +26920,10 @@
     "attribute": "The Four Emperors Whitebeard Pirates",
     "effect": "[Your Turn] Your Leader gains [Double Attack] and +2000 power.\n[On Play] You may reveal 2 Character cards with 8000 power from your hand: Give up to 1 of your opponent's Characters -6000 power during this turn.",
     "image_url": "/images/cards/OP16-003.png",
-    "set": "OP16"
+    "set": "OP16",
+    "alt_images": [
+      "/images/cards/OP16-003_p1.png"
+    ]
   },
   {
     "id": "OP16-004",
@@ -26660,7 +27027,10 @@
     "attribute": "Whitebeard Pirates",
     "effect": "[On Play] You may reveal 1 Character card with 8000 power from your hand: Draw 1 card.\n\n[DON!! x1] [When Attacking] K.O. Up to 2 of your opponent's Characters with 2000 base power or less.",
     "image_url": "/images/cards/OP16-011.png",
-    "set": "OP16"
+    "set": "OP16",
+    "alt_images": [
+      "/images/cards/OP16-011_p1.png"
+    ]
   },
   {
     "id": "OP16-012",
@@ -26699,7 +27069,10 @@
     "attribute": "Whitebeard Pirates",
     "effect": "If one of your Characters would be removed from the field by your opponent's effect, you may K.O. this character instead.\n[On K.O.] You may trash 1 Character card with 8000 power from your hand: Play this Character card from your trash.",
     "image_url": "/images/cards/OP16-014.png",
-    "set": "OP16"
+    "set": "OP16",
+    "alt_images": [
+      "/images/cards/OP16-014_p1.png"
+    ]
   },
   {
     "id": "OP16-015",
@@ -26712,7 +27085,10 @@
     "attribute": "Straw Hat Crew Impel Down",
     "effect": "If your Leader's card name includes \"Ace\" and you have 6 or more DON!! cards on your field, give this card in your hand -2 cost.\n[On Your Opponent's Attack] You may trash 1 Character card with 8000 power from your hand: Your Leader and this Character's base power becomes 7000 during this turn.",
     "image_url": "/images/cards/OP16-015.png",
-    "set": "OP16"
+    "set": "OP16",
+    "alt_images": [
+      "/images/cards/OP16-015_p1.png"
+    ]
   },
   {
     "id": "OP16-016",
@@ -26790,7 +27166,10 @@
     "attribute": "Whitebeard Pirates",
     "effect": "[On Play] If your Leader has the {Whitebeard Pirates} type, look at 3 cards from the top of your deck and add up to 1 card to your hand. Then, place the rest at the bottom of your deck in any order.\n\n[Activate:Main] You may trash this Stage: Give up to 1 rested DON!! card to your Leader or 1 of your Characters.",
     "image_url": "/images/cards/OP16-021.png",
-    "set": "OP16"
+    "set": "OP16",
+    "alt_images": [
+      "/images/cards/OP16-021_p1.png"
+    ]
   },
   {
     "id": "OP16-022",
@@ -27245,7 +27624,10 @@
     "attribute": "Impel Down Former Baroque Works",
     "effect": "[Activate: Main] You may trash this Character: Draw 2 cards, and up to 1 of your opponent's Characters with a cost of 9 or less cannot attack until the end of your opponent's next End Phase.",
     "image_url": "/images/cards/OP16-056.png",
-    "set": "OP16"
+    "set": "OP16",
+    "alt_images": [
+      "/images/cards/OP16-056_p1.png"
+    ]
   },
   {
     "id": "OP16-057",
@@ -27921,7 +28303,10 @@
     "attribute": "Blackbeard Pirates Impel Down",
     "effect": "[On Play] You may trash 1 card from your hand: Add up to 1 {Blackbeard Pirates} type card with a cost of 6 or less from your trash to the top of your Life cards face-up.\n[Trigger] Draw 2 cards.",
     "image_url": "/images/cards/OP16-108.png",
-    "set": "OP16"
+    "set": "OP16",
+    "alt_images": [
+      "/images/cards/OP16-108_p1.png"
+    ]
   },
   {
     "id": "OP16-109",
@@ -28051,7 +28436,10 @@
     "attribute": "Whitebeard Pirates",
     "effect": "The counter of all of your Character cards with 8000 power in your hand becomes +2000.\n[On Play]/[On K.O.] Look at 5 cards from the top of your deck; reveal up to 1 [Monkey.D.Luffy] or up to 1 card with a type including \"Whitebeard Pirates\" and add it to your hand. Then, place the rest a the bottom of your deck in any order.",
     "image_url": "/images/cards/OP16-118.png",
-    "set": "OP16"
+    "set": "OP16",
+    "alt_images": [
+      "/images/cards/OP16-118_p1.png"
+    ]
   },
   {
     "id": "OP16-119",
@@ -28064,7 +28452,10 @@
     "attribute": "Blackbeard Pirates The Seven Warlords of the Sea",
     "effect": "[On Play] Look at 3 cards from the top of your deck; add up to 1 card to the top of your Life cards. Then, place the rest at the bottom of your deck in any order.\n[Trigger] Negate the effect of up to 1 of your opponent's Characters during this turn. Then, K.O. up to 1 of your opponent's Characters with a cost of 5 or less.",
     "image_url": "/images/cards/OP16-119.png",
-    "set": "OP16"
+    "set": "OP16",
+    "alt_images": [
+      "/images/cards/OP16-119_p1.png"
+    ]
   },
   {
     "id": "OP17-001",
@@ -28129,7 +28520,11 @@
     "attribute": "The Four Emperors Whitebeard Pirates",
     "effect": "If your opponent has a Character with 10000 power or more, give this card in your hand -4 cost.\n[On Play] Your monocolored Leader's base power becomes 8000 until the end of your opponent's next End Phase.",
     "image_url": "/images/cards/OP17-005.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-005_p1.png",
+      "/images/cards/OP17-005_p2.png"
+    ]
   },
   {
     "id": "OP17-006",
@@ -28142,7 +28537,10 @@
     "attribute": "Whitebeard Pirates",
     "effect": "",
     "image_url": "/images/cards/OP17-006.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-006_p1.png"
+    ]
   },
   {
     "id": "OP17-007",
@@ -28350,7 +28748,11 @@
     "attribute": "The Four Emperors Red-Haired Pirates",
     "effect": "[Rush] (This card can attack on the turn in which it is played.)\n[On Play] Set up to 2 of your DON!! cards as active. Then, rest all of your opponent's Characters.",
     "image_url": "/images/cards/OP17-022.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-022_p1.png",
+      "/images/cards/OP17-022_p2.png"
+    ]
   },
   {
     "id": "OP17-023",
@@ -28467,7 +28869,10 @@
     "attribute": "Red-Haired Pirates",
     "effect": "[On Play] Draw 1 card and rest up to 1 of your opponent's Characters with a cost of 8 or less.\n[End of Your Turn] Set up to 1 of your Characters with a type including \"Red-Haired Pirates\" as active.",
     "image_url": "/images/cards/OP17-031.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-031_p1.png"
+    ]
   },
   {
     "id": "OP17-032",
@@ -28571,7 +28976,10 @@
     "attribute": "Rocks Pirates",
     "effect": "[When Attacking] You may trash 1 card from your hand: Reveal 1 card from the top of your deck. If the revealed card's type includes \"Rocks Pirates\", draw 2 cards.",
     "image_url": "/images/cards/OP17-039.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-039_p1.png"
+    ]
   },
   {
     "id": "OP17-040",
@@ -28584,7 +28992,10 @@
     "attribute": "Rocks Pirates",
     "effect": "[On Play] Draw 1 card.\n[Once Per Turn] When your Leader with a type including \"Rocks Pirates\" attacks or is attacked, you may trash 1 card from your hand to activate this effect. Your Leader gains +3000 power during this battle.",
     "image_url": "/images/cards/OP17-040.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-040_p1.png"
+    ]
   },
   {
     "id": "OP17-041",
@@ -28649,7 +29060,10 @@
     "attribute": "Rocks Pirates",
     "effect": "If one of your Characters would be removed from the field by your opponent's effect, you may trash 2 cards from your hand instead.\n\n[On Play] Draw 1 card.",
     "image_url": "/images/cards/OP17-045.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-045_p1.png"
+    ]
   },
   {
     "id": "OP17-046",
@@ -28662,7 +29076,10 @@
     "attribute": "Amazon Lily Rocks Pirates",
     "effect": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)\n[On Play] Place up to 1 Character with a cost of 5 or less at the bottom of the owner's deck.",
     "image_url": "/images/cards/OP17-046.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-046_p1.png"
+    ]
   },
   {
     "id": "OP17-047",
@@ -28688,7 +29105,10 @@
     "attribute": "Rocks Pirates",
     "effect": "[Rush: Character]\n[When Attacking]/[On Your Opponent's Attack] [Once Per Turn] You may trash 1 cards with a type including \"Rocks Pirates\" from your hand: Give up to 1 of your opponent's Characters -3000 power during this turn.",
     "image_url": "/images/cards/OP17-048.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-048_p1.png"
+    ]
   },
   {
     "id": "OP17-049",
@@ -28701,7 +29121,10 @@
     "attribute": "Rocks Pirates",
     "effect": "[On Play] Your opponent chooses one:\n• Draw 2 cards.\n• Your opponent trashes 2 cards from their hand.\n[On Your Opponent's Attack] [Once Per Turn] You may trash 1 card from your hand: Up to 1 of your Leader or Characters gains +1000 power during this battle.",
     "image_url": "/images/cards/OP17-049.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-049_p1.png"
+    ]
   },
   {
     "id": "OP17-050",
@@ -28766,7 +29189,10 @@
     "attribute": "Rocks Pirates",
     "effect": "[On Play] Up to 1 of your opponent's Characters with a base cost of 6 or less cannot attack until the end of your opponent's next End Phase.\n[Activate:Main] You may rest 3 of your DON!! cards and this Character: Up to 1 of your opponent's Characters cannot attack until the end of your opponent's next End Phase.",
     "image_url": "/images/cards/OP17-054.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-054_p1.png"
+    ]
   },
   {
     "id": "OP17-055",
@@ -28818,7 +29244,10 @@
     "attribute": "Animal Kingdom Pirates The Four Emperors",
     "effect": "[When Attacking]/ [On Your Opponent's Attack] [Once Per Turn] DON!! -1: Give up to 1 of your opponent's Characters -2000 power during this turn.",
     "image_url": "/images/cards/OP17-058.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-058_p1.png"
+    ]
   },
   {
     "id": "OP17-059",
@@ -28857,7 +29286,10 @@
     "attribute": "Fish-Man Animal Kingdom Pirates",
     "effect": "[On Play] DON!! 1: If your Leader has the {Animal Kingdom Pirates} type, add up to 1 card from the top of your deck to the top of your Life cards.\n[Activate: Main] You may trash this Character: Play up to 1 [King], [Queen], or [Jack] from your hand.",
     "image_url": "/images/cards/OP17-061.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-061_p1.png"
+    ]
   },
   {
     "id": "OP17-062",
@@ -28870,7 +29302,12 @@
     "attribute": "Animal Kingdom Pirates The Four Emperors",
     "effect": "[Blocker]\n[Your Turn] [Once Per Turn] When a DON!! card on your field is returned to your DON!! deck, add up to 1 DON!! card as active from your DON!! deck. Then, set up to 1 of your DON!! cards as active.",
     "image_url": "/images/cards/OP17-062.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-062_p1.png",
+      "/images/cards/OP17-062_p2.png",
+      "/images/cards/OP17-062_p3.png"
+    ]
   },
   {
     "id": "OP17-063",
@@ -28883,7 +29320,10 @@
     "attribute": "Animal Kingdom Pirates The Four Emperors",
     "effect": "All Character cards in your hand without a Counter have a +1000 Counter.\n[Activate: Main] [Once Per Turn] DON!! -1: If this Character was played on this turn, negate the effect of up to 1 of your opponent's Characters with a cost of 6 or less during this turn, and K.O. it.",
     "image_url": "/images/cards/OP17-063.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-063_p1.png"
+    ]
   },
   {
     "id": "OP17-064",
@@ -29091,7 +29531,11 @@
     "attribute": "Straw Hat Crew The Four Emperors Elbaph",
     "effect": "All of your Characters with a cost of 12 or more gain [Blocker].(After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",
     "image_url": "/images/cards/OP17-079.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-079_p1.png",
+      "/images/cards/OP17-079_p2.png"
+    ]
   },
   {
     "id": "OP17-080",
@@ -29104,7 +29548,10 @@
     "attribute": "Straw Hat Crew Elbaph",
     "effect": "If there is a Character with a cost of 12 or more, this Character gains +3000 power.\n[On Play] Look at 3 cards from the top of your deck; reveal up to 1 {Elbaph} type card and add it to your hand. Then, trash the rest.",
     "image_url": "/images/cards/OP17-080.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-080_p1.png"
+    ]
   },
   {
     "id": "OP17-081",
@@ -29195,7 +29642,10 @@
     "attribute": "Straw Hat Crew Elbaph",
     "effect": "If there is a Character with a cost of 12 or more, this Character gains +3000 power. [On Play] If there is a Character with a cost of 12 or more, give up to 1 of your opponent's Characters -3000 poser during this turn.",
     "image_url": "/images/cards/OP17-087.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-087_p1.png"
+    ]
   },
   {
     "id": "OP17-088",
@@ -29273,7 +29723,10 @@
     "attribute": "Straw Hat Crew The Four Emperors Elbaph",
     "effect": "If there is a Character with a cost of 12 or more, this Character gains [Rush].\n[On Play] Draw 1 card and play up to 1 Character card with a cost of 2 or less from your trash.",
     "image_url": "/images/cards/OP17-093.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-093_p1.png"
+    ]
   },
   {
     "id": "OP17-094",
@@ -29455,7 +29908,10 @@
     "attribute": "Big Mom Pirates",
     "effect": "[Trigger] Play this card.",
     "image_url": "/images/cards/OP17-107.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-107_p1.png"
+    ]
   },
   {
     "id": "OP17-108",
@@ -29520,7 +29976,11 @@
     "attribute": "The Four Emperors Big Mom Pirates",
     "effect": "[Your Turn] The base power of all of your Characters with a [Trigger] and 4000 base power becomes 8000.\n[On Play] Draw 1 card, then choose one:\n•Add up to 1 card from the top of your deck to the top of your Life cards.\n• Add up to 1 card from the top of your opponent's Life cards to the owner's hand.",
     "image_url": "/images/cards/OP17-112.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-112_p1.png",
+      "/images/cards/OP17-112_p2.png"
+    ]
   },
   {
     "id": "OP17-113",
@@ -29546,7 +30006,10 @@
     "attribute": "Big Mom Pirates",
     "effect": "[Your Turn] [On Play] You may rest 2 of your DON!! cards: Draw 1 card and add up to 1 card from the top of your deck to the top of your Life cards. Then, give up to 2 of your opponent's Characters -3000 power during this turn.\n[Trigger] Play this card.",
     "image_url": "/images/cards/OP17-114.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-114_p1.png"
+    ]
   },
   {
     "id": "OP17-115",
@@ -29598,7 +30061,11 @@
     "attribute": "Rocks Pirates",
     "effect": "If you only have Characters without a Counter, this card in your hand has a +2000 Counter.\n[On Play] Draw 1 card and play up to 2 {Rocks Pirates} type cards with different card names and a total cost of 9 or less from your hand.",
     "image_url": "/images/cards/OP17-118.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-118_p1.png",
+      "/images/cards/OP17-118_p2.png"
+    ]
   },
   {
     "id": "OP17-119",
@@ -29611,7 +30078,10 @@
     "attribute": "Giant Elbaph",
     "effect": "This Character gains +12 cost, and if it is your opponent's turn, this Character gains +3000 power.\n[On Play] K.O. your opponent's Characters with a total cost of 4 or less.",
     "image_url": "/images/cards/OP17-119.png",
-    "set": "OP17"
+    "set": "OP17",
+    "alt_images": [
+      "/images/cards/OP17-119_p1.png"
+    ]
   },
   {
     "id": "P-001",
@@ -31054,7 +31524,10 @@
     "attribute": "King of the Pirates/Roger Pirates",
     "effect": "[On Play] If either you or your opponent has 10 DON!! cards on the field, your Leader gains +2000 power until the end of your opponent's next End Phase.",
     "image_url": "/images/cards/P-107.png",
-    "set": "P"
+    "set": "P",
+    "alt_images": [
+      "/images/cards/P-107_p1.png"
+    ]
   },
   {
     "id": "P-111",
@@ -31210,7 +31683,10 @@
     "attribute": "Red-Haired Pirates",
     "effect": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)[On Play] You may trash 1 Character card with 6000 power or more from your hand: Draw 2 cards.",
     "image_url": "/images/cards/PRB02-003.png",
-    "set": "PRB02"
+    "set": "PRB02",
+    "alt_images": [
+      "/images/cards/PRB02-003_p1.png"
+    ]
   },
   {
     "id": "PRB02-004",
@@ -31249,7 +31725,11 @@
     "attribute": "Straw Hat Crew Supernovas",
     "effect": "[Opponent's Turn] If this Character would be rested by your opponent's Character's effect, you may rest 1 of your other Characters instead.[Blocker]",
     "image_url": "/images/cards/PRB02-006.png",
-    "set": "PRB02"
+    "set": "PRB02",
+    "alt_images": [
+      "/images/cards/PRB02-006_p1.png",
+      "/images/cards/PRB02-006_p2.png"
+    ]
   },
   {
     "id": "PRB02-007",
@@ -31340,7 +31820,10 @@
     "attribute": "The Seven Warlords of the Sea Thriller Bark Pirates",
     "effect": "[On Play] If your Leader has the \"Thriller Bark Pirates\" type, play up to 1 Character card with a cost of 4 or less from your trash rested. Then, give up to 1 rested DON!! card to your Leader or 1 of your Characters.",
     "image_url": "/images/cards/PRB02-013.png",
-    "set": "PRB02"
+    "set": "PRB02",
+    "alt_images": [
+      "/images/cards/PRB02-013_p1.png"
+    ]
   },
   {
     "id": "PRB02-014",
@@ -31548,7 +32031,14 @@
     "attribute": "Straw Hat Crew",
     "effect": "[On Play] Give up to 2 rested DON!! cards to your Leader or 1 of your Characters.",
     "image_url": "/images/cards/ST01-011.png",
-    "set": "ST01"
+    "set": "ST01",
+    "alt_images": [
+      "/images/cards/ST01-011_p1.png",
+      "/images/cards/ST01-011_p2.png",
+      "/images/cards/ST01-011_p3.png",
+      "/images/cards/ST01-011_p4.png",
+      "/images/cards/ST01-011_p5.png"
+    ]
   },
   {
     "id": "ST01-012",
@@ -31717,7 +32207,12 @@
     "attribute": "Bonney Pirates Supernovas",
     "effect": "[Activate: Main] (1) (You may rest the specified number of DON!! cards in your cost area.) You may rest this Character: Look at 5 cards from the top of your deck; reveal up to 1 {Supernovas} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
     "image_url": "/images/cards/ST02-007.png",
-    "set": "ST02"
+    "set": "ST02",
+    "alt_images": [
+      "/images/cards/ST02-007_p1.png",
+      "/images/cards/ST02-007_p2.png",
+      "/images/cards/ST02-007_p3.png"
+    ]
   },
   {
     "id": "ST02-008",
@@ -33472,7 +33967,13 @@
     "attribute": "Heart Pirates",
     "effect": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [On Play] DON!! -1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): If your opponent has 7 or more cards in their hand, trash 2 cards from your opponent's hand.",
     "image_url": "/images/cards/ST10-010.png",
-    "set": "ST10"
+    "set": "ST10",
+    "alt_images": [
+      "/images/cards/ST10-010_p1.png",
+      "/images/cards/ST10-010_p2.png",
+      "/images/cards/ST10-010_p3.png",
+      "/images/cards/ST10-010_p4.png"
+    ]
   },
   {
     "id": "ST10-011",
@@ -34135,7 +34636,10 @@
     "attribute": "Straw Hat Crew",
     "effect": "[On Play] If you have a Character with a cost of 6 or more, K.O. up to 1 of your opponent's Characters with a cost of 5 or less.",
     "image_url": "/images/cards/ST14-003.png",
-    "set": "ST14"
+    "set": "ST14",
+    "alt_images": [
+      "/images/cards/ST14-003_p1.png"
+    ]
   },
   {
     "id": "ST14-004",
@@ -34317,7 +34821,10 @@
     "attribute": "Straw Hat Crew",
     "effect": "All of your black \"Straw Hat Crew\" type Characters gain +1 cost.[On Play] If your Leader has the \"Straw Hat Crew\" type, draw 1 card.",
     "image_url": "/images/cards/ST14-017.png",
-    "set": "ST14"
+    "set": "ST14",
+    "alt_images": [
+      "/images/cards/ST14-017_p1.png"
+    ]
   },
   {
     "id": "ST15-001",
@@ -34343,7 +34850,11 @@
     "attribute": "The Four Emperors Whitebeard Pirates",
     "effect": "[On Play] Give up to 1 rested DON!! card to your Leader or 1 of your Characters.\n[Activate: Main] You may rest this Character: K.O. up to 1 of your opponent's Characters with 5000 power or less.",
     "image_url": "/images/cards/ST15-002.png",
-    "set": "ST15"
+    "set": "ST15",
+    "alt_images": [
+      "/images/cards/ST15-002_p1.png",
+      "/images/cards/ST15-002_p2.png"
+    ]
   },
   {
     "id": "ST15-003",
@@ -34434,7 +34945,11 @@
     "attribute": "FILM The Four Emperors Red-Haired Pirates",
     "effect": "[On Play] K.O. up to 1 of your opponent's rested Characters.",
     "image_url": "/images/cards/ST16-004.png",
-    "set": "ST16"
+    "set": "ST16",
+    "alt_images": [
+      "/images/cards/ST16-004_p1.png",
+      "/images/cards/ST16-004_p2.png"
+    ]
   },
   {
     "id": "ST16-005",
@@ -34525,7 +35040,12 @@
     "attribute": "Straw Hat Crew",
     "effect": "[On Play] If you have 8 or more DON!! cards on your field, rest up to 1 of your opponent's Characters with a cost of 5 or less.",
     "image_url": "/images/cards/ST18-001.png",
-    "set": "ST18"
+    "set": "ST18",
+    "alt_images": [
+      "/images/cards/ST18-001_p1.png",
+      "/images/cards/ST18-001_p2.png",
+      "/images/cards/ST18-001_p3.png"
+    ]
   },
   {
     "id": "ST18-002",
@@ -34889,7 +35409,10 @@
     "attribute": "Straw Hat Crew The Four Emperors",
     "effect": "[Rush] (This card can attack on the turn in which it is played.)\n[When Attacking] Give up to 1 rested DON!! card to your Leader or 1 of your Characters.",
     "image_url": "/images/cards/ST21-014.png",
-    "set": "ST21"
+    "set": "ST21",
+    "alt_images": [
+      "/images/cards/ST21-014_p1.png"
+    ]
   },
   {
     "id": "ST21-015",
@@ -34928,7 +35451,10 @@
     "attribute": "Straw Hat Crew The Four Emperors",
     "effect": "[Main] Give up to 1 of your opponent's Characters 5000 power during this turn. Then, if you have a Character with 6000 power or more, K.O. up to 1 of your opponent's Characters with 2000 power or less.\n[Trigger] Activate this card's [Main] effect.",
     "image_url": "/images/cards/ST21-017.png",
-    "set": "ST21"
+    "set": "ST21",
+    "alt_images": [
+      "/images/cards/ST21-017_p1.png"
+    ]
   },
   {
     "id": "ST22-001",
@@ -35773,7 +36299,10 @@
     "attribute": "Straw Hat Crew Whitebeard Pirates Impel Down",
     "effect": "If you have a Character with 7000 base power or more, give this Leader -2000 power.\n[Opponent's Turn] All of your [Portgas.D.Ace] and [Monkey.D.Luffy] cards gain +3000 power.",
     "image_url": "/images/cards/ST30-001.png",
-    "set": "ST30"
+    "set": "ST30",
+    "alt_images": [
+      "/images/cards/ST30-001_p1.png"
+    ]
   },
   {
     "id": "ST30-002",
@@ -35786,7 +36315,10 @@
     "attribute": "Revolutionary Army Impel Down",
     "effect": "[On Play] Look at 5 cards from the top of your deck; reveal up to 1 Character card with 6000 power and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
     "image_url": "/images/cards/ST30-002.png",
-    "set": "ST30"
+    "set": "ST30",
+    "alt_images": [
+      "/images/cards/ST30-002_p1.png"
+    ]
   },
   {
     "id": "ST30-003",
@@ -35799,7 +36331,10 @@
     "attribute": "The Four Emperors Whitebeard Pirates",
     "effect": "[Your Turn] All of your Characters with 6000 base power gain +1000 power.",
     "image_url": "/images/cards/ST30-003.png",
-    "set": "ST30"
+    "set": "ST30",
+    "alt_images": [
+      "/images/cards/ST30-003_p1.png"
+    ]
   },
   {
     "id": "ST30-004",
@@ -35812,7 +36347,10 @@
     "attribute": "Revolutionary Army Impel Down",
     "effect": "[On Play] You may reveal 2 Character cards with 6000 power from your hand: Draw 3 cards and trash 2 cards from your hand.",
     "image_url": "/images/cards/ST30-004.png",
-    "set": "ST30"
+    "set": "ST30",
+    "alt_images": [
+      "/images/cards/ST30-004_p1.png"
+    ]
   },
   {
     "id": "ST30-005",
@@ -35825,7 +36363,10 @@
     "attribute": "Whitebeard Pirates",
     "effect": "",
     "image_url": "/images/cards/ST30-005.png",
-    "set": "ST30"
+    "set": "ST30",
+    "alt_images": [
+      "/images/cards/ST30-005_p1.png"
+    ]
   },
   {
     "id": "ST30-006",
@@ -35916,7 +36457,10 @@
     "attribute": "Straw Hat Crew Impel Down",
     "effect": "[On Play] You may rest 1 of your DON!! cards: This Character gains [Rush] during this turn. (This card can attack on the turn in which it is played.)\n[When Attacking] Rest up to 1 of your opponent's [Blocker] Characters.",
     "image_url": "/images/cards/ST30-012.png",
-    "set": "ST30"
+    "set": "ST30",
+    "alt_images": [
+      "/images/cards/ST30-012_p1.png"
+    ]
   },
   {
     "id": "ST30-013",
@@ -35942,7 +36486,10 @@
     "attribute": "Impel Down Former Baroque Works",
     "effect": "[Activate: Main] You may rest this Character: Give up to 2 of your Characters with 6000 base power up to 2 rested DON!! cards each.",
     "image_url": "/images/cards/ST30-014.png",
-    "set": "ST30"
+    "set": "ST30",
+    "alt_images": [
+      "/images/cards/ST30-014_p1.png"
+    ]
   },
   {
     "id": "ST30-015",
@@ -35968,7 +36515,10 @@
     "attribute": "Straw Hat Crew Whitebeard Pirates",
     "effect": "[Counter] Up to 1 of your Leader or Character cards gains +3000 power during this battle. Then, if you have [Portgas.D.Ace] and [Monkey.D.Luffy] Characters with 6000 base power, draw 1 card.",
     "image_url": "/images/cards/ST30-016.png",
-    "set": "ST30"
+    "set": "ST30",
+    "alt_images": [
+      "/images/cards/ST30-016_p1.png"
+    ]
   },
   {
     "id": "ST30-017",
@@ -36072,7 +36622,10 @@
     "attribute": "Land of Wano Kouzuki Clan",
     "effect": "[On Play] Draw 1 card and up to 1 of your opponent's Characters with a base cost of 6 or less cannot be rested until the end of your opponent's next End Phase.",
     "image_url": "/images/cards/ST32-002.png",
-    "set": "ST32"
+    "set": "ST32",
+    "alt_images": [
+      "/images/cards/ST32-002_p1.png"
+    ]
   },
   {
     "id": "ST32-003",
